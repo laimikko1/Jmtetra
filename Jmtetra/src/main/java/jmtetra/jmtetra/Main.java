@@ -5,16 +5,24 @@
  */
 package jmtetra.jmtetra;
 
+import tetralogic.Gameboard;
+import tetralogic.Piece;
+import tetralogic.SquareShape;
+import tetralogic.Tetronome;
+import static tetralogic.Type.Square;
+
 /**
  *
  * @author mikko
  */
 public class Main {
+
     public static void main(String[] args) {
         
+
+//        Gameboard g = new Gameboard();
+//        g.printBoard();
+        Tetronome square = new SquareShape(Square, new Piece[4]);
     }
-    
-    public static String hello() {
-        return "hello";
-    }
+
 }
