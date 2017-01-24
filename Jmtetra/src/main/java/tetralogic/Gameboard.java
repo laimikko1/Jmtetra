@@ -16,7 +16,7 @@ public class Gameboard {
     private char[][] gameboard;
 
     public Gameboard() {
-        this.width = 11;
+        this.width = 12;
         this.height = 16;
 
         this.gameboard = new char[height][width];
@@ -34,6 +34,12 @@ public class Gameboard {
             }
             System.out.println();
 
+        }
+    }
+    
+    public void addTetronome(Tetronome t) {
+        for (Piece p : t.getPieces()) {
+            gameboard[p.getX()][p.getY()] = p.getMark();
         }
     }
 }

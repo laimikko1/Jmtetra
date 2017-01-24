@@ -5,39 +5,34 @@
  */
 package tetralogic;
 
-import java.util.List;
-
 public abstract class Tetronome {
 
-    private Type type;
     private Piece[] pieces;
 
-    public Tetronome(Type type, Piece[] pieces) {
-        this.pieces = new Piece[4];
-        this.type = type;
+    public Tetronome(Piece[] pieces) {
+        this.pieces = pieces;
 
     }
 
-    abstract void turnRight();
+    public void moveLeft() {
+        for (Piece p : this.pieces) {
+            p.setY(p.getY()-1);
+            
+        }
+    }
 
-    abstract void turnLeft();
+    abstract boolean moveRight();
+
+    abstract void moveDown();
+
+    abstract boolean canIMove();
+
+    abstract void turnClockwise();
+
+    abstract void turnCounterClockwise();
 
     abstract void createTetronome();
 
-    public void moveDown() {
-
-    }
-    
-    public boolean canIMove() {
-        return false;
-    }
-
-    public Piece[] getPieces() {
-        return pieces;
-    }
-
-    public Type getType() {
-        return type;
-    }
+   abstract Piece[] getPieces();
 
 }
