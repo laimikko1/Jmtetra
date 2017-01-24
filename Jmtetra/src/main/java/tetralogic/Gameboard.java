@@ -36,10 +36,29 @@ public class Gameboard {
 
         }
     }
-    
+
     public void addTetronome(Tetronome t) {
         for (Piece p : t.getPieces()) {
             gameboard[p.getX()][p.getY()] = p.getMark();
         }
     }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public char[][] getGameboard() {
+        return gameboard;
+    }
+    
+    public char getChar(int x, int y) {
+        return this.gameboard[x][y];
+    }
+    
+    
+
 }
