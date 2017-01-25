@@ -5,6 +5,8 @@
  */
 package tetralogic;
 
+import tetralogic.Tetronomes.Tetronome;
+
 /**
  *
  * @author laimikko

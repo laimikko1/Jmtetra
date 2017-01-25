@@ -1,5 +1,7 @@
-package tetralogic;
+package tetralogic.Tetronomes;
 
+import tetralogic.Piece;
+import tetralogic.Type;
 import static tetralogic.Type.Square;
 
 public class Square extends Tetronome {
@@ -55,9 +57,5 @@ public class Square extends Tetronome {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public Piece[] getPieces() {
-        return this.pieces; //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

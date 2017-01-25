@@ -7,8 +7,9 @@ package jmtetra.jmtetra;
 
 import tetralogic.Gameboard;
 import tetralogic.Piece;
-import tetralogic.Square;
-import tetralogic.Tetronome;
+import tetralogic.Tetronomes.Square;
+import tetralogic.Tetronomes.Tetronome;
+import tetralogic.Tetronomes.Tshape;
 import static tetralogic.Type.Square;
 import static tetralogic.Type.T;
 
@@ -23,8 +24,10 @@ public class Main {
         Gameboard g = new Gameboard();
         g.printBoard();
         Square square = new Square(new Piece[4]);
+        Tshape t = new Tshape(new Piece[4]);
 
-        g.addTetronome(square);
+//        g.addTetronome(square);
+          g.addTetronome(t);
         
         System.out.println("");
         System.out.println("");

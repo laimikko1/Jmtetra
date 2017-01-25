@@ -13,8 +13,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import tetralogic.Gameboard;
 import tetralogic.Piece;
-import tetralogic.Square;
-import tetralogic.Tetronome;
+import tetralogic.Tetronomes.Square;
+import tetralogic.Tetronomes.Tetronome;
+import tetralogic.Tetronomes.Tshape;
 
 /**
  *
@@ -38,11 +39,27 @@ public class gameboardTest {
     public void addingSquareWorks() {
         Square sq = new Square(new Piece[4]);
         g.addTetronome(sq);
+
+        assertTrue(checkPieces('0', sq));
+
+    }
+
+    @Test
+    public void addingTWorks() {
+        Tshape t = new Tshape(new Piece[4]);
+        g.addTetronome(t);
         
-        for(Piece p : sq.getPieces()) {
-            assertEquals(g.getChar(p.getX(), p.getY()), '0');
-            
+        assertTrue(checkPieces('T', t));
+
+    }
+
+    private boolean checkPieces(char c, Tetronome t) {
+        for (Piece p : t.getPieces()) {
+            if (g.getChar(p.getX(), p.getY()) != c) {
+                return false;
+            }
+
         }
-        
+        return true;
     }
 }

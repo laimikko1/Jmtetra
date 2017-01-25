@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetralogic;
+package tetralogic.Tetronomes;
+
+import tetralogic.Piece;
 
 public abstract class Tetronome {
 
@@ -16,8 +18,8 @@ public abstract class Tetronome {
 
     public void moveLeft() {
         for (Piece p : this.pieces) {
-            p.setY(p.getY()-1);
-            
+            p.setY(p.getY() - 1);
+
         }
     }
 
@@ -33,6 +35,8 @@ public abstract class Tetronome {
 
     abstract void createTetronome();
 
-   abstract Piece[] getPieces();
+     public Piece[] getPieces() {
+         return this.pieces;
+     }
 
 }
