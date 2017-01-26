@@ -21,23 +21,21 @@ public class Tshape extends Tetronome {
         createTetronome();
     }
 
-    
-
     @Override
     final void createTetronome() {
+        int yCord = 1;
         int xCord = 4;
-        int yCord = 0;
-
-        Piece p = new Piece(xCord, yCord, 'T');
-        xCord--;
-        yCord++;
-        this.pieces[0] = p;
-
-        for (int i = 1; i < 4; i++) {
-            p = new Piece(xCord, yCord, 'T');
+        for (int i = 0; i < 3; i++) {
+            Piece p = new Piece(yCord, xCord, 'T');
             this.pieces[i] = p;
             xCord++;
         }
+        yCord--;
+        xCord = 5;
+        Piece p = new Piece(yCord, xCord, 'T');
+        this.pieces[3] = p;
+
+
     }
 
 }

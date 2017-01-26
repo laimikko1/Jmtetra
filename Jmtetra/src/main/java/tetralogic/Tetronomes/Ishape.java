@@ -18,14 +18,14 @@ public class Ishape extends Tetronome {
 
     @Override
     final void createTetronome() {
-        int xCord = 3;
         int yCord = 0;
+        int xCord = 3;
         
 
-        pieces[0] = new Piece(xCord, yCord, 'I');
+        pieces[0] = new Piece(yCord, xCord, 'I');
         xCord++;
         for (int i = 1; i < 4; i++) {
-            pieces[i] = new Piece(xCord, yCord, 'I');
+            pieces[i] = new Piece(yCord, xCord, 'I');
             xCord++;
         }
     }

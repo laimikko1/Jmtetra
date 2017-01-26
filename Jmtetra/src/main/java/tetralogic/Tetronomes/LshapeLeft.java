@@ -1,5 +1,6 @@
 package tetralogic.Tetronomes;
 
+import tetralogic.Gameboard;
 import tetralogic.Piece;
 import tetralogic.Type;
 import static tetralogic.Type.LshapeLeft;
@@ -18,13 +19,13 @@ public final class LshapeLeft extends Tetronome {
 
     @Override
     final void createTetronome() {
-        int xCord = 5;
         int yCord = 0;
-        pieces[0] = new Piece(xCord, yCord, 'L');
+        int xCord = 5;
+        pieces[0] = new Piece(yCord, xCord, 'L');
         yCord++;
         
         for (int i = 1; i < 4; i++) {
-            pieces[i] = new Piece(xCord, yCord, 'L');
+            pieces[i] = new Piece(yCord, xCord, 'L');
             xCord--;
         }
     }

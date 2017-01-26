@@ -31,16 +31,13 @@ public class Main {
 
         Gameboard g = new Gameboard();
         g.printBoard();
-        Squareshape square = new Squareshape(new Piece[4]);
-        Tshape t = new Tshape(new Piece[4]);
 
 //        g.addTetronome(square);
-          g.addTetronome(new SshapeLeft(new Piece[4]));
-        
-        System.out.println("");
-        System.out.println("");
-        
+        g.addTetronome(new Tshape(new Piece[4]));
         g.printBoard();
+        System.out.println("");
+        System.out.println("");
+        g.updateBoard(g.getCurTetro().moveLeft());
 
     }
 

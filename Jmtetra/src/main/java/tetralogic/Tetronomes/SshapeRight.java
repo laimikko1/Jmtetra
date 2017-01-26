@@ -23,17 +23,17 @@ public class SshapeRight extends Tetronome {
 
     @Override
     final void createTetronome() {
-        int xCord = 3;
         int yCord = 1;
+        int xCord = 3;
         for (int i = 0; i < 2; i++) {
-            pieces[i] = new Piece(xCord, yCord, 'S');
+            pieces[i] = new Piece(yCord, xCord, 'S');
             xCord++;
         }
-        yCord--;
         xCord--;
+        yCord--;
 
         for (int i = 2; i < 4; i++) {
-            pieces[i] = new Piece(xCord, yCord, 'S');
+            pieces[i] = new Piece(yCord, xCord, 'S');
             xCord++;
         }
     }

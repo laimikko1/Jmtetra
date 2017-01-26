@@ -16,10 +16,12 @@ public class Gameboard {
     private int height;
     private int width;
     private char[][] gameboard;
+    private Tetronome tetroInPlay;
 
     public Gameboard() {
         this.width = 10;
         this.height = 16;
+        this.tetroInPlay = null;
 
         this.gameboard = new char[height][width];
         for (int i = 0; i < height; i++) {
@@ -37,12 +39,20 @@ public class Gameboard {
             System.out.println();
 
         }
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
     }
 
     public void addTetronome(Tetronome t) {
+        this.tetroInPlay = t;
         for (Piece p : t.getPieces()) {
-            gameboard[p.getX()][p.getY()] = p.getMark();
+            gameboard[p.getY()][p.getX()] = p.getMark();
         }
+    }
+
+    public Tetronome getCurTetro() {
+        return this.tetroInPlay;
     }
 
     public int getHeight() {
@@ -56,11 +66,32 @@ public class Gameboard {
     public char[][] getGameboard() {
         return gameboard;
     }
-    
-    public char getChar(int x, int y) {
-        return this.gameboard[x][y];
-    }
-    
-    
 
+    public char getChar(int y, int x) {
+        return this.gameboard[y][x];
+    }
+
+    public void setChar(int y, int x, char c) {
+        this.gameboard[y][x] = c;
+    }
+
+    public void updateBoard(Piece[] dir) {
+        if (tetroInPlay.checkIfOccupied(this, dir)) {
+            Piece[] oldCoords = tetroInPlay.getPieces();
+            char c = dir[0].getMark();
+
+            for (Piece p : oldCoords) {
+                setChar(p.getY(), p.getX(), '-');
+            }
+
+            for (Piece p : dir) {
+                setChar(p.getY(), p.getX(), p.getMark());
+            }
+
+            tetroInPlay.setNewPieces(dir);
+
+            this.printBoard();
+
+        }
+    }
 }

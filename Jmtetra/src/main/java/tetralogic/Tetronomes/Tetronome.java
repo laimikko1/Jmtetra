@@ -5,8 +5,8 @@
  */
 package tetralogic.Tetronomes;
 
+import tetralogic.Gameboard;
 import tetralogic.Piece;
-
 
 public abstract class Tetronome {
 
@@ -14,20 +14,62 @@ public abstract class Tetronome {
 
     public Tetronome(Piece[] pieces) {
         this.pieces = pieces;
+    }
+
+    public Piece[] moveLeft() {
+        Piece[] newLoc = new Piece[4];
+        int i = 0;
+        for (Piece p : this.pieces) {
+            newLoc[i] = new Piece(p.getY(), p.getX() - 1, p.getMark());
+            i++;
+        }
+        return newLoc;
+    }
+
+    public Piece getLowestLoc() {
+        return new Piece(1, 2, '0');
+    }
+
+    public boolean checkIfReachedBottom() {
+        return true;
+    }
+
+    public boolean checkIfOccupied(Gameboard g, Piece[] newLoc) {
+        for (Piece p : newLoc) {
+            if (samePieceInBothArrays(p)) {
+                continue;
+            }
+            if (p.getX() > g.getWidth() || p.getX() < 0) {
+                return false;
+            }
+            if (p.getY() >= g.getHeight()) {
+                return false;
+            }
+            if (g.getChar(p.getY(), p.getX()) != '-') {
+                return false;
+            }
+        }
+        return true;
 
     }
 
-    public void moveLeft() {
-        for (Piece p : this.pieces) {
-            p.setY(p.getY() - 1);
-
+    private boolean samePieceInBothArrays(Piece p) {
+        for (Piece pi : this.pieces) {
+            if (p.getX() == pi.getX() && p.getY() == pi.getY()) {
+                return true;
+            }
         }
+        return false;
     }
 
     abstract void createTetronome();
 
     public Piece[] getPieces() {
         return this.pieces;
+    }
+
+    public void setNewPieces(Piece[] p) {
+        this.pieces = p;
     }
 
 }

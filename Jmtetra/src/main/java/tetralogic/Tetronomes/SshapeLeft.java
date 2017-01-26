@@ -23,18 +23,18 @@ public class SshapeLeft extends Tetronome {
 
     @Override
     final void createTetronome() {
+        int yCord = 0;
         int xCord = 5;
-        int yCord = 1;
         
         for (int i = 0; i < 2; i++) {
-            pieces[i] = new Piece(xCord, yCord, 'S');
+            pieces[i] = new Piece(yCord, xCord, 'S');
             xCord--;
         }
+        yCord++;
         xCord++;
-        yCord--;
         
         for (int i = 2; i < 4; i++) {
-            pieces[i] = new Piece(xCord, yCord, 'S');
+            pieces[i] = new Piece(yCord, xCord, 'S');
             xCord--;
         }
     }

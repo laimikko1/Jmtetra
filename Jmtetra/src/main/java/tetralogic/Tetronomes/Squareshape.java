@@ -18,16 +18,16 @@ public class Squareshape extends Tetronome {
 
     @Override
     public final void createTetronome() {
-        int xKoord = 4;
-        int Ykoord = 0;
+        int yCord = 0;
+        int xCord = 4;
         for (int i = 0; i < 4; i++) {
-            Piece p = new Piece(xKoord, Ykoord, '0');
+            Piece p = new Piece(yCord, xCord, '0');
             this.pieces[i] = p;
 
-            xKoord++;
+            xCord++;
             if (i == 1) {
-                Ykoord++;
-                xKoord = 5;
+                yCord++;
+                xCord = 4;
             }
         }
 

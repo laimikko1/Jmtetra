@@ -83,7 +83,7 @@ public class gameboardTest {
     }
     
     @Test
-    public void SshapeRight() {
+    public void addingShapeRightWorks() {
         SshapeRight s = new SshapeRight(new Piece[4]);
         g.addTetronome(s);
         
@@ -91,7 +91,7 @@ public class gameboardTest {
     }
     
     @Test
-    public void SshapeLeft() {
+    public void addingSshapeLeftWorks() {
         SshapeLeft s = new SshapeLeft(new Piece[4]);
         g.addTetronome(s);
         

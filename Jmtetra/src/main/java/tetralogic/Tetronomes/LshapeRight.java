@@ -23,15 +23,15 @@ public class LshapeRight extends Tetronome {
 
     @Override
     void createTetronome() {
-        int xCord = 4;
         int yCord = 0;
+        int xCord = 4;
 
-        pieces[0] = new Piece(xCord, yCord, 'L');
-        yCord++;
+        pieces[0] = new Piece(yCord, xCord, 'L');
+        xCord++;
 
         for (int i = 1; i < 4; i++) {
-            pieces[i] = new Piece(xCord, yCord, 'L');
-            xCord++;
+            pieces[i] = new Piece(yCord, xCord, 'L');
+            yCord++;
         }
     }
 
