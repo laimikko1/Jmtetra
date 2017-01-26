@@ -13,7 +13,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import tetralogic.Gameboard;
 import tetralogic.Piece;
-import tetralogic.Tetronomes.Square;
+import tetralogic.Tetronomes.Ishape;
+import tetralogic.Tetronomes.LshapeLeft;
+import tetralogic.Tetronomes.LshapeRight;
+import tetralogic.Tetronomes.Squareshape;
+import tetralogic.Tetronomes.SshapeLeft;
+import tetralogic.Tetronomes.SshapeRight;
 import tetralogic.Tetronomes.Tetronome;
 import tetralogic.Tetronomes.Tshape;
 
@@ -32,12 +37,12 @@ public class gameboardTest {
     @Test
     public void SizeIsRight() {
         assertEquals(g.getHeight(), 16);
-        assertEquals(g.getWidth(), 12);
+        assertEquals(g.getWidth(), 10);
     }
 
     @Test
     public void addingSquareWorks() {
-        Square sq = new Square(new Piece[4]);
+        Squareshape sq = new Squareshape(new Piece[4]);
         g.addTetronome(sq);
 
         assertTrue(checkPieces('0', sq));
@@ -51,6 +56,46 @@ public class gameboardTest {
         
         assertTrue(checkPieces('T', t));
 
+    }
+    
+    @Test
+    public void addingLRightWorks() {
+        LshapeRight l = new LshapeRight(new Piece[4]);
+        g.addTetronome(l);
+    
+        assertTrue(checkPieces('L', l));
+    }
+    
+    @Test
+    public void addingLLeftWorks() {
+        LshapeLeft l = new LshapeLeft(new Piece[4]);
+        g.addTetronome(l);
+        
+        assertTrue(checkPieces('L', l));
+    }
+    
+    @Test
+    public void addingIworks() {
+        Ishape  i= new Ishape(new Piece[4]);
+        g.addTetronome(i);
+        
+        assertTrue(checkPieces('I', i));
+    }
+    
+    @Test
+    public void SshapeRight() {
+        SshapeRight s = new SshapeRight(new Piece[4]);
+        g.addTetronome(s);
+        
+        assertTrue(checkPieces('S', s));
+    }
+    
+    @Test
+    public void SshapeLeft() {
+        SshapeLeft s = new SshapeLeft(new Piece[4]);
+        g.addTetronome(s);
+        
+        assertTrue(checkPieces('S', s));
     }
 
     private boolean checkPieces(char c, Tetronome t) {

@@ -5,6 +5,6 @@
  */
 package tetralogic;
 
-  public enum Type {
-        T, LRight, LLeft, Square, SRight, SLeft, I 
-    }
+public enum Type {
+    Tshape, Squareshape ,LshapeRight, LshapeLeft, SshapeRight, SshapeLeft, Ishape
+}

@@ -7,6 +7,7 @@ package tetralogic.Tetronomes;
 
 import tetralogic.Piece;
 
+
 public abstract class Tetronome {
 
     private Piece[] pieces;
@@ -23,20 +24,10 @@ public abstract class Tetronome {
         }
     }
 
-    abstract boolean moveRight();
-
-    abstract void moveDown();
-
-    abstract boolean canIMove();
-
-    abstract void turnClockwise();
-
-    abstract void turnCounterClockwise();
-
     abstract void createTetronome();
 
-     public Piece[] getPieces() {
-         return this.pieces;
-     }
+    public Piece[] getPieces() {
+        return this.pieces;
+    }
 
 }

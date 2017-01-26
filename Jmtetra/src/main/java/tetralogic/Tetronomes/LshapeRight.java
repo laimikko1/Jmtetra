@@ -7,35 +7,30 @@ package tetralogic.Tetronomes;
 
 import tetralogic.Piece;
 import tetralogic.Type;
-import static tetralogic.Type.Tshape;
+import static tetralogic.Type.LshapeRight;
 
-public class Tshape extends Tetronome {
+public class LshapeRight extends Tetronome {
 
-    private Piece[] pieces;
     private Type type;
+    public Piece[] pieces;
 
-    public Tshape(Piece[] pieces) {
+    public LshapeRight(Piece[] pieces) {
         super(pieces);
+        this.type = LshapeRight;
         this.pieces = pieces;
-        this.type = Tshape;
         createTetronome();
     }
 
-    
-
     @Override
-    final void createTetronome() {
+    void createTetronome() {
         int xCord = 4;
         int yCord = 0;
 
-        Piece p = new Piece(xCord, yCord, 'T');
-        xCord--;
+        pieces[0] = new Piece(xCord, yCord, 'L');
         yCord++;
-        this.pieces[0] = p;
 
         for (int i = 1; i < 4; i++) {
-            p = new Piece(xCord, yCord, 'T');
-            this.pieces[i] = p;
+            pieces[i] = new Piece(xCord, yCord, 'L');
             xCord++;
         }
     }

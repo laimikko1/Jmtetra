@@ -18,7 +18,7 @@ public class Gameboard {
     private char[][] gameboard;
 
     public Gameboard() {
-        this.width = 12;
+        this.width = 10;
         this.height = 16;
 
         this.gameboard = new char[height][width];
