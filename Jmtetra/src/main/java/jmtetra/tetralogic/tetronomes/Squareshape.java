@@ -1,8 +1,8 @@
-package tetralogic.Tetronomes;
+package jmtetra.tetralogic.tetronomes;
 
-import tetralogic.Piece;
-import tetralogic.Type;
-import static tetralogic.Type.Squareshape;
+import jmtetra.tetralogic.Piece;
+import jmtetra.tetralogic.Type;
+import static jmtetra.tetralogic.Type.Squareshape;
 
 public class Squareshape extends Tetronome {
 

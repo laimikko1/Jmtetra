@@ -3,38 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetralogic.Tetronomes;
+package jmtetra.tetralogic.tetronomes;
 
-import tetralogic.Piece;
-import tetralogic.Type;
-import static tetralogic.Type.Ishape;
+import jmtetra.tetralogic.Piece;
+import jmtetra.tetralogic.Type;
+import static jmtetra.tetralogic.Type.SshapeLeft;
 
-public class SshapeRight extends Tetronome {
+public class SshapeLeft extends Tetronome {
 
     private Type type;
     private Piece[] pieces;
 
-    public SshapeRight(Piece[] pieces) {
+    public SshapeLeft(Piece[] pieces) {
         super(pieces);
-        this.type = Ishape;
+        this.type = SshapeLeft;
         this.pieces = pieces;
         createTetronome();
     }
 
     @Override
     final void createTetronome() {
-        int yCord = 1;
-        int xCord = 3;
+        int yCord = 0;
+        int xCord = 5;
+        
         for (int i = 0; i < 2; i++) {
             pieces[i] = new Piece(yCord, xCord, 'S');
-            xCord++;
+            xCord--;
         }
-        xCord--;
-        yCord--;
-
+        yCord++;
+        xCord++;
+        
         for (int i = 2; i < 4; i++) {
             pieces[i] = new Piece(yCord, xCord, 'S');
-            xCord++;
+            xCord--;
         }
     }
 

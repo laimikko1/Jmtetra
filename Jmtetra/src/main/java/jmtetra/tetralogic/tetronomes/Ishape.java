@@ -1,8 +1,8 @@
-package tetralogic.Tetronomes;
+package jmtetra.tetralogic.tetronomes;
 
-import tetralogic.Piece;
-import tetralogic.Type;
-import static tetralogic.Type.Ishape;
+import jmtetra.tetralogic.Piece;
+import jmtetra.tetralogic.Type;
+import static jmtetra.tetralogic.Type.Ishape;
 
 public class Ishape extends Tetronome {
 

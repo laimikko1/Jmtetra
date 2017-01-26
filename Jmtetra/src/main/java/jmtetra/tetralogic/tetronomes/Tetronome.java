@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetralogic.Tetronomes;
+package jmtetra.tetralogic.tetronomes;
 
-import tetralogic.Gameboard;
-import tetralogic.Piece;
+import jmtetra.tetralogic.Gameboard;
+import jmtetra.tetralogic.Piece;
 
 public abstract class Tetronome {
 

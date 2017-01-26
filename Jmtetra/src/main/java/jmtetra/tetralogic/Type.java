@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetralogic;
+package jmtetra.tetralogic;
 
 public enum Type {
     Tshape, Squareshape ,LshapeRight, LshapeLeft, SshapeRight, SshapeLeft, Ishape

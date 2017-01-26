@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetralogic;
+package jmtetra.tetralogic;
 
-import tetralogic.Tetronomes.Tetronome;
+import jmtetra.tetralogic.tetronomes.Tetronome;
 
 /**
  *
@@ -31,18 +31,7 @@ public class Gameboard {
         }
     }
 
-    public void printBoard() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                System.out.print(gameboard[i][j]);
-            }
-            System.out.println();
-
-        }
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-    }
+    
 
     public void addTetronome(Tetronome t) {
         this.tetroInPlay = t;
@@ -90,7 +79,6 @@ public class Gameboard {
 
             tetroInPlay.setNewPieces(dir);
 
-            this.printBoard();
 
         }
     }

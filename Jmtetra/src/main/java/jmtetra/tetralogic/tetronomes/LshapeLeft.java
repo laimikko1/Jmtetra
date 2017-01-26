@@ -1,9 +1,9 @@
-package tetralogic.Tetronomes;
+package jmtetra.tetralogic.tetronomes;
 
-import tetralogic.Gameboard;
-import tetralogic.Piece;
-import tetralogic.Type;
-import static tetralogic.Type.LshapeLeft;
+import jmtetra.tetralogic.Gameboard;
+import jmtetra.tetralogic.Piece;
+import jmtetra.tetralogic.Type;
+import static jmtetra.tetralogic.Type.LshapeLeft;
 
 public final class LshapeLeft extends Tetronome {
 
