@@ -31,8 +31,6 @@ public class Gameboard {
         }
     }
 
-    
-
     public void addTetronome(Tetronome t) {
         this.tetroInPlay = t;
         for (Piece p : t.getPieces()) {
@@ -64,10 +62,38 @@ public class Gameboard {
         this.gameboard[y][x] = c;
     }
 
+    public boolean checkIfOccupied(Piece[] newLoc) {
+        for (Piece p : newLoc) {
+            if (samePieceInBothArrays(p)) {
+                continue;
+            }
+            if (p.getX() > this.getWidth() || p.getX() < 0) {
+                return false;
+            }
+            if (p.getY() >= this.getHeight()) {
+                return false;
+            }
+            if (this.getChar(p.getY(), p.getX()) != '-') {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    private boolean samePieceInBothArrays(Piece p) {
+        for (Piece pi : this.tetroInPlay.getPieces()) {
+            if (p.getX() == pi.getX() && p.getY() == pi.getY()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
     public void updateBoard(Piece[] dir) {
-        if (tetroInPlay.checkIfOccupied(this, dir)) {
+        if (this.checkIfOccupied(dir)) {
             Piece[] oldCoords = tetroInPlay.getPieces();
-            char c = dir[0].getMark();
 
             for (Piece p : oldCoords) {
                 setChar(p.getY(), p.getX(), '-');
@@ -78,7 +104,6 @@ public class Gameboard {
             }
 
             tetroInPlay.setNewPieces(dir);
-
 
         }
     }

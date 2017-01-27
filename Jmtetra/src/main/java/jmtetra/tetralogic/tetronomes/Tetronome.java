@@ -33,35 +33,8 @@ public abstract class Tetronome {
 //    public boolean checkIfReachedBottom() {//Not done
 //        return true;
 //    }
-
-    public boolean checkIfOccupied(Gameboard g, Piece[] newLoc) {
-        for (Piece p : newLoc) {
-            if (samePieceInBothArrays(p)) {
-                continue;
-            }
-            if (p.getX() > g.getWidth() || p.getX() < 0) {
-                return false;
-            }
-            if (p.getY() >= g.getHeight()) {
-                return false;
-            }
-            if (g.getChar(p.getY(), p.getX()) != '-') {
-                return false;
-            }
-        }
-        return true;
-
-    }
-
-    private boolean samePieceInBothArrays(Piece p) {
-        for (Piece pi : this.pieces) {
-            if (p.getX() == pi.getX() && p.getY() == pi.getY()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    
+    
     abstract void createTetronome();
 
     public Piece[] getPieces() {

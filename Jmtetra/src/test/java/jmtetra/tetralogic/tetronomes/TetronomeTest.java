@@ -49,17 +49,7 @@ public class TetronomeTest {
 
     }
 
-    @Test
-    public void checkIfOccupiedReturnsFalseWhenPieceTakenOnLeft() {
-        g.setChar(0, 2, 'x');
-        g.addTetronome(this.tetronome);
-        assertFalse(this.tetronome.checkIfOccupied(g, this.tetronome.moveLeft()));
-    }
 
-    @Test
-    public void checkIfOccupiedReturnsTrueWhenPieceNotTakenOnLeft() {
-        g.addTetronome(this.tetronome);
-        assertTrue(this.tetronome.checkIfOccupied(g, this.tetronome.moveLeft()));
-    }
-
+       
+    
 }

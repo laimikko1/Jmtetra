@@ -5,7 +5,6 @@ package jmtetra.tetralogic;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 import jmtetra.tetralogic.tetronomes.Ishape;
@@ -24,9 +23,11 @@ import jmtetra.tetralogic.tetronomes.Tshape;
 public class GameboardTest {
 
     private Gameboard g;
+    private Tetronome tetronome;
 
     public GameboardTest() {
         this.g = new Gameboard();
+        this.tetronome = new Ishape(new Piece[4]);
     }
 
     @Test
@@ -146,5 +147,28 @@ public class GameboardTest {
 
         }
         return true;
+    }
+
+    @Test
+    public void checkIfOccupiedReturnsFalseWhenPieceTakenOnLeft() {
+        g.setChar(0, 2, 'x');
+        g.addTetronome(this.tetronome);
+        assertFalse(g.checkIfOccupied(this.tetronome.moveLeft()));
+    }
+
+    @Test
+    public void checkIfOccupiedReturnsTrueWhenPieceNotTakenOnLeft() {
+        g.addTetronome(this.tetronome);
+        assertTrue(g.checkIfOccupied(this.tetronome.moveLeft()));
+    }
+
+    @Test
+    public void CreateMoveLeftCreatesCorrectCordinates() {
+        Piece[] oldCoords = this.tetronome.getPieces();
+        Piece[] moveLeftCoords = this.tetronome.moveLeft();
+
+        for (int i = 0; i < oldCoords.length; i++) {
+            assertEquals(oldCoords[i].getX() - 1, moveLeftCoords[i].getX());
+        }
     }
 }
