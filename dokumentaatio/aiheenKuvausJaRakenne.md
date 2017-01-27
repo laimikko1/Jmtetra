@@ -14,6 +14,6 @@ Tarkoituksena on luoda peliin pelilogiikka ja graafinen  käyttöliittymä.
 - Liikuta tetrispalikkaa sivusuunnassa
 
 
-![![Alt text](https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/luokkakaavio.png)
+![Alt text](https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/luokkakaavio.png)
 
 
