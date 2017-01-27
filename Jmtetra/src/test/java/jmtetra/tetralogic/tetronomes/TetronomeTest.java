@@ -5,6 +5,7 @@
  */
 package jmtetra.tetralogic.tetronomes;
 
+import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.tetronomes.Ishape;
 import jmtetra.tetralogic.tetronomes.LshapeLeft;
@@ -28,9 +29,11 @@ import static org.junit.Assert.*;
 public class TetronomeTest {
 
     private Tetronome tetronome;
+    private Gameboard g;
 
     public TetronomeTest() {
-        this.tetronome = new Tshape(new Piece[4]);
+        this.g = new Gameboard();
+        this.tetronome = new Ishape(new Piece[4]);
     }
 
     @Test
@@ -44,6 +47,19 @@ public class TetronomeTest {
         assertNotNull(this.tetronome = new SshapeLeft(n));
         assertNotNull(this.tetronome = new SshapeRight(n));
 
+    }
+
+    @Test
+    public void checkIfOccupiedReturnsFalseWhenPieceTakenOnLeft() {
+        g.setChar(0, 2, 'x');
+        g.addTetronome(this.tetronome);
+        assertFalse(this.tetronome.checkIfOccupied(g, this.tetronome.moveLeft()));
+    }
+
+    @Test
+    public void checkIfOccupiedReturnsTrueWhenPieceNotTakenOnLeft() {
+        g.addTetronome(this.tetronome);
+        assertTrue(this.tetronome.checkIfOccupied(g, this.tetronome.moveLeft()));
     }
 
 }
