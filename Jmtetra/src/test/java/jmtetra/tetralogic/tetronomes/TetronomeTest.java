@@ -32,7 +32,7 @@ public class TetronomeTest {
     public TetronomeTest() {
         this.tetronome = new Tshape(new Piece[4]);
     }
-    
+
     @Test
     public void allShapesInitialize() {
         Piece[] n = new Piece[4];
@@ -43,13 +43,7 @@ public class TetronomeTest {
         assertNotNull(this.tetronome = new Squareshape(n));
         assertNotNull(this.tetronome = new SshapeLeft(n));
         assertNotNull(this.tetronome = new SshapeRight(n));
-        
-    
-}
 
-// TODO add test methods here.
-// The methods must be annotated with annotation @Test. For example:
-//
-// @Test
-// public void hello() {}
+    }
+
 }

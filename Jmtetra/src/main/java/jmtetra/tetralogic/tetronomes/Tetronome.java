@@ -27,10 +27,10 @@ public abstract class Tetronome {
     }
 
     public Piece getLowestLoc() {
-        return new Piece(1, 2, '0');
+        return new Piece(0, 0, '0'); //Not done 
     }
 
-    public boolean checkIfReachedBottom() {
+    public boolean checkIfReachedBottom() {//Not done
         return true;
     }
 
