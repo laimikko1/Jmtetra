@@ -25,14 +25,14 @@ public abstract class Tetronome {
         }
         return newLoc;
     }
+//
+//    public Piece getLowestLoc() {
+//        return new Piece(0, 0, '0'); //Not done 
+//    }
 
-    public Piece getLowestLoc() {
-        return new Piece(0, 0, '0'); //Not done 
-    }
-
-    public boolean checkIfReachedBottom() {//Not done
-        return true;
-    }
+//    public boolean checkIfReachedBottom() {//Not done
+//        return true;
+//    }
 
     public boolean checkIfOccupied(Gameboard g, Piece[] newLoc) {
         for (Piece p : newLoc) {
