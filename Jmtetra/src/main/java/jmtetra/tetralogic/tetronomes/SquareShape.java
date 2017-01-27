@@ -4,12 +4,12 @@ import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 import static jmtetra.tetralogic.Type.Squareshape;
 
-public class Squareshape extends Tetronome {
+public class SquareShape extends Tetronome {
 
     private Type type;
     public Piece[] pieces;
 
-    public Squareshape(Piece[] pieces) {
+    public SquareShape(Piece[] pieces) {
         super(pieces);
         this.pieces = pieces;
         this.type = Squareshape;

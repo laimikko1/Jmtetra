@@ -10,7 +10,7 @@ import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.tetronomes.Ishape;
 import jmtetra.tetralogic.tetronomes.LshapeLeft;
 import jmtetra.tetralogic.tetronomes.LshapeRight;
-import jmtetra.tetralogic.tetronomes.Squareshape;
+import jmtetra.tetralogic.tetronomes.SquareShape;
 import jmtetra.tetralogic.tetronomes.SshapeLeft;
 import jmtetra.tetralogic.tetronomes.SshapeRight;
 import jmtetra.tetralogic.tetronomes.Tetronome;
@@ -42,7 +42,7 @@ public class TetronomeTest {
         assertNotNull(this.tetronome = new Tshape(n));
         assertNotNull(this.tetronome = new LshapeLeft(n));
         assertNotNull(this.tetronome = new LshapeRight(n));
-        assertNotNull(this.tetronome = new Squareshape(n));
+        assertNotNull(this.tetronome = new SquareShape(n));
         assertNotNull(this.tetronome = new SshapeLeft(n));
         assertNotNull(this.tetronome = new SshapeRight(n));
 

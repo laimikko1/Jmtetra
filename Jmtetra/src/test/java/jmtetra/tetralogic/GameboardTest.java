@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import jmtetra.tetralogic.tetronomes.Ishape;
 import jmtetra.tetralogic.tetronomes.LshapeLeft;
 import jmtetra.tetralogic.tetronomes.LshapeRight;
-import jmtetra.tetralogic.tetronomes.Squareshape;
+import jmtetra.tetralogic.tetronomes.SquareShape;
 import jmtetra.tetralogic.tetronomes.SshapeLeft;
 import jmtetra.tetralogic.tetronomes.SshapeRight;
 import jmtetra.tetralogic.tetronomes.Tetronome;
@@ -83,7 +83,7 @@ public class GameboardTest {
 
     @Test
     public void addingSquareWorks() {
-        Squareshape sq = new Squareshape(new Piece[4]);
+        SquareShape sq = new SquareShape(new Piece[4]);
         g.addTetronome(sq);
 
         assertTrue(checkPieces('0', sq));

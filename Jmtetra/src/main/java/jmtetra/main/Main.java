@@ -11,7 +11,7 @@ import jmtetra.tetralogic.tetronomes.Ishape;
 import jmtetra.tetralogic.tetronomes.LshapeLeft;
 import jmtetra.tetralogic.tetronomes.LshapeRight;
 import jmtetra.tetralogic.tetronomes.SshapeRight;
-import jmtetra.tetralogic.tetronomes.Squareshape;
+import jmtetra.tetralogic.tetronomes.SquareShape;
 import jmtetra.tetralogic.tetronomes.SshapeLeft;
 import jmtetra.tetralogic.tetronomes.Tetronome;
 import jmtetra.tetralogic.tetronomes.Tshape;
