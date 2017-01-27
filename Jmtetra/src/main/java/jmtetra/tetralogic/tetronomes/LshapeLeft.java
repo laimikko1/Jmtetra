@@ -1,6 +1,5 @@
 package jmtetra.tetralogic.tetronomes;
 
-import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 import static jmtetra.tetralogic.Type.LshapeLeft;

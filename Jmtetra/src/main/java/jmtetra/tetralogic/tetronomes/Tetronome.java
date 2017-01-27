@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package jmtetra.tetralogic.tetronomes;
-
-import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
 
 public abstract class Tetronome {

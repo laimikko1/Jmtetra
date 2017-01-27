@@ -7,7 +7,7 @@ package jmtetra.tetralogic.tetronomes;
 
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
-import static jmtetra.tetralogic.Type.Ishape;
+import static jmtetra.tetralogic.Type.SshapeRight;
 
 public class SshapeRight extends Tetronome {
 
@@ -16,7 +16,7 @@ public class SshapeRight extends Tetronome {
 
     public SshapeRight(Piece[] pieces) {
         super(pieces);
-        this.type = Ishape;
+        this.type = SshapeRight;
         this.pieces = pieces;
         createTetronome();
     }
