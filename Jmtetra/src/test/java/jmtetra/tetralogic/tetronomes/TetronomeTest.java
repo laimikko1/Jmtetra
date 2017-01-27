@@ -32,7 +32,6 @@ public class TetronomeTest {
     private Gameboard g;
 
     public TetronomeTest() {
-        this.g = new Gameboard();
         this.tetronome = new Ishape(new Piece[4]);
     }
 
@@ -47,6 +46,16 @@ public class TetronomeTest {
         assertNotNull(this.tetronome = new SshapeLeft(n));
         assertNotNull(this.tetronome = new SshapeRight(n));
 
+    }
+    
+     @Test
+    public void moveLeftCreatesCorrectCoordinates() {
+        Piece[] oldCoords = this.tetronome.getPieces();
+        Piece[] moveLeftCoords = this.tetronome.moveLeft();
+
+        for (int i = 0; i < oldCoords.length; i++) {
+            assertEquals(oldCoords[i].getX() - 1, moveLeftCoords[i].getX());
+        }
     }
 
 
