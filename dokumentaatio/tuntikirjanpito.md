@@ -15,3 +15,5 @@ Päivä | Tunnit | Kuvaus
 22.01.2017 | 1.5h | Alustavaa luokkien tekoa, tetronomeja ja pelialusta
 24.01.2017 | 1.5h | Samaa hommaa ja testejä, tetronomien luontia
 25.01.2017 | 1h   | Tetronomeja ja testejä
+26.01.2017 | 5h   | Luotu logiikkaa palan siirtämiseen ja testejä
+27.01.2017 | 2h   | Pitin ja CheckStylen konffaamista ja taulukon piirtoa. Eilisen koodin refaktorointia ja testejä
