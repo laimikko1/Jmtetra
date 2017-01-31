@@ -67,6 +67,16 @@ public class TetronomeTest {
             assertEquals(oldCords[i].getX() + 1, moveRightCords[i].getX());
         }
     }
+    
+    @Test
+    public void moveDownCreatesCorrectCoordinates() {
+        Piece[] oldCords = this.tetronome.getPieces();
+        Piece[] moveDownCords = this.tetronome.moveDown();
+    
+        for (int i = 0; i < oldCords.length; i++) {
+            assertEquals(oldCords[i].getY() + 1, moveDownCords[i].getY());
+        }
+    }
 
 
        

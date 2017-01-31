@@ -33,6 +33,11 @@ public class SquareShape extends Tetronome {
 
     }
 
+    @Override
+    void createOrUpdateRotations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 
 

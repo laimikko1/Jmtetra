@@ -153,16 +153,40 @@ public class GameboardTest {
     public void checkIfOccupiedReturnsFalseWhenPieceTakenOnLeft() {
         g.setChar(0, 2, 'x');
         g.addTetronome(this.tetronome);
-        assertFalse(g.checkIfOccupied(this.tetronome.moveLeft()));
+        assertFalse(g.checkIfOccupied(this.tetronome.moveLeftOrRight(-1)));
     }
 
     @Test
     public void checkIfOccupiedReturnsTrueWhenPieceNotTakenOnLeft() {
         g.addTetronome(this.tetronome);
-        assertTrue(g.checkIfOccupied(this.tetronome.moveLeft()));
+        assertTrue(g.checkIfOccupied(this.tetronome.moveLeftOrRight(-1)));
     }
 
-  
+    @Test
+    public void checkIfOccupiedReturnsFalseWhenPieceTakenOnRight() {
+        g.setChar(0, 7, 'x');
+        g.addTetronome(this.tetronome);
+        assertFalse(g.checkIfOccupied(this.tetronome.moveLeftOrRight(1)));
+    }
+
+    @Test
+    public void checkIfOccupiedReturnsTrueWhenPieceNotTakenOnRight() {
+        g.addTetronome(tetronome);
+        assertTrue(g.checkIfOccupied(this.tetronome.moveLeftOrRight(1)));
+    }
+
+    @Test
+    public void checkIfOccupiedReturnsFalseWhenPieceTakenBelow() {
+        g.setChar(1, 4, 'x');
+        g.addTetronome(this.tetronome);
+        assertFalse(g.checkIfOccupied(this.tetronome.moveDown()));
+    }
+
+    @Test
+    public void checkIfOccupiedReturnsTrueWhenPieceNotTakenBelow() {
+        g.addTetronome(tetronome);
+        assertTrue(g.checkIfOccupied(this.tetronome.moveDown()));
+    }
 
     @Test
     public void updateBoardMovesPiecesCorrectly() {
@@ -188,7 +212,7 @@ public class GameboardTest {
 
         assertArrayEquals(g.getGameboard(), testBoard);
 
-        g.updateBoard(this.tetronome.moveLeft());
+        g.updateBoard(this.tetronome.moveLeftOrRight(-1));
 
         testBoard = new char[][]{
             {'-', '-', 'I', 'I', 'I', 'I', '-', '-', '-', '-'},
@@ -212,11 +236,11 @@ public class GameboardTest {
     }
 
     @Test
-    public void updateBoardDoesntGoOutOfBounds() {
+    public void updateBoardDoesntGoOutOfBoundsOnLeft() {
         g.addTetronome(tetronome);
 
         for (int i = 0; i < 5; i++) {
-            g.updateBoard(tetronome.moveLeft());
+            g.updateBoard(tetronome.moveLeftOrRight(-1));
         }
 
         char[][] testBoard = new char[][]{
@@ -237,7 +261,68 @@ public class GameboardTest {
             {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
             {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},};
 
-            assertArrayEquals(g.getGameboard(), testBoard);
+        assertArrayEquals(g.getGameboard(), testBoard);
     }
+
+    @Test
+    public void updateBoardDoesntGoOutOfBoundMovingRIght() {
+            g.addTetronome(tetronome);
+        char[][] testBoard = new char[][]{
+            {'-', '-', '-', '-', '-', '-', 'I', 'I', 'I', 'I'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},};
+
+        for (int i = 0; i < 5; i++) {
+            g.updateBoard(tetronome.moveLeftOrRight(1));
+
+        }
+        assertArrayEquals(g.getGameboard(), testBoard);
+
+    }
+    
+     @Test
+    public void updateBoardDoesntGoOutOfBoundMovingDown() {
+            g.addTetronome(tetronome);
+           
+            for (int i = 0; i < 20; i++) {
+                g.updateBoard(this.tetronome.moveDown());
+             
+         }
+           
+        char[][] testBoard = new char[][]{
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', 'I', 'I', 'I', 'I', '-', '-', '-'},};
+
        
+        assertArrayEquals(g.getGameboard(), testBoard);
+
+    }
+
 }

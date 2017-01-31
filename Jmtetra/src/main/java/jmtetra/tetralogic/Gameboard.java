@@ -67,10 +67,10 @@ public class Gameboard {
             if (samePieceInBothArrays(p)) {
                 continue;
             }
-            if (p.getX() > this.getWidth() || p.getX() < 0) {
+            if (p.getX() >= this.getWidth() || p.getX() < 0) {
                 return false;
             }
-            if (p.getY() >= this.getHeight()) {
+            if (p.getY() >= this.getHeight() || p.getY() < 0) {
                 return false;
             }
             if (this.getChar(p.getY(), p.getX()) != '-') {
@@ -102,8 +102,11 @@ public class Gameboard {
             for (Piece p : dir) {
                 setChar(p.getY(), p.getX(), p.getMark());
             }
-
-            tetroInPlay.setNewPieces(dir);
+            
+            
+            for (int j = 0; j < tetroInPlay.getPieces().length; j++) {
+                   tetroInPlay.getPieces()[j] = dir[j];
+            }
 
         }
     }

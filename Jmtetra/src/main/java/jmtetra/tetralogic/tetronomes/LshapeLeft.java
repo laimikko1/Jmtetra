@@ -4,7 +4,7 @@ import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 import static jmtetra.tetralogic.Type.LshapeLeft;
 
-public final class LshapeLeft extends Tetronome {
+public  class LshapeLeft extends Tetronome {
 
     private Piece[] pieces;
     private Type type;
@@ -27,6 +27,11 @@ public final class LshapeLeft extends Tetronome {
             pieces[i] = new Piece(yCord, xCord, 'L');
             xCord--;
         }
+    }
+
+    @Override
+    void createOrUpdateRotations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
