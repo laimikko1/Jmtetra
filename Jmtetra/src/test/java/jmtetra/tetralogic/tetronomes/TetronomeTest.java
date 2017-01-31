@@ -49,12 +49,22 @@ public class TetronomeTest {
     }
     
      @Test
-    public void moveLeftCreatesCorrectCoordinates() {
+    public void moveLeftOrRightCreatesCorrectCoordinatesWhenMovingLeft() {
         Piece[] oldCoords = this.tetronome.getPieces();
-        Piece[] moveLeftCoords = this.tetronome.moveLeft();
+        Piece[] moveLeftCoords = this.tetronome.moveLeftOrRight(-1);
 
         for (int i = 0; i < oldCoords.length; i++) {
             assertEquals(oldCoords[i].getX() - 1, moveLeftCoords[i].getX());
+        }
+    }
+    
+    @Test
+    public void moveLeftOrRightCreatesCorrectCoordinatesWhenMovingRight() {
+        Piece[] oldCords = this.tetronome.getPieces();
+        Piece[] moveRightCords = this.tetronome.moveLeftOrRight(+1);
+        
+        for (int i = 0; i < oldCords.length; i++) {
+            assertEquals(oldCords[i].getX() + 1, moveRightCords[i].getX());
         }
     }
 

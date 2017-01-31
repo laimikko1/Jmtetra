@@ -32,12 +32,12 @@ public class Main {
         Gameboard g = new Gameboard();
         printBoard(g);
 
-//        g.addTetronome(square);
         g.addTetronome(new Tshape(new Piece[4]));
         printBoard(g);
         System.out.println("");
         System.out.println("");
-        g.updateBoard(g.getCurTetro().moveLeft());
+        g.updateBoard(g.getCurTetro().moveLeftOrRight(-1));
+
         
         printBoard(g);
 

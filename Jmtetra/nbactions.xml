@@ -3,7 +3,7 @@
 <actions>
     <action>
         <actionName>CUSTOM-pit</actionName>
-        <displayName>pit</displayName>
+        <displayName>Pit</displayName>
         <goals>
             <goal>org.pitest:pitest-maven:mutationCoverage</goal>
         </goals>

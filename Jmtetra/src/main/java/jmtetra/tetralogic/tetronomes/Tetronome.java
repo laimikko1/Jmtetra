@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package jmtetra.tetralogic.tetronomes;
+
 import jmtetra.tetralogic.Piece;
 
 public abstract class Tetronome {
@@ -14,14 +15,18 @@ public abstract class Tetronome {
         this.pieces = pieces;
     }
 
-    public Piece[] moveLeft() {
+
+    public Piece[] moveLeftOrRight(int direction) {
+
         Piece[] newLoc = new Piece[4];
         int i = 0;
+
         for (Piece p : this.pieces) {
-            newLoc[i] = new Piece(p.getY(), p.getX() - 1, p.getMark());
+            newLoc[i] = new Piece(p.getY(), p.getX() + direction, p.getMark());
             i++;
         }
         return newLoc;
+
     }
 //
 //    public Piece getLowestLoc() {
@@ -31,8 +36,6 @@ public abstract class Tetronome {
 //    public boolean checkIfReachedBottom() {//Not done
 //        return true;
 //    }
-    
-    
     abstract void createTetronome();
 
     public Piece[] getPieces() {
