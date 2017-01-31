@@ -1,6 +1,5 @@
 package jmtetra.tetralogic.tetronomes;
 
-import java.util.ArrayList;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 import static jmtetra.tetralogic.Type.Ishape;
@@ -9,7 +8,6 @@ public class Ishape extends Tetronome {
 
     private Type type;
     private Piece[] pieces;
-    private ArrayList rotations;
 
     public Ishape(Piece[] pieces) {
         super(pieces);
@@ -33,22 +31,57 @@ public class Ishape extends Tetronome {
     }
 
     @Override
-    final void createOrUpdateRotations() {
-        this.rotations = getRotations();
-        this.rotations.clear();
-        updateUpOrDownCords();
-        this.rotations.add(getPieces());
-        
+    final Piece[] createOrUpdateRotations() {
+
+        if (super.getRotation() == 1) {
+            return updateRightCords();
+        }
+        if (super.getRotation() == 2) {
+            return updateDownCords();
+        }
+        if (super.getRotation() == 3) {
+            return updateLeftCords();
+        }
+
+        return updateUpCords();
+
     }
 
-    private void updateUpOrDownCords() {
-        Piece[] upOrDown = new Piece[4];
-        upOrDown[0] = new Piece(this.pieces[1].getY() - 1, this.pieces[1].getX(), this.pieces[1].getMark());
-        upOrDown[1] = this.pieces[1];
-        upOrDown[2] = new Piece(this.pieces[1].getY() + 1, this.pieces[1].getX(), this.pieces[1].getMark());
-        upOrDown[3] = new Piece(this.pieces[1].getY() + 2, this.pieces[1].getX(), this.pieces[1].getMark());
-        
-        this.rotations.add(upOrDown);
+    private Piece[] updateDownCords() {
+        Piece[] down = new Piece[4];
+        down[0] = this.generatePiece(-1, 0);
+        down[1] = this.pieces[1];
+        down[2] = this.generatePiece(1, 0);
+        down[3] = this.generatePiece(2, 0);
+
+        return down;
+    }
+
+    private Piece[] updateLeftCords() {
+        Piece[] left = new Piece[4];
+        left[0] = this.generatePiece(0, 1);
+        left[1] = this.pieces[1];
+        left[2] = this.generatePiece(0, -1);
+        left[3] = this.generatePiece(0, -2);
+        return left;
+    }
+
+    private Piece[] updateRightCords() {
+        Piece[] right = new Piece[4];
+        right[0] = this.generatePiece(0, -1);
+        right[1] = this.pieces[1];
+        right[2] = this.generatePiece(0, 1);
+        right[3] = this.generatePiece(0, 2);
+        return right;
+    }
+
+    private Piece[] updateUpCords() {
+        Piece[] up = new Piece[4];
+        up[0] = this.generatePiece(+1, 0);
+        up[1] = this.pieces[1];
+        up[2] = this.generatePiece(-1, 0);
+        up[3] = this.generatePiece(-2, 0);
+        return up;
     }
 
 }

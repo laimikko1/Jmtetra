@@ -11,12 +11,10 @@ import jmtetra.tetralogic.Piece;
 public abstract class Tetronome {
 
     private Piece[] pieces;
-    private ArrayList<Piece[]> rotations;
     private int rotation;
 
     public Tetronome(Piece[] pieces) {
         this.pieces = pieces;
-        this.rotations = new ArrayList<>();
         this.rotation = 1;
     }
 
@@ -47,15 +45,16 @@ public abstract class Tetronome {
     }
 
     public Piece[] moveClockOrCounterClockWise(int rotationDirection) {
-        this.createOrUpdateRotations();
-        
         this.rotation += rotationDirection;
-        if (this.rotation == this.rotations.size()) {
-            this.rotation = 0;
+        
+        if (this.rotation > 4) {
+            this.rotation = 1;
         } else if (this.rotation < 0) {
-            this.rotation = this.rotations.size() - 1;
+            this.rotation = 4;
         }
-        return this.rotations.get(rotation);
+        
+
+       return createOrUpdateRotations();
     }
 
     abstract void createTetronome();
@@ -65,13 +64,17 @@ public abstract class Tetronome {
     }
 
     public void setPieces(Piece[] p) {
-       this.pieces = p;
+        System.arraycopy(p, 0, this.pieces, 0, getPieces().length);
     }
 
-    public ArrayList getRotations() {
-        return this.rotations;
+
+    public int getRotation() {
+        return this.rotation;
     }
 
-    abstract void createOrUpdateRotations();
+    abstract Piece[] createOrUpdateRotations();
 
+     public Piece generatePiece(int y, int x) {
+         return new Piece(this.pieces[1].getY() + y, this.pieces[1].getX() + x, this.pieces[1].getMark());
+     }
 }

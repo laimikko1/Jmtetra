@@ -36,8 +36,10 @@ public class LshapeRight extends Tetronome {
     }
 
     @Override
-    void createOrUpdateRotations() {
+    Piece[] createOrUpdateRotations() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
 }

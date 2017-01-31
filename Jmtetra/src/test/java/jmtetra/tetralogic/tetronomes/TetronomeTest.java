@@ -77,6 +77,11 @@ public class TetronomeTest {
             assertEquals(oldCords[i].getY() + 1, moveDownCords[i].getY());
         }
     }
+    
+  
+    
+    
+    
 
 
        

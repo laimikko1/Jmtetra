@@ -33,47 +33,36 @@ public class Main {
 
         Gameboard g = new Gameboard();
         g.addTetronome(i);
-        printBoard(g);
-        
-        
+
         g.updateBoard(g.getCurTetro().moveDown());
         g.updateBoard(g.getCurTetro().moveDown());
-        g.updateBoard(g.getCurTetro().moveDown());
-       
+
         System.out.println("");
         System.out.println("");
-        
-        printBoard(g);
-        
-        
-       g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
-        
-        System.out.println("");
-        System.out.println("");
-        
+
         printBoard(g);
 
-        
-//        g.addTetronome(i);
-//        printBoard(g);
-//
-//        g.updateBoard(g.getCurTetro().moveDown());
-//        g.updateBoard(g.getCurTetro().moveDown());
-//        g.updateBoard(g.getCurTetro().moveDown());
 //        
-//        System.out.println();
-//        System.out.println();
-//
-//        g.getCurTetro().moveClockOrCounterClockWise(1);
+        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
 //        
-//        printBoard(g);
+        System.out.println("");
+        System.out.println("");
 
-//        g.addTetronome(new Tshape(new Piece[4]));
-//        printBoard(g);
-//        System.out.println("");
-//        System.out.println("");
-//        g.getCurTetro().moveDown();
-//        printBoard(g);
+        printBoard(g);
+//      
+        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
+        System.out.println("");
+        System.out.println("");
+
+        printBoard(g);
+
+        System.out.println("");
+        System.out.println("");
+        
+//        
+        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
+        
+        printBoard(g);
     }
 
     public static void printBoard(Gameboard gameboard) {
