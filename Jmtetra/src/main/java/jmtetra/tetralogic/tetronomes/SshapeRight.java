@@ -39,7 +39,7 @@ public class SshapeRight extends Tetronome {
     }
 
     @Override
-    Piece[] createOrUpdateRotations() {
+    Piece[] createRotations() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -43,14 +43,14 @@ public class Main {
         printBoard(g);
 
 //        
-        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
+        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(-1));
 //        
         System.out.println("");
         System.out.println("");
 
         printBoard(g);
 //      
-        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
+        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(-1));
         System.out.println("");
         System.out.println("");
 
@@ -60,7 +60,7 @@ public class Main {
         System.out.println("");
         
 //        
-        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
+        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(-1));
         
         printBoard(g);
     }

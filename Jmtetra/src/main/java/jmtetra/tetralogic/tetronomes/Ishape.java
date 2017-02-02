@@ -14,7 +14,7 @@ public class Ishape extends Tetronome {
         this.type = Ishape;
         this.pieces = pieces;
         createTetronome();
-        createOrUpdateRotations();
+        createRotations();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Ishape extends Tetronome {
     }
 
     @Override
-    final Piece[] createOrUpdateRotations() {
+    final Piece[] createRotations() {
 
         if (super.getRotation() == 1) {
             return updateRightCords();

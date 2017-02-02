@@ -32,7 +32,7 @@ public class LshapeLeft extends Tetronome {
     }
 
     @Override
-    Piece[] createOrUpdateRotations() {
+    Piece[] createRotations() {
         if (this.getRotation() == 1) {
             return (Piece[]) updateLefCordinates();
         }
@@ -50,40 +50,40 @@ public class LshapeLeft extends Tetronome {
 
     private Object updateDownCordinates() {
         Piece[] downCords = new Piece[4];
-        downCords[0] = new Piece(this.pieces[1].getY(), this.pieces[1].getX() - 1, this.pieces[1].getMark());
+        downCords[0] = this.generatePiece(0, -1);
         downCords[1] = getPieces()[1];
-        downCords[2] = new Piece(this.pieces[1].getY() + 1, this.pieces[1].getX(), this.pieces[1].getMark());
-        downCords[3] = new Piece(this.pieces[1].getY() + 2, this.pieces[1].getX(), this.pieces[1].getMark());
+        downCords[2] = this.generatePiece(1, 0);
+        downCords[3] = this.generatePiece(2, 0);
 
         return downCords;
     }
 
     private Object updateLefCordinates() {
         Piece[] leftCords = new Piece[4];
-        leftCords[0] = new Piece(this.pieces[1].getY() - 1, this.pieces[1].getX(), this.pieces[1].getMark());
+        leftCords[0] = this.generatePiece(-1, 0);
         leftCords[1] = getPieces()[1];
-        leftCords[2] = new Piece(this.pieces[1].getY(), this.pieces[1].getX() - 1, this.pieces[1].getMark());
-        leftCords[3] = new Piece(this.pieces[1].getY(), this.pieces[1].getX() - 2, this.pieces[1].getMark());
+        leftCords[2] = this.generatePiece(0, -1);
+        leftCords[3] = this.generatePiece(0, -2);
 
         return leftCords;
     }
 
     private Object updateRightCordinates() {
         Piece[] rightCords = new Piece[4];
-        rightCords[0] = new Piece(this.pieces[1].getY() - 1, this.pieces[1].getX(), this.pieces[1].getMark());
+        rightCords[0] = this.generatePiece(-1, 0);
         rightCords[1] = getPieces()[1];
-        rightCords[2] = new Piece(this.pieces[1].getY(), this.pieces[1].getX() + 1, this.pieces[1].getMark());
-        rightCords[3] = new Piece(this.pieces[1].getY(), this.pieces[1].getX() + 2, this.pieces[1].getMark());
+        rightCords[2] = this.generatePiece(0, 1);
+        rightCords[3] = this.generatePiece(0, 2);
 
         return rightCords;
     }
 
     private Object updateUpCordinates() {
         Piece[] upCords = new Piece[4];
-        upCords[0] = new Piece(this.pieces[1].getY(), this.pieces[1].getX() + 1, this.pieces[1].getMark());
+        upCords[0] = this.generatePiece(0, 1);
         upCords[1] = getPieces()[1];
-        upCords[2] = new Piece(this.pieces[1].getY() - 1, this.pieces[1].getX(), this.pieces[1].getMark());
-        upCords[3] = new Piece(this.pieces[1].getY() - 2, this.pieces[1].getX(), this.pieces[1].getMark());
+        upCords[2] = this.generatePiece(-1, 0);
+        upCords[3] = this.generatePiece(-2, 0);
 
         return upCords;
     }

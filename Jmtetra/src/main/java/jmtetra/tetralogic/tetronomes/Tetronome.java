@@ -49,12 +49,12 @@ public abstract class Tetronome {
         
         if (this.rotation > 4) {
             this.rotation = 1;
-        } else if (this.rotation < 0) {
+        } else if (this.rotation < 1) {
             this.rotation = 4;
         }
         
 
-       return createOrUpdateRotations();
+       return createRotations();
     }
 
     abstract void createTetronome();
@@ -72,7 +72,7 @@ public abstract class Tetronome {
         return this.rotation;
     }
 
-    abstract Piece[] createOrUpdateRotations();
+    abstract Piece[] createRotations();
 
      public Piece generatePiece(int y, int x) {
          return new Piece(this.pieces[1].getY() + y, this.pieces[1].getX() + x, this.pieces[1].getMark());
