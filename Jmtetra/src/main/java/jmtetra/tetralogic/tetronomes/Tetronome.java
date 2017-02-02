@@ -46,18 +46,32 @@ public abstract class Tetronome {
 
     public Piece[] moveClockOrCounterClockWise(int rotationDirection) {
         this.rotation += rotationDirection;
-        
+
         if (this.rotation > 4) {
             this.rotation = 1;
         } else if (this.rotation < 1) {
             this.rotation = 4;
         }
-        
 
-       return createRotations();
+        return createRotations();
     }
 
     abstract void createTetronome();
+
+    public Piece getLowestLocation() {
+        int lowestY = 0;
+        Piece lowestP = null;
+        for (Piece p : this.pieces) {
+            if (p.getY() > lowestY) {
+                 lowestP = p;
+                 lowestY = p.getY();
+            }
+        }
+        if (lowestP == null) {
+            return new Piece(0, 0, this.pieces[0].getMark());
+        }
+        return lowestP;
+    }
 
     public Piece[] getPieces() {
         return this.pieces;
@@ -67,14 +81,13 @@ public abstract class Tetronome {
         System.arraycopy(p, 0, this.pieces, 0, getPieces().length);
     }
 
-
     public int getRotation() {
         return this.rotation;
     }
 
     abstract Piece[] createRotations();
 
-     public Piece generatePiece(int y, int x) {
-         return new Piece(this.pieces[1].getY() + y, this.pieces[1].getX() + x, this.pieces[1].getMark());
-     }
+    public Piece generatePiece(int y, int x) {
+        return new Piece(this.pieces[1].getY() + y, this.pieces[1].getX() + x, this.pieces[1].getMark());
+    }
 }

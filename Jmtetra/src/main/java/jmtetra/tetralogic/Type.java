@@ -6,5 +6,5 @@
 package jmtetra.tetralogic;
 
 public enum Type {
-    Tshape, Squareshape, LshapeRight, LshapeLeft, SshapeRight, SshapeLeft, Ishape
+    Tshape, Squareshape, LshapeRight, LshapeLeft, ZshapeLeft, ZshapeRIght, Ishape
 }

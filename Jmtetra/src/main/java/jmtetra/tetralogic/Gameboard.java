@@ -12,17 +12,17 @@ import jmtetra.tetralogic.tetronomes.Tetronome;
  * @author laimikko
  */
 public class Gameboard {
-    
+
     private int height;
     private int width;
     private char[][] gameboard;
     private Tetronome tetroInPlay;
-    
+
     public Gameboard() {
         this.width = 10;
         this.height = 16;
         this.tetroInPlay = null;
-        
+
         this.gameboard = new char[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -30,38 +30,47 @@ public class Gameboard {
             }
         }
     }
-    
+
     public void addTetronome(Tetronome t) {
         this.tetroInPlay = t;
         for (Piece p : t.getPieces()) {
             gameboard[p.getY()][p.getX()] = p.getMark();
         }
     }
-    
+
+    public boolean isRoundOver() {
+        Piece p = tetroInPlay.getLowestLocation();
+        if (p.getY() == 15) {
+            return false;
+        }
+
+        return getChar(p.getY() + 1, p.getX()) == '-';
+    }
+
     public Tetronome getCurTetro() {
         return this.tetroInPlay;
     }
-    
+
     public int getHeight() {
         return height;
     }
-    
+
     public int getWidth() {
         return width;
     }
-    
+
     public char[][] getGameboard() {
         return gameboard;
     }
-    
+
     public char getChar(int y, int x) {
         return this.gameboard[y][x];
     }
-    
+
     public void setChar(int y, int x, char c) {
         this.gameboard[y][x] = c;
     }
-    
+
     public boolean checkIfOccupied(Piece[] newLoc) {
         for (Piece p : newLoc) {
             if (samePieceInBothArrays(p)) {
@@ -78,9 +87,9 @@ public class Gameboard {
             }
         }
         return true;
-        
+
     }
-    
+
     private boolean samePieceInBothArrays(Piece p) {
         for (Piece pi : this.tetroInPlay.getPieces()) {
             if (p.getX() == pi.getX() && p.getY() == pi.getY()) {
@@ -89,21 +98,21 @@ public class Gameboard {
         }
         return false;
     }
-    
+
     public void updateBoard(Piece[] dir) {
         if (this.checkIfOccupied(dir)) {
             Piece[] oldCoords = tetroInPlay.getPieces();
-            
+
             for (Piece p : oldCoords) {
                 setChar(p.getY(), p.getX(), '-');
             }
-            
+
             for (Piece p : dir) {
                 setChar(p.getY(), p.getX(), p.getMark());
             }
-            
+
             tetroInPlay.setPieces(dir);
-            
+
         }
     }
 }
