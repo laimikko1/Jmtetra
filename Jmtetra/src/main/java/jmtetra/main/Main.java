@@ -29,7 +29,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Ishape i = new Ishape(new Piece[4]);
+       LshapeRight i = new LshapeRight(new Piece[4]);
 
         Gameboard g = new Gameboard();
         g.addTetronome(i);
@@ -61,6 +61,13 @@ public class Main {
         
 //        
         g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(-1));
+        
+        printBoard(g);
+    
+        System.out.println("");
+        System.out.println("");
+        
+             g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(-1));
         
         printBoard(g);
     }

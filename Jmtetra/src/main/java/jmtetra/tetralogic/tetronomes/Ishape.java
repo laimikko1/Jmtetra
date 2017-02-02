@@ -22,9 +22,7 @@ public class Ishape extends Tetronome {
         int yCord = 0;
         int xCord = 3;
 
-        pieces[0] = new Piece(yCord, xCord, 'I');
-        xCord++;
-        for (int i = 1; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             pieces[i] = new Piece(yCord, xCord, 'I');
             xCord++;
         }
@@ -77,7 +75,7 @@ public class Ishape extends Tetronome {
 
     private Piece[] updateUpCords() {
         Piece[] up = new Piece[4];
-        up[0] = this.generatePiece(+1, 0);
+        up[0] = this.generatePiece(1, 0);
         up[1] = this.pieces[1];
         up[2] = this.generatePiece(-1, 0);
         up[3] = this.generatePiece(-2, 0);
