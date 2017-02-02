@@ -11,10 +11,10 @@ import jmtetra.tetralogic.tetronomes.Ishape;
 import jmtetra.tetralogic.tetronomes.LshapeLeft;
 import jmtetra.tetralogic.tetronomes.LshapeRight;
 import jmtetra.tetralogic.tetronomes.SquareShape;
-import jmtetra.tetralogic.tetronomes.SshapeLeft;
-import jmtetra.tetralogic.tetronomes.SshapeRight;
+import jmtetra.tetralogic.tetronomes.ZshapeLeft;
 import jmtetra.tetralogic.tetronomes.Tetronome;
 import jmtetra.tetralogic.tetronomes.Tshape;
+import jmtetra.tetralogic.tetronomes.ZshapeRight;
 
 /**
  *
@@ -125,18 +125,18 @@ public class GameboardTest {
 
     @Test
     public void addingShapeRightWorks() {
-        SshapeRight s = new SshapeRight(new Piece[4]);
+        ZshapeLeft s = new ZshapeLeft(new Piece[4]);
         g.addTetronome(s);
 
-        assertTrue(checkPieces('S', s));
+        assertTrue(checkPieces('Z', s));
     }
 
     @Test
     public void addingSshapeLeftWorks() {
-        SshapeLeft s = new SshapeLeft(new Piece[4]);
+        ZshapeRight s = new ZshapeRight(new Piece[4]);
         g.addTetronome(s);
 
-        assertTrue(checkPieces('S', s));
+        assertTrue(checkPieces('Z', s));
     }
 
     private boolean checkPieces(char c, Tetronome t) {

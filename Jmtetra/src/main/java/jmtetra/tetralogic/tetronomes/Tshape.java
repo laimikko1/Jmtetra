@@ -24,25 +24,70 @@ public class Tshape extends Tetronome {
     @Override
     final void createTetronome() {
         int yCord = 1;
-        int xCord = 4;
+        int xCord = 3;
         for (int i = 0; i < 3; i++) {
             Piece p = new Piece(yCord, xCord, 'T');
             this.pieces[i] = p;
             xCord++;
         }
         yCord--;
-        xCord = 5;
+        xCord = 4;
         Piece p = new Piece(yCord, xCord, 'T');
         this.pieces[3] = p;
-
 
     }
 
     @Override
     Piece[] createRotations() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (super.getRotation() == 1) {
+            return updateUpCords();
+        }
+        if (super.getRotation() == 2) {
+            return updateRightCords();
+        }
+        if (super.getRotation() == 3) {
+            return updateDownCords();
+        }
+
+        return updateLeftCords();
+
     }
 
+    private Piece[] updateUpCords() {
+        Piece[] up = new Piece[4];
+        up[0] = this.generatePiece(0, -1);
+        up[1] = this.pieces[1];
+        up[2] = this.generatePiece(0, 1);
+        up[3] = this.generatePiece(-1, 0);
+        return up;
+    }
 
+    private Piece[] updateRightCords() {
+        Piece[] right = new Piece[4];
+        right[0] = this.generatePiece(-1, 0);
+        right[1] = this.pieces[1];
+        right[2] = this.generatePiece(0, 1);
+        right[3] = this.generatePiece(1, 0);
+        return right;
+    }
+
+    private Piece[] updateDownCords() {
+        Piece[] down = new Piece[4];
+        down[0] = this.generatePiece(0, 1);
+        down[1] = this.pieces[1];
+        down[2] = this.generatePiece(0, -1);
+        down[3] = this.generatePiece(1, 0);
+
+        return down;
+    }
+
+    private Piece[] updateLeftCords() {
+        Piece[] left = new Piece[4];
+        left[0] = this.generatePiece(1, 0);
+        left[1] = this.pieces[1];
+        left[2] = this.generatePiece(-1, 0);
+        left[3] = this.generatePiece(0, -1);
+        return left;
+    }
 
 }

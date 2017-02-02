@@ -11,8 +11,8 @@ import jmtetra.tetralogic.tetronomes.Ishape;
 import jmtetra.tetralogic.tetronomes.LshapeLeft;
 import jmtetra.tetralogic.tetronomes.LshapeRight;
 import jmtetra.tetralogic.tetronomes.SquareShape;
-import jmtetra.tetralogic.tetronomes.SshapeLeft;
-import jmtetra.tetralogic.tetronomes.SshapeRight;
+import jmtetra.tetralogic.tetronomes.ZshapeRightTest;
+import jmtetra.tetralogic.tetronomes.ZshapeLeft;
 import jmtetra.tetralogic.tetronomes.Tetronome;
 import jmtetra.tetralogic.tetronomes.Tshape;
 import org.junit.After;
@@ -43,8 +43,8 @@ public class TetronomeTest {
         assertNotNull(this.tetronome = new LshapeLeft(n));
         assertNotNull(this.tetronome = new LshapeRight(n));
         assertNotNull(this.tetronome = new SquareShape(n));
-        assertNotNull(this.tetronome = new SshapeLeft(n));
-        assertNotNull(this.tetronome = new SshapeRight(n));
+        assertNotNull(this.tetronome = new ZshapeRight(n));
+        assertNotNull(this.tetronome = new ZshapeLeft(n));
 
     }
     

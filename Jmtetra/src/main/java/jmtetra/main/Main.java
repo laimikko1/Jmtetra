@@ -10,15 +10,15 @@ import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.tetronomes.Ishape;
 import jmtetra.tetralogic.tetronomes.LshapeLeft;
 import jmtetra.tetralogic.tetronomes.LshapeRight;
-import jmtetra.tetralogic.tetronomes.SshapeRight;
+import jmtetra.tetralogic.tetronomes.ZshapeLeft;
 import jmtetra.tetralogic.tetronomes.SquareShape;
-import jmtetra.tetralogic.tetronomes.SshapeLeft;
+import jmtetra.tetralogic.tetronomes.ZshapeRight;
 import jmtetra.tetralogic.tetronomes.Tetronome;
 import jmtetra.tetralogic.tetronomes.Tshape;
 import static jmtetra.tetralogic.Type.Ishape;
 import static jmtetra.tetralogic.Type.LshapeLeft;
-import static jmtetra.tetralogic.Type.Tshape;
 import static jmtetra.tetralogic.Type.Squareshape;
+import static jmtetra.tetralogic.Type.Tshape;
 import static jmtetra.tetralogic.Type.SshapeLeft;
 
 /**
@@ -29,13 +29,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-       LshapeRight i = new LshapeRight(new Piece[4]);
+       Tshape i = new Tshape(new Piece[4]);
 
         Gameboard g = new Gameboard();
         g.addTetronome(i);
 
-        g.updateBoard(g.getCurTetro().moveDown());
-        g.updateBoard(g.getCurTetro().moveDown());
 
         System.out.println("");
         System.out.println("");
@@ -49,6 +47,7 @@ public class Main {
         System.out.println("");
 
         printBoard(g);
+        
 //      
         g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(-1));
         System.out.println("");
