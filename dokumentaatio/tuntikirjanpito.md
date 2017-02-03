@@ -17,3 +17,13 @@ Päivä | Tunnit | Kuvaus
 25.01.2017 | 1h   | Tetronomeja ja testejä
 26.01.2017 | 5h   | Luotu logiikkaa palan siirtämiseen ja testejä
 27.01.2017 | 3h   | Pitin ja CheckStylen konffaamista ja kaavion piirtoa. Eilisen koodin refaktorointia ja testejä
+
+
+**Deadline 3**
+
+Päivä | Tunnit | Kuvaus
+--------------- | ----- | ------
+31.01.2017 | 5h | Palojen pyörimistä koodailin ja siihen testejä
+3.01.2017 | 5h | Samaa homma jatkui, aika pitkään tuskailin ongelmien kanssa, joita ei oikeasti ollut, mutta nyt palat pyörii ja niillä testit,
+alottelin myös graafisen käyttöliittymän pohtimista ja mainiin huvikseen yritin saada timeria toimimaan
+

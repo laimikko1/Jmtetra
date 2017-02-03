@@ -63,8 +63,8 @@ public abstract class Tetronome {
         Piece lowestP = null;
         for (Piece p : this.pieces) {
             if (p.getY() > lowestY) {
-                 lowestP = p;
-                 lowestY = p.getY();
+                lowestP = p;
+                lowestY = p.getY();
             }
         }
         if (lowestP == null) {
