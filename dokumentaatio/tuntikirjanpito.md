@@ -24,6 +24,5 @@ Päivä | Tunnit | Kuvaus
 Päivä | Tunnit | Kuvaus
 --------------- | ----- | ------
 31.01.2017 | 5h | Palojen pyörimistä koodailin ja siihen testejä
-3.01.2017 | 5h | Samaa homma jatkui, aika pitkään tuskailin ongelmien kanssa, joita ei oikeasti ollut, mutta nyt palat pyörii ja niillä testit,
-alottelin myös graafisen käyttöliittymän pohtimista ja mainiin huvikseen yritin saada timeria toimimaan
+3.01.2017 | 5h | Samaa homma jatkui, aika pitkään tuskailin ongelmien kanssa, joita ei oikeasti ollut, mutta nyt palat pyörii ja niillä testit olemassa. Alottelin myös graafisen käyttöliittymän pohtimista ja mainiin huvikseen yritin saada timeria toimimaan.
 
