@@ -29,13 +29,13 @@ public class DrawedGameboard extends JPanel {
             for (int x = 0; x < gameclass.getGameboard().getWidth(); x++) {
                 Color c = gameclass.getGameboard().setCharacterColors(y, x);
                 g.setColor(gameclass.getGameboard().setCharacterColors(y, x));
-                g.fill3DRect(y, x, 200, 200, true);
+                g.fill3DRect(x * 35, y * 35, 35, 35, true);
             }
         }
 
     }
 
     public void update() {
-       super.repaint();
+        repaint();
     }
 }
