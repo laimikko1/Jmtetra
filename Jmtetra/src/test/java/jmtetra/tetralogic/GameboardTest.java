@@ -112,7 +112,7 @@ public class GameboardTest {
         LshapeLeft l = new LshapeLeft(new Piece[4]);
         g.addTetronome(l);
 
-        assertTrue(checkPieces('L', l));
+        assertTrue(checkPieces('K', l));
     }
 
     @Test
@@ -124,16 +124,16 @@ public class GameboardTest {
     }
 
     @Test
-    public void addingShapeRightWorks() {
-        ZshapeLeft s = new ZshapeLeft(new Piece[4]);
+    public void addingZhapeRightWorks() {
+        ZshapeRight s = new ZshapeRight(new Piece[4]);
         g.addTetronome(s);
 
-        assertTrue(checkPieces('Z', s));
+        assertTrue(checkPieces('X', s));
     }
 
     @Test
-    public void addingSshapeLeftWorks() {
-        ZshapeRight s = new ZshapeRight(new Piece[4]);
+    public void addingZshapeLeftWorks() {
+        ZshapeLeft s = new ZshapeLeft(new Piece[4]);
         g.addTetronome(s);
 
         assertTrue(checkPieces('Z', s));

@@ -5,6 +5,7 @@
  */
 package jmtetra.tetralogic;
 
+import java.awt.Color;
 import jmtetra.tetralogic.tetronomes.Tetronome;
 
 /**
@@ -114,5 +115,38 @@ public class Gameboard {
             tetroInPlay.setPieces(dir);
 
         }
+    }
+
+    public Color setCharacterColors(Character c) {
+        if (c == 'I') {
+            return Color.CYAN;
+        }
+
+        if (c == 'K') {
+            return Color.BLUE;
+        }
+
+        if (c == 'L') {
+            return Color.ORANGE;
+        }
+
+        if (c == 'O') {
+            return Color.YELLOW;
+        }
+
+        if (c == 'T') {
+            return Color.MAGENTA;
+        }
+
+        if (c == 'Z') {
+            return Color.GREEN;
+        }
+
+        if (c == 'X') {
+            return Color.RED;
+        }
+        
+        return Color.WHITE;
+
     }
 }

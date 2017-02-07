@@ -5,6 +5,7 @@
  */
 package jmtetra.main;
 
+import gui.GameInterface;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,6 +35,7 @@ import static jmtetra.tetralogic.Type.ZshapeLeft;
  * @author mikko
  */
 import static jmtetra.tetralogic.Type.ZshapeRIght;
+import theGame.Gameclass;
 
 public class Main {
 
@@ -49,44 +51,46 @@ public class Main {
         lista.add(new LshapeRight(new Piece[4]));
         lista.add(new Tshape(new Piece[4]));
 
-        while (true) {
-            Collections.shuffle(lista);
-
-            g.addTetronome(lista.get(0));
-
-            while (g.isRoundOver()) {
-                Timer timer = new Timer();
-                int begin = 1000;
-                int timeinterval = 1000;
-                timer.scheduleAtFixedRate(new TimerTask() {
-                    @Override
-                    public void run() {
-                        g.getCurTetro().moveDown();
-                    }
-                }, begin, timeinterval);
-                System.out.print("kommand: ");
-                String k = reader.nextLine();
-
-                if (k.equals("a")) {
-                    g.updateBoard(g.getCurTetro().moveLeftOrRight(-1));
-                }
-                if (k.equals("d")) {
-                    g.updateBoard(g.getCurTetro().moveLeftOrRight(1));
-                }
-                if (k.equals("z")) {
-                    g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(-1));
-                }
-                if (k.equals("x")) {
-                    g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
-                }
-                if (k.equals("s")) {
-                    g.updateBoard(g.getCurTetro().moveDown());
-                }
-                
-                printBoard(g);
-            
-            }
-        }
+//        while (true) {
+//            Collections.shuffle(lista);
+//
+//            g.addTetronome(lista.get(0));
+//
+//            while (g.isRoundOver()) {
+//                Timer timer = new Timer();
+//                int begin = 1000;
+//                int timeinterval = 1000;
+//                timer.scheduleAtFixedRate(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        g.getCurTetro().moveDown();
+//                    }
+//                }, begin, timeinterval);
+//                System.out.print("kommand: ");
+//                String k = reader.nextLine();
+//
+//                if (k.equals("a")) {
+//                    g.updateBoard(g.getCurTetro().moveLeftOrRight(-1));
+//                }
+//                if (k.equals("d")) {
+//                    g.updateBoard(g.getCurTetro().moveLeftOrRight(1));
+//                }
+//                if (k.equals("z")) {
+//                    g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(-1));
+//                }
+//                if (k.equals("x")) {
+//                    g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
+//                }
+//                if (k.equals("s")) {
+//                    g.updateBoard(g.getCurTetro().moveDown());
+//                }
+//                
+//                printBoard(g);
+//            
+//            }
+//        }
+        GameInterface ga = new GameInterface(g);
+        ga.run();
 
     }
 

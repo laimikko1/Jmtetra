@@ -27,14 +27,14 @@ public class ZshapeRight extends Tetronome {
         int xCord = 5;
 
         for (int i = 0; i < 2; i++) {
-            pieces[i] = new Piece(yCord, xCord, 'Z');
+            pieces[i] = new Piece(yCord, xCord, 'X');
             xCord--;
         }
         yCord++;
         xCord++;
 
         for (int i = 2; i < 4; i++) {
-            pieces[i] = new Piece(yCord, xCord, 'Z');
+            pieces[i] = new Piece(yCord, xCord, 'X');
             xCord--;
         }
     }

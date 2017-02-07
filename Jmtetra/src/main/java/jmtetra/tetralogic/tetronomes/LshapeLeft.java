@@ -27,10 +27,10 @@ public class LshapeLeft extends Tetronome {
         int xCord = 5;
 
         for (int i = 0; i < 3; i++) {
-            pieces[i] = new Piece(yCord, xCord, 'L');
+            pieces[i] = new Piece(yCord, xCord, 'K');
             xCord--;
         }
-        pieces[3] = new Piece(0, 5, 'L');
+        pieces[3] = new Piece(0, 5, 'K');
     }
 
     @Override
