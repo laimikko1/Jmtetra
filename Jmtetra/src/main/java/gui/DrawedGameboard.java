@@ -23,7 +23,16 @@ public class DrawedGameboard extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+        for (int i = 0; i < gameclass.getGameboard().getHeight(); i++) {
+            for (int j = 0; j < gameclass.getGameboard().getWidth(); j++) {
+                g.setColor(gameclass.getGameboard().setCharacterColors(i, j));
+                g.fill3DRect(j, i, 200, 200, true);
+            }
+        }
 
     }
 
+    public void update() {
+        repaint();
+    }
 }

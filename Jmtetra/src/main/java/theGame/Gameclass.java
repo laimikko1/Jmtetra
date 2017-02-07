@@ -5,7 +5,13 @@
  */
 package theGame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.Timer;
+
+import gui.DrawedGameboard;
+import java.util.Collections;
 import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.tetronomes.Ishape;
@@ -21,23 +27,26 @@ import jmtetra.tetralogic.tetronomes.ZshapeRight;
  *
  * @author mikko
  */
-public class Gameclass {
+public class Gameclass extends Timer implements ActionListener {
 
-    private Gameboard gameboard;
     private ArrayList<Tetronome> pieces;
     private boolean roundIsOver;
     private boolean gameIsOver;
+    private DrawedGameboard drawedGameboard;
+    private Gameboard gameboard;
 
     public Gameclass() {
-        this.gameboard = new Gameboard();
-        this.pieces = new ArrayList<>();
+        super(1000, null);
         createListOfPieces();
         this.roundIsOver = false;
         this.gameIsOver = false;
+        this.gameboard = new Gameboard();
+
+        addActionListener(this);
     }
 
     public Gameboard getGameboard() {
-        return gameboard;
+        return this.gameboard;
     }
 
     public void startGame() {
@@ -45,6 +54,7 @@ public class Gameclass {
     }
 
     private void createListOfPieces() {
+        this.pieces = new ArrayList();
         this.pieces.add(new Ishape(new Piece[4]));
         this.pieces.add(new LshapeLeft(new Piece[4]));
         this.pieces.add(new LshapeRight(new Piece[4]));
@@ -52,6 +62,24 @@ public class Gameclass {
         this.pieces.add(new Tshape(new Piece[4]));
         this.pieces.add(new ZshapeLeft(new Piece[4]));
         this.pieces.add(new ZshapeRight(new Piece[4]));
+    }
+
+    public void setDrawboard(DrawedGameboard drawedGameboard) {
+        this.drawedGameboard = drawedGameboard;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        while (true) {
+            Collections.shuffle(pieces);
+            this.gameboard.addTetronome(pieces.get(0));
+            while (this.gameboard.isRoundOver()) {
+                this.gameboard.updateBoard(gameboard.getCurTetro().moveDown());
+
+                this.drawedGameboard.update();
+            }
+        }
+
     }
 
 }

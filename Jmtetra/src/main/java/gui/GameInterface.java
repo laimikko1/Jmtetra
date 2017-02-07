@@ -9,7 +9,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import jmtetra.tetralogic.Gameboard;
+import theGame.Gameclass;
 
 /**
  *
@@ -17,28 +17,39 @@ import jmtetra.tetralogic.Gameboard;
  */
 public class GameInterface implements Runnable {
 
-    private Gameboard gameboard;
+    private DrawedGameboard gameboard;
+    private Gameclass gameclass;
     private JFrame frame;
 
-    public GameInterface(Gameboard g) {
-        this.gameboard = g;
+    public GameInterface(Gameclass gameclass) {
+        this.gameclass = gameclass;
+        this.gameboard = new DrawedGameboard(this.gameclass);
+        this.gameclass.setDrawboard(gameboard);
     }
 
     @Override
     public void run() {
-        this.gameboard = new Gameboard();
         frame = new JFrame("Tetris");
-        frame.setPreferredSize(new Dimension(500, 450));
+        frame.setPreferredSize(new Dimension(800, 800));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+
         createComponents(this.frame.getContentPane());
-        
+
         this.frame.pack();
         this.frame.setVisible(true);
     }
 
     private void createComponents(Container contentPane) {
-        
+        contentPane.add(this.gameboard);
+        frame.addKeyListener(new InputListener(this.gameclass.getGameboard()));
+    }
+
+    public DrawedGameboard getDrawedGameboard() {
+        return gameboard;
+    }
+
+    public Gameclass getGame() {
+        return this.gameclass;
     }
 
 }

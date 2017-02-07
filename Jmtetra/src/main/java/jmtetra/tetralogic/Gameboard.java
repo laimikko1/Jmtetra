@@ -117,35 +117,35 @@ public class Gameboard {
         }
     }
 
-    public Color setCharacterColors(Character c) {
-        if (c == 'I') {
+    public Color setCharacterColors(int y, int x) {
+        if (getChar(y, x) == 'I') {
             return Color.CYAN;
         }
 
-        if (c == 'K') {
+        if (getChar(y, x) == 'K') {
             return Color.BLUE;
         }
 
-        if (c == 'L') {
+        if (getChar(y, x) == 'L') {
             return Color.ORANGE;
         }
 
-        if (c == 'O') {
+        if (getChar(y, x) == 'O') {
             return Color.YELLOW;
         }
 
-        if (c == 'T') {
+        if (getChar(y, x) == 'T') {
             return Color.MAGENTA;
         }
 
-        if (c == 'Z') {
+        if (getChar(y, x) == 'Z') {
             return Color.GREEN;
         }
 
-        if (c == 'X') {
+        if (getChar(y, x) == 'X') {
             return Color.RED;
         }
-        
+
         return Color.WHITE;
 
     }
