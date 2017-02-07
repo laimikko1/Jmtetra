@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import gui.DrawedGameboard;
-import java.util.Collections;
+import java.util.Random;
 import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.tetronomes.Ishape;
@@ -28,14 +28,14 @@ import jmtetra.tetralogic.tetronomes.ZshapeRight;
  * @author mikko
  */
 public class Gameclass extends Timer implements ActionListener {
-    
+
     private ArrayList<Tetronome> pieces;
     private boolean roundIsOver;
     private boolean gameIsOver;
     private DrawedGameboard drawedGameboard;
     private Gameboard gameboard;
-    
-    
+    private Random random;
+
     public Gameclass() {
         super(1000, null);
         createListOfPieces();
@@ -43,19 +43,20 @@ public class Gameclass extends Timer implements ActionListener {
         this.gameIsOver = false;
         this.gameboard = new Gameboard();
         this.gameboard.addTetronome(this.pieces.get(0));
-        
+        this.random = new Random();
+
         addActionListener(this);
         setInitialDelay(1000);
     }
-    
+
     public Gameboard getGameboard() {
         return this.gameboard;
     }
-    
+
     public void startGame() {
-        
+
     }
-    
+
     private void createListOfPieces() {
         this.pieces = new ArrayList();
         this.pieces.add(new Ishape(new Piece[4]));
@@ -65,27 +66,25 @@ public class Gameclass extends Timer implements ActionListener {
         this.pieces.add(new Tshape(new Piece[4]));
         this.pieces.add(new ZshapeLeft(new Piece[4]));
         this.pieces.add(new ZshapeRight(new Piece[4]));
-        Collections.shuffle(this.pieces);
-        
+
     }
-    
+
     public void setDrawboard(DrawedGameboard drawedGameboard) {
         this.drawedGameboard = drawedGameboard;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         if (this.gameboard.isRoundOver()) {
-            Collections.shuffle(pieces);
-            this.gameboard.addTetronome(pieces.get(0));
+            this.gameboard.addTetronome(pieces.get(this.random.nextInt(7)));
         }
-        
+
         this.gameboard.updateBoard(gameboard.getCurTetro().moveDown());
-        
+
         this.drawedGameboard.update();
-        setDelay(1500);
-        
+        setDelay(500);
+
     }
-    
+
 }
