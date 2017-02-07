@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import theGame.Gameclass;
@@ -23,16 +24,18 @@ public class DrawedGameboard extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        for (int i = 0; i < gameclass.getGameboard().getHeight(); i++) {
-            for (int j = 0; j < gameclass.getGameboard().getWidth(); j++) {
-                g.setColor(gameclass.getGameboard().setCharacterColors(i, j));
-                g.fill3DRect(j, i, 200, 200, true);
+        super.paintComponent(g);
+        for (int y = 0; y < gameclass.getGameboard().getHeight(); y++) {
+            for (int x = 0; x < gameclass.getGameboard().getWidth(); x++) {
+                Color c = gameclass.getGameboard().setCharacterColors(y, x);
+                g.setColor(gameclass.getGameboard().setCharacterColors(y, x));
+                g.fill3DRect(y, x, 200, 200, true);
             }
         }
 
     }
 
     public void update() {
-        repaint();
+       super.repaint();
     }
 }

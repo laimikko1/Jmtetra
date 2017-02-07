@@ -47,7 +47,7 @@ public class InputListener implements KeyListener {
         }
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            while (this.gameboard.isRoundOver()) {
+            while (!this.gameboard.isRoundOver()) {
                 this.gameboard.updateBoard(this.gameboard.getCurTetro().moveDown());
             }
         }

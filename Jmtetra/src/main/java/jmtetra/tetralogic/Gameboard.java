@@ -42,10 +42,11 @@ public class Gameboard {
     public boolean isRoundOver() {
         Piece p = tetroInPlay.getLowestLocation();
         if (p.getY() == 15) {
-            return false;
+            return true;
         }
 
-        return getChar(p.getY() + 1, p.getX()) == '-';
+        boolean isroundover = getChar(p.getY() + 1, p.getX()) != '-';
+        return isroundover;
     }
 
     public Tetronome getCurTetro() {

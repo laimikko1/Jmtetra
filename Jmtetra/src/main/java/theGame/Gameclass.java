@@ -43,6 +43,7 @@ public class Gameclass extends Timer implements ActionListener {
         this.gameboard = new Gameboard();
 
         addActionListener(this);
+        setInitialDelay(1000);
     }
 
     public Gameboard getGameboard() {
@@ -73,7 +74,7 @@ public class Gameclass extends Timer implements ActionListener {
         while (true) {
             Collections.shuffle(pieces);
             this.gameboard.addTetronome(pieces.get(0));
-            while (this.gameboard.isRoundOver()) {
+            while (!this.gameboard.isRoundOver()) {
                 this.gameboard.updateBoard(gameboard.getCurTetro().moveDown());
 
                 this.drawedGameboard.update();
