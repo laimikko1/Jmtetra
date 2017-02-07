@@ -78,12 +78,12 @@ public class Gameclass extends Timer implements ActionListener {
 
         if (this.gameboard.isRoundOver()) {
             this.gameboard.addTetronome(pieces.get(this.random.nextInt(7)));
+        } else {
+            this.gameboard.updateBoard(gameboard.getCurTetro().moveDown());
         }
 
-        this.gameboard.updateBoard(gameboard.getCurTetro().moveDown());
-
         this.drawedGameboard.update();
-        setDelay(500);
+        setDelay(1000);
 
     }
 
