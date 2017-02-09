@@ -5,7 +5,6 @@
  */
 package jmtetra.tetralogic;
 
-import java.awt.Color;
 import jmtetra.tetralogic.tetronomes.Tetronome;
 
 /**
@@ -33,7 +32,7 @@ public class Gameboard {
     }
 
     public void addTetronome(Tetronome t) {
-        t.createTetronome();
+//        t.createTetronome();
         this.tetroInPlay = t;
 
         for (Piece p : t.getPieces()) {
@@ -42,13 +41,24 @@ public class Gameboard {
     }
 
     public boolean isRoundOver() {
-        Piece p = tetroInPlay.getLowestLocation();
-        if (p.getY() == 15) {
+        Piece a = tetroInPlay.getLowestLocation();
+        if (a.getY() == 15) {
             return true;
         }
 
-        boolean isroundover = getChar(p.getY() + 1, p.getX()) != '-';
-        return isroundover;
+        Piece[] taulukko = this.getCurTetro().getPieces();
+        for (Piece p : taulukko) {
+
+            if (!samePieceInBothArrays(new Piece(p.getY() + 1, p.getX(), '-'))) {
+                if (getChar(p.getY() + 1, p.getX()) != '-') {
+                    return true;
+                }
+            }
+
+        }
+
+        return false;
+
     }
 
     public Tetronome getCurTetro() {
@@ -73,6 +83,23 @@ public class Gameboard {
 
     public void setChar(int y, int x, char c) {
         this.gameboard[y][x] = c;
+    }
+
+    public void checkAllRowsForFullOnes() {
+        for (int i = 0; i < height; i++) {
+            if (checkIfAFullRow(i)) {
+                moveAllPiecesDown(i);
+            }
+        }
+    }
+
+    public boolean checkIfAFullRow(int height) {
+        for (int i = 0; i < width; i++) {
+            if (getChar(height, i) == '-') {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean checkIfOccupied(Piece[] newLoc) {
@@ -120,37 +147,7 @@ public class Gameboard {
         }
     }
 
-    public Color setCharacterColors(int y, int x) {
-        char c = this.getChar(y, x);
-        if (getChar(y, x) == 'I') {
-            return Color.CYAN;
-        }
-
-        if (getChar(y, x) == 'K') {
-            return Color.BLUE;
-        }
-
-        if (getChar(y, x) == 'L') {
-            return Color.ORANGE;
-        }
-
-        if (getChar(y, x) == 'O') {
-            return Color.YELLOW;
-        }
-
-        if (getChar(y, x) == 'T') {
-            return Color.MAGENTA;
-        }
-
-        if (getChar(y, x) == 'Z') {
-            return Color.GREEN;
-        }
-
-        if (getChar(y, x) == 'X') {
-            return Color.RED;
-        }
-
-        return Color.WHITE;
-
+    
+    private void moveAllPiecesDown(int startingHeight) {
     }
 }

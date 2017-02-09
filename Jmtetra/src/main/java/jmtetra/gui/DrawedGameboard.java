@@ -27,13 +27,48 @@ public class DrawedGameboard extends JPanel {
         super.paintComponent(g);
         for (int y = 0; y < gameclass.getGameboard().getHeight(); y++) {
             for (int x = 0; x < gameclass.getGameboard().getWidth(); x++) {
-                Color c = gameclass.getGameboard().setCharacterColors(y, x);
-                g.setColor(gameclass.getGameboard().setCharacterColors(y, x));
+                Color c = setCharacterColors(y, x);
+                g.setColor(setCharacterColors(y, x));
                 g.fill3DRect(x * 35, y * 35, 35, 35, true);
             }
         }
 
     }
+    
+    public Color setCharacterColors(int y, int x) {
+        char c = gameclass.getGameboard().getChar(y, x);
+        if (c == 'I') {
+            return Color.CYAN;
+        }
+
+        if (c == 'K') {
+            return Color.BLUE;
+        }
+
+        if (c  == 'L') {
+            return Color.ORANGE;
+        }
+
+        if (c  == 'O') {
+            return Color.YELLOW;
+        }
+
+        if (c  == 'T') {
+            return Color.MAGENTA;
+        }
+
+        if (c  == 'Z') {
+            return Color.GREEN;
+        }
+
+        if (c  == 'X') {
+            return Color.RED;
+        }
+
+        return Color.WHITE;
+
+    }
+
 
     public void update() {
         repaint();

@@ -77,6 +77,7 @@ public class Gameloop extends Timer implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (this.gameboard.isRoundOver()) {
+            createListOfPieces();
             this.gameboard.addTetronome(pieces.get(this.random.nextInt(7)));
         } else {
             this.gameboard.updateBoard(gameboard.getCurTetro().moveDown());
