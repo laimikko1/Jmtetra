@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package theGame;
+package jmtetra.gameloop;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
-import gui.DrawedGameboard;
+import jmtetra.gui.DrawedGameboard;
 import java.util.Random;
 import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
@@ -27,7 +27,7 @@ import jmtetra.tetralogic.tetronomes.ZshapeRight;
  *
  * @author mikko
  */
-public class Gameclass extends Timer implements ActionListener {
+public class Gameloop extends Timer implements ActionListener {
 
     private ArrayList<Tetronome> pieces;
     private boolean roundIsOver;
@@ -36,7 +36,7 @@ public class Gameclass extends Timer implements ActionListener {
     private Gameboard gameboard;
     private Random random;
 
-    public Gameclass() {
+    public Gameloop() {
         super(1000, null);
         createListOfPieces();
         this.roundIsOver = false;

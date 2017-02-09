@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package jmtetra.gui;
 
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import theGame.Gameclass;
+import jmtetra.gameloop.Gameloop;
 
 /**
  *
@@ -18,10 +18,10 @@ import theGame.Gameclass;
 public class GameInterface implements Runnable {
 
     private DrawedGameboard gameboard;
-    private Gameclass gameclass;
+    private Gameloop gameclass;
     private JFrame frame;
 
-    public GameInterface(Gameclass gameclass) {
+    public GameInterface(Gameloop gameclass) {
         this.gameclass = gameclass;
         this.gameboard = new DrawedGameboard(this.gameclass);
         this.gameclass.setDrawboard(gameboard);
@@ -48,7 +48,7 @@ public class GameInterface implements Runnable {
         return gameboard;
     }
 
-    public Gameclass getGame() {
+    public Gameloop getGame() {
         return this.gameclass;
     }
 

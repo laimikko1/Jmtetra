@@ -7,22 +7,20 @@ package jmtetra.tetralogic.tetronomes;
 
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
-import static jmtetra.tetralogic.Type.LshapeRight;
 
 public class LshapeRight extends Tetronome {
 
-    private Type type;
     public Piece[] pieces;
 
     public LshapeRight(Piece[] pieces) {
         super(pieces);
-        this.type = LshapeRight;
+        super.setType(Type.LshapeRight);
         this.pieces = pieces;
         createTetronome();
     }
 
     @Override
-    void createTetronome() {
+    public void createTetronome() {
         int yCord = 1;
         int xCord = 3;
 
@@ -92,5 +90,7 @@ public class LshapeRight extends Tetronome {
 
         return downCords;
     }
+
+
 
 }

@@ -33,7 +33,9 @@ public class Gameboard {
     }
 
     public void addTetronome(Tetronome t) {
+        t.createTetronome();
         this.tetroInPlay = t;
+
         for (Piece p : t.getPieces()) {
             gameboard[p.getY()][p.getX()] = p.getMark();
         }

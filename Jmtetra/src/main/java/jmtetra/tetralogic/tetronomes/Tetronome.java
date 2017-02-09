@@ -5,17 +5,19 @@
  */
 package jmtetra.tetralogic.tetronomes;
 
-import java.util.ArrayList;
 import jmtetra.tetralogic.Piece;
+import jmtetra.tetralogic.Type;
 
 public abstract class Tetronome {
 
     private Piece[] pieces;
     private int rotation;
+    private Type type;
 
     public Tetronome(Piece[] pieces) {
         this.pieces = pieces;
         this.rotation = 1;
+        this.type = null;
     }
 
     public Piece[] moveLeftOrRight(int direction) {
@@ -56,7 +58,7 @@ public abstract class Tetronome {
         return createRotations();
     }
 
-    abstract void createTetronome();
+    abstract public void createTetronome();
 
     public Piece getLowestLocation() {
         int lowestY = 0;
@@ -90,4 +92,14 @@ public abstract class Tetronome {
     public Piece generatePiece(int y, int x) {
         return new Piece(this.pieces[1].getY() + y, this.pieces[1].getX() + x, this.pieces[1].getMark());
     }
+
+    public Type getType() {
+        return this.type;
+
+    }
+    
+    public void setType(Type type) {
+        this.type = type;
+    }
+ 
 }

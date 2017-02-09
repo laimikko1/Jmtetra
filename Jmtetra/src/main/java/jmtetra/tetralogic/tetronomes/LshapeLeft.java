@@ -1,28 +1,24 @@
 package jmtetra.tetralogic.tetronomes;
 
-import java.util.ArrayList;
-import java.util.List;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
-import static jmtetra.tetralogic.Type.LshapeLeft;
 
 public class LshapeLeft extends Tetronome {
 
     private Piece[] pieces;
-    private Type type;
    
 
     public LshapeLeft(Piece[] pieces) {
         super(pieces);
+        super.setType(Type.LshapeLeft);
         this.pieces = pieces;
-        this.type = LshapeLeft;
         createTetronome();
         createRotations();
 
     }
 
     @Override
-    final void createTetronome() {
+    public final void createTetronome() {
         int yCord = 1;
         int xCord = 5;
 
@@ -96,6 +92,8 @@ public class LshapeLeft extends Tetronome {
 
         return upCords;
     }
+
+
 
  
 

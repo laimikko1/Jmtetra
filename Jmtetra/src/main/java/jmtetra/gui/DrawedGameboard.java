@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package jmtetra.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
-import theGame.Gameclass;
+import jmtetra.gameloop.Gameloop;
 
 /**
  *
@@ -16,9 +16,9 @@ import theGame.Gameclass;
  */
 public class DrawedGameboard extends JPanel {
 
-    private Gameclass gameclass;
+    private Gameloop gameclass;
 
-    public DrawedGameboard(Gameclass gameclass) {
+    public DrawedGameboard(Gameloop gameclass) {
         this.gameclass = gameclass;
     }
 

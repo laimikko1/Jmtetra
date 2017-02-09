@@ -7,22 +7,21 @@ package jmtetra.tetralogic.tetronomes;
 
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
-import static jmtetra.tetralogic.Type.ZshapeLeft;
 
 public class ZshapeLeft extends Tetronome {
 
-    private Type type;
+ 
     private Piece[] pieces;
 
     public ZshapeLeft(Piece[] pieces) {
         super(pieces);
-        this.type = ZshapeLeft;
+        super.setType(Type.ZshapeLeft);
         this.pieces = pieces;
         createTetronome();
     }
 
     @Override
-    final void createTetronome() {
+    public final void createTetronome() {
         int yCord = 0;
         int xCord = 3;
         for (int i = 0; i < 2; i++) {
@@ -68,6 +67,8 @@ public class ZshapeLeft extends Tetronome {
 
         return leftCords;
     }
+
+
 
 
 

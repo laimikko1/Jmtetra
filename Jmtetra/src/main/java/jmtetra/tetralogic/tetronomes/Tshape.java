@@ -7,22 +7,20 @@ package jmtetra.tetralogic.tetronomes;
 
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
-import static jmtetra.tetralogic.Type.Tshape;
 
 public class Tshape extends Tetronome {
 
     private Piece[] pieces;
-    private Type type;
 
     public Tshape(Piece[] pieces) {
         super(pieces);
         this.pieces = pieces;
-        this.type = Tshape;
+        super.setType(Type.Tshape);
         createTetronome();
     }
 
     @Override
-    final void createTetronome() {
+    public final void createTetronome() {
         int yCord = 1;
         int xCord = 3;
         for (int i = 0; i < 3; i++) {
@@ -89,5 +87,6 @@ public class Tshape extends Tetronome {
         left[3] = this.generatePiece(0, -1);
         return left;
     }
+
 
 }

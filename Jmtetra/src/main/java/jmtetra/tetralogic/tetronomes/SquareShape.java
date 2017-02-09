@@ -2,17 +2,16 @@ package jmtetra.tetralogic.tetronomes;
 
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
-import static jmtetra.tetralogic.Type.Squareshape;
 
 public class SquareShape extends Tetronome {
 
-    private Type type;
+   
     public Piece[] pieces;
 
     public SquareShape(Piece[] pieces) {
         super(pieces);
         this.pieces = pieces;
-        this.type = Squareshape;
+        super.setType(Type.Squareshape);
         createTetronome();
     }
 
@@ -37,9 +36,5 @@ public class SquareShape extends Tetronome {
     Piece[] createRotations() {
         return this.pieces;
     }
-
-
-    
-
 
 }
