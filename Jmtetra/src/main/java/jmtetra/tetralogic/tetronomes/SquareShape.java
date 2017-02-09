@@ -20,7 +20,7 @@ public class SquareShape extends Tetronome {
         int yCord = 0;
         int xCord = 4;
         for (int i = 0; i < 4; i++) {
-            Piece p = new Piece(yCord, xCord, '0');
+            Piece p = new Piece(yCord, xCord, 'O');
             this.pieces[i] = p;
 
             xCord++;

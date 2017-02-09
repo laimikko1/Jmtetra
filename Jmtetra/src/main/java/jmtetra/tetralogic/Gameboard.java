@@ -121,6 +121,7 @@ public class Gameboard {
     }
 
     public Color setCharacterColors(int y, int x) {
+        char c = this.getChar(y, x);
         if (getChar(y, x) == 'I') {
             return Color.CYAN;
         }
