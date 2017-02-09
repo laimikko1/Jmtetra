@@ -34,6 +34,16 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.8</version>
+                <configuration>
+                    <targetClasses>
+                        <param>jmtetra.tetralogic.tetronomes*</param>
+                        <param>jmtetra.tetralogic*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>jmtetra.tetralogic.tetronomes*</param>
+                        <param>jmtetra.tetralogic*</param>
+                    </targetTests>
+                </configuration>
               
         
             </plugin>

@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 13,
+      <title>File: 16,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -89,6 +89,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#jmtetra.tetralogic.tetronomes.Tshape.java">jmtetra/tetralogic/tetronomes/Tshape.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#jmtetra.gui.DrawedGameboard.java">jmtetra/gui/DrawedGameboard.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +214,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#gui.GameInterface.java">gui/GameInterface.java</a>
+                  <a href="${project.url}/checkstyle.html#jmtetra.gui.GameInterface.java">jmtetra/gui/GameInterface.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#jmtetra.gui.InputListener.java">jmtetra/gui/InputListener.java</a>
                 </td>
                 <td>
                   0
@@ -215,6 +243,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#jmtetra.tetralogic.Piece.java">jmtetra/tetralogic/Piece.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#jmtetra.gameloop.Gameloop.java">jmtetra/gameloop/Gameloop.java</a>
                 </td>
                 <td>
                   0

@@ -32,7 +32,6 @@ public class Gameboard {
     }
 
     public void addTetronome(Tetronome t) {
-//        t.createTetronome();
         this.tetroInPlay = t;
 
         for (Piece p : t.getPieces()) {
@@ -147,7 +146,6 @@ public class Gameboard {
         }
     }
 
-    
     private void moveAllPiecesDown(int startingHeight) {
     }
 }
