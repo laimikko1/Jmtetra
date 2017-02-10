@@ -10,9 +10,14 @@ import jmtetra.tetralogic.Type;
 
 public class ZshapeLeft extends Tetronome {
 
- 
     private Piece[] pieces;
 
+    /**
+     *
+     * ZshapeLeft on yksi Tetrispelin palamuodoista.
+     *
+     * @author mikko
+     */
     public ZshapeLeft(Piece[] pieces) {
         super(pieces);
         super.setType(Type.ZshapeLeft);
@@ -20,6 +25,10 @@ public class ZshapeLeft extends Tetronome {
         createTetronome();
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     */
     @Override
     public final void createTetronome() {
         int yCord = 0;
@@ -37,6 +46,10 @@ public class ZshapeLeft extends Tetronome {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     */
     @Override
     Piece[] createRotations() {
         if (this.getRotation() % 2 != 0) {
@@ -67,9 +80,5 @@ public class ZshapeLeft extends Tetronome {
 
         return leftCords;
     }
-
-
-
-
 
 }

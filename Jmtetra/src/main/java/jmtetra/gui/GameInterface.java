@@ -12,7 +12,7 @@ import javax.swing.WindowConstants;
 import jmtetra.gameloop.Gameloop;
 
 /**
- * Luokka on käyttöliittymä, joka alustetaan välittömästi ohjelan aloitettua
+ * Luokka on käyttöliittymä, joka alustetaan välittömästi ohjelman aloitettua
  * toimintansa.
  *
  * @author mikko
@@ -28,7 +28,7 @@ public class GameInterface implements Runnable {
      * myös DrawedGameboard-luokalle.
      * 
      * 
-     * @param gameclass 
+     * @param gameclass Gameloop luokan ilmentymä ,johon luodaan tarvittava looppi pelille
      */
 
     public GameInterface(Gameloop gameclass) {
@@ -60,7 +60,7 @@ public class GameInterface implements Runnable {
      * (Gameboard) ja alkuperäinen pelilauta, joka on tyypiltään char[][]. Tämä saadaan Gameloop-luokan
      * metodin kautta.
      * 
-     * @param contentPane 
+     * @param contentPane sisältö, johon lisätään halutut komponentit.
      */
 
     private void createComponents(Container contentPane) {

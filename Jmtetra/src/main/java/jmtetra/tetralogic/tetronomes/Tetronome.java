@@ -8,18 +8,39 @@ package jmtetra.tetralogic.tetronomes;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 
+/**
+ * Tetronome-luokka on kaikkien palojen yliluokka. Jokainen Tetrispelin pala
+ * perii sen.
+ *
+ * @author mikko
+ */
 public abstract class Tetronome {
 
     private Piece[] pieces;
     private int rotation;
     private Type type;
 
+    /**
+     * Luo uuden Tetronomen. Määrittää ensin rotaatioksi 1, joka, riippuen
+     * pelipalan muodosta, on aloitussuunta. Saa parametrinaan Piece[] tyyppisen
+     * taulukon.
+     *
+     * @param pieces
+     */
     public Tetronome(Piece[] pieces) {
         this.pieces = pieces;
         this.rotation = 1;
         this.type = null;
     }
 
+    /**
+     * Liikuttaa palaa joko oikealle tai vasemmalle, riippuen parametrista.
+     *
+     * @param syote käyttäjän antama suunta
+     *
+     * @see Gameboard.updateBoard(Piece[] pieces)
+     * @return (Piece[] uusiSijainti, koordinaatit taulukkona
+     */
     public Piece[] moveLeftOrRight(int direction) {
 
         Piece[] newLoc = new Piece[4];
@@ -33,6 +54,11 @@ public abstract class Tetronome {
 
     }
 
+    /**
+     * Liikuttaa palaa alaspäin pelilaudalla.
+     *
+     * @return Piece[] uusiSijanti, koordinaatit taulukkona
+     */
     public Piece[] moveDown() {
 
         Piece[] newLoc = new Piece[4];
@@ -46,6 +72,15 @@ public abstract class Tetronome {
         return newLoc;
     }
 
+    /**
+     * Kääntää palaa, joko myötä tai vastasuuntaan.
+     *
+     * @param rotationDirection, käyttäjän antama suunta, joko -1 (vastapäivään)
+     * tai 1(myötäpäivään)
+     *
+     * @return uudet palan koordinaatit taulukossa, Piece[]-tyyppisenä
+     *
+     */
     public Piece[] moveClockOrCounterClockWise(int rotationDirection) {
         this.rotation += rotationDirection;
 
@@ -58,6 +93,11 @@ public abstract class Tetronome {
         return createRotations();
     }
 
+    /**
+     * Luo uuden palan. Tämä metodi on uniikki kaikille eri paloille. Vastaa
+     * myös palan koordinaattien päivittämisestä, kun pala on pelattavana.
+     */
+    
     abstract public void createTetronome();
 
     public Piece getLowestLocation() {
@@ -87,6 +127,14 @@ public abstract class Tetronome {
         return this.rotation;
     }
 
+    /**
+     * Palauttaa uudet koordinaatit, joihin pala siirtyy kun sitä käännetään
+     * myötä- tai vastapäivään. Hyödyntää kaikille palaluokille uniikkeja
+     * metodeja, jotka luovat tarvittavat koordinaatit palojen kääntymisiä
+     * varten.
+     *
+     * @return Piece[] uudetKoordinaatit
+     */
     abstract Piece[] createRotations();
 
     public Piece generatePiece(int y, int x) {
@@ -97,9 +145,9 @@ public abstract class Tetronome {
         return this.type;
 
     }
-    
+
     public void setType(Type type) {
         this.type = type;
     }
- 
+
 }

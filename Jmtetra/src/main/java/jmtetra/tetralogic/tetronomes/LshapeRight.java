@@ -8,6 +8,12 @@ package jmtetra.tetralogic.tetronomes;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 
+/**
+ *
+ * LshapeRight on yksi Tetrispelin palamuodoista.
+ *
+ * @author mikko
+ */
 public class LshapeRight extends Tetronome {
 
     public Piece[] pieces;
@@ -19,6 +25,11 @@ public class LshapeRight extends Tetronome {
         createTetronome();
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     *
+     */
     @Override
     public void createTetronome() {
         int yCord = 1;
@@ -32,6 +43,10 @@ public class LshapeRight extends Tetronome {
         pieces[3] = new Piece(0, 3, 'L');
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     */
     @Override
     Piece[] createRotations() {
         if (this.getRotation() == 1) {
@@ -90,7 +105,5 @@ public class LshapeRight extends Tetronome {
 
         return downCords;
     }
-
-
 
 }

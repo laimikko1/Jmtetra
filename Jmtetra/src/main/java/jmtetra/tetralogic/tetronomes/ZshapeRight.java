@@ -8,16 +8,16 @@ package jmtetra.tetralogic.tetronomes;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 
+/**
+ *
+ * ZshapeRight on yksi Tetrispelin palamuodoista.
+ *
+ * @author mikko
+ */
 public class ZshapeRight extends Tetronome {
 
     private Piece[] pieces;
 
-    /**
-     *
-     * ZshapeRight on yksi Tetrispelin palamuodoista.
-     *
-     * @author mikko
-     */
     public ZshapeRight(Piece[] pieces) {
         super(pieces);
         super.setType(Type.ZshapeRIght);
@@ -26,7 +26,7 @@ public class ZshapeRight extends Tetronome {
     }
 
     /**
-     * {@inheritDoc Ishape}
+     * {@inheritDoc}
      *
      */
     @Override
@@ -48,7 +48,7 @@ public class ZshapeRight extends Tetronome {
     }
 
     /**
-     * {@inheritDoc Ishape}
+     * {@inheritDoc}
      *
      */
     @Override

@@ -2,11 +2,20 @@ package jmtetra.tetralogic.tetronomes;
 
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
-
+/**
+ * Ishape on yksi Tetrispelin palamuodoista.
+ * 
+ * @author mikko
+ */
 public class Ishape extends Tetronome {
     
     private Piece[] pieces;
-    
+   /**
+    * Konstruktorissa luodaan uusi pala, sille annetaan parametrina Piece[] taulukko, johon
+    * sen palat laitetaan. Myös yliluokan, eli Tetronomen konstruktoria hyödynnetään asetettaessa tyyppi ja luotaessa yllämainittu
+    * taulukko.
+    * @param pieces jokainen pala saa Piece[] taulukon, jossa tarvittava tila koordinaateille
+    */ 
     public Ishape(Piece[] pieces) {
         super(pieces);
         super.setType(Type.Ishape);
@@ -15,6 +24,9 @@ public class Ishape extends Tetronome {
         createRotations();
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void createTetronome() {
         int yCord = 0;
@@ -25,6 +37,10 @@ public class Ishape extends Tetronome {
             xCord++;
         }
     }
+    
+    /**
+     * {@inheritDoc}
+     */
     
     @Override
     final Piece[] createRotations() {

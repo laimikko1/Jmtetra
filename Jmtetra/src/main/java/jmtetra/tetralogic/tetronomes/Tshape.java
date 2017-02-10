@@ -26,7 +26,7 @@ public class Tshape extends Tetronome {
     }
 
     /**
-     * {@inheritDoc Ishape}
+     * {@inheritDoc}
      *
      */
     @Override
@@ -46,7 +46,7 @@ public class Tshape extends Tetronome {
     }
 
     /**
-     * {@inheritDoc Ishape}
+     * {@inheritDoc}
      *
      */
     @Override

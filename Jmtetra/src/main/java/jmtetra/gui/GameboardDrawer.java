@@ -1,4 +1,3 @@
-
 package jmtetra.gui;
 
 import java.awt.Color;
@@ -9,31 +8,31 @@ import jmtetra.gameloop.Gameloop;
 /**
  * Tämä luokka vastaa siitä, että pelilauta piirretään ja päivitetään aina
  * tarvittaessa uudelleen. Se perii JPanel-luokan.
+ *
  * @author mikko
- * 
+ *
  */
 public class GameboardDrawer extends JPanel {
 
     private Gameloop gameclass;
 
-    
     /**
      * Saa parametrina Gameloop-luokan, jonka pelilaudan pohjalta piirretään
      * pelikuva graafisena.
-     * 
-     * @param gameclass 
+     *
+     * @param gameclass peliluokka, jonka kanssa piirtoluokka toimii yhdessä.
      */
     public GameboardDrawer(Gameloop gameclass) {
         this.gameclass = gameclass;
     }
 
-    
     /**
-     * Tämä luokka vastaa piirtämisestä. Se käyttää siinä hyödykseen GameLoop-luokan sisältämää
-     * pelilautaa, jonka pohjalta uusi pelikuva päivitetään. Parametrina toimii myös Graphics-olio,
-     * jolle tarvittavat arvot annetaan.
-     * 
-     * @param g 
+     * Tämä luokka vastaa piirtämisestä. Se käyttää siinä hyödykseen
+     * GameLoop-luokan sisältämää pelilautaa, jonka pohjalta uusi pelikuva
+     * päivitetään. Parametrina toimii myös Graphics-olio, jolle tarvittavat
+     * arvot annetaan.
+     *
+     * @param g Graphic-luokan ilmentymä, johon piirtäminen tehdään.
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -47,20 +46,20 @@ public class GameboardDrawer extends JPanel {
         }
 
     }
-    
+
     /**
-     * Tämä metodi vastaa siitä, että jokaisen GameLoop-luokan välittämän
-     * char [][] -tyyppisen pelilaudan kirjaimet saavat  oikean värin palautusarvona.
-     * Parametreina tulee x- ja y-koordinaatti, jonka pohjalta haetaan tarkasteltava
-     * char-muuttuja pelilaudan metodin kautta.
-     * 
-     * @param y
-     * @param x
-     * 
-     * @see Gameboard.getChar(int y, int x)
-     * @see Gameloop.getGameboard()
-     * 
-     * @return Color haluttu väri
+     * Tämä metodi vastaa siitä, että jokaisen GameLoop-luokan välittämän char
+     * [][] -tyyppisen pelilaudan kirjaimet saavat oikean värin palautusarvona.
+     * Parametreina tulee x- ja y-koordinaatti, jonka pohjalta haetaan
+     * tarkasteltava char-muuttuja pelilaudan metodin kautta.
+     *
+     * @param y koordinaatti, Int arvo, jonka käyttäjä antaa
+     * @param x koordinaatti, Int arvo, jonka käyttäjä antaa
+     *
+     * @see jmtetra.tetralogic.Gameboard#getChar(int, int)
+     * @see jmtetra.gameloop.Gameloop#getGameboard()
+     *
+     * @return Color haluttu väri merkille
      */
     public Color setCharacterColors(int y, int x) {
         char c = gameclass.getGameboard().getChar(y, x);
@@ -72,23 +71,23 @@ public class GameboardDrawer extends JPanel {
             return Color.BLUE;
         }
 
-        if (c  == 'L') {
+        if (c == 'L') {
             return Color.ORANGE;
         }
 
-        if (c  == 'O') {
+        if (c == 'O') {
             return Color.YELLOW;
         }
 
-        if (c  == 'T') {
+        if (c == 'T') {
             return Color.MAGENTA;
         }
 
-        if (c  == 'Z') {
+        if (c == 'Z') {
             return Color.GREEN;
         }
 
-        if (c  == 'X') {
+        if (c == 'X') {
             return Color.RED;
         }
 
@@ -98,9 +97,8 @@ public class GameboardDrawer extends JPanel {
 
     /**
      * Tämä metodi asettaa uudelleenpiirtämisen jonoon.
-     * 
+     *
      */
-
     public void update() {
         repaint();
     }

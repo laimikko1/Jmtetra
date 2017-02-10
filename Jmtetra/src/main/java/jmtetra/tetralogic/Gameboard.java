@@ -8,6 +8,8 @@ package jmtetra.tetralogic;
 import jmtetra.tetralogic.tetronomes.Tetronome;
 
 /**
+ * Tämä luokka vastaa pelilaudan luomisesta, ylläpidosta ja päivittämisestä
+ * tarvittaessa.
  *
  * @author laimikko
  */
@@ -18,6 +20,10 @@ public class Gameboard {
     private char[][] gameboard;
     private Tetronome tetroInPlay;
 
+    /**
+     * Konstruktorissa luodaan uusi Gameboard, suomeksi pelilauta.
+     * Pelilauta on char[][], eli kaksiulotteinen taulukko, jossa on char muuttujia.
+     */
     public Gameboard() {
         this.width = 10;
         this.height = 16;
@@ -31,6 +37,12 @@ public class Gameboard {
         }
     }
 
+    /**
+     * Metodi saa parametrinaan Tetronomin, joka lisätään pelilautaan.
+     * 
+     * @see Tetronome.getPieces()
+     * @param t saa parametrina pelilautaan lisättävän Tetronome-luokan ilmentymän
+     */
     public void addTetronome(Tetronome t) {
         this.tetroInPlay = t;
 

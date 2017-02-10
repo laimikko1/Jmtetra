@@ -3,11 +3,20 @@ package jmtetra.tetralogic.tetronomes;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 
+/**
+ *
+ * LshapeLeft on yksi Tetrispelin palamuodoista.
+ *
+ * @author mikko
+ */
 public class LshapeLeft extends Tetronome {
 
     private Piece[] pieces;
-   
 
+    /**
+     * {@inheritDoc}
+     *
+     */
     public LshapeLeft(Piece[] pieces) {
         super(pieces);
         super.setType(Type.LshapeLeft);
@@ -17,6 +26,9 @@ public class LshapeLeft extends Tetronome {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void createTetronome() {
         int yCord = 1;
@@ -29,9 +41,13 @@ public class LshapeLeft extends Tetronome {
         pieces[3] = new Piece(0, 5, 'K');
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @return
+     */
     @Override
     final Piece[] createRotations() {
-        
 
         if (this.getRotation() == 1) {
             return (Piece[]) updateLefCordinates();
@@ -59,8 +75,7 @@ public class LshapeLeft extends Tetronome {
     }
 
     private Object updateLefCordinates() {
-        
-        
+
         Piece[] leftCords = new Piece[4];
         leftCords[0] = this.generatePiece(0, 1);
         leftCords[1] = getPieces()[1];
@@ -69,8 +84,6 @@ public class LshapeLeft extends Tetronome {
 
         return leftCords;
     }
-
-
 
     private Object updateRightCordinates() {
 
@@ -92,9 +105,5 @@ public class LshapeLeft extends Tetronome {
 
         return upCords;
     }
-
-
-
- 
 
 }
