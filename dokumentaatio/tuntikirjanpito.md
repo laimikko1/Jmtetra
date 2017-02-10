@@ -33,3 +33,4 @@ Päivä | Tunnit | Kuvaus
 --------------- | ----- | ------
 7.2.2017 | 3-4h | Alottelin käyttöliittymän tekoa
 8.2.2017 | 3h | Käyttöliittymän teko jatkuu, bugien metsästelyä ja säätöä. Hahmottelin lopun pelilogiikan, eli rivin tuhoamisen ja pelin lopetuksen tekoa.
+10.2.2017 | 1h | Ainiin, JavaDoc..
