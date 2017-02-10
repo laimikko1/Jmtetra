@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package jmtetra.gui;
 
 import java.awt.Color;
@@ -11,17 +7,34 @@ import javax.swing.JPanel;
 import jmtetra.gameloop.Gameloop;
 
 /**
- *
+ * Tämä luokka vastaa siitä, että pelilauta piirretään ja päivitetään aina
+ * tarvittaessa uudelleen. Se perii JPanel-luokan.
  * @author mikko
+ * 
  */
-public class DrawedGameboard extends JPanel {
+public class GameboardDrawer extends JPanel {
 
     private Gameloop gameclass;
 
-    public DrawedGameboard(Gameloop gameclass) {
+    
+    /**
+     * Saa parametrina Gameloop-luokan, jonka pelilaudan pohjalta piirretään
+     * pelikuva graafisena.
+     * 
+     * @param gameclass 
+     */
+    public GameboardDrawer(Gameloop gameclass) {
         this.gameclass = gameclass;
     }
 
+    
+    /**
+     * Tämä luokka vastaa piirtämisestä. Se käyttää siinä hyödykseen GameLoop-luokan sisältämää
+     * pelilautaa, jonka pohjalta uusi pelikuva päivitetään. Parametrina toimii myös Graphics-olio,
+     * jolle tarvittavat arvot annetaan.
+     * 
+     * @param g 
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -35,6 +48,20 @@ public class DrawedGameboard extends JPanel {
 
     }
     
+    /**
+     * Tämä metodi vastaa siitä, että jokaisen GameLoop-luokan välittämän
+     * char [][] -tyyppisen pelilaudan kirjaimet saavat  oikean värin palautusarvona.
+     * Parametreina tulee x- ja y-koordinaatti, jonka pohjalta haetaan tarkasteltava
+     * char-muuttuja pelilaudan metodin kautta.
+     * 
+     * @param y
+     * @param x
+     * 
+     * @see Gameboard.getChar(int y, int x)
+     * @see Gameloop.getGameboard()
+     * 
+     * @return Color haluttu väri
+     */
     public Color setCharacterColors(int y, int x) {
         char c = gameclass.getGameboard().getChar(y, x);
         if (c == 'I') {
@@ -69,6 +96,10 @@ public class DrawedGameboard extends JPanel {
 
     }
 
+    /**
+     * Tämä metodi asettaa uudelleenpiirtämisen jonoon.
+     * 
+     */
 
     public void update() {
         repaint();

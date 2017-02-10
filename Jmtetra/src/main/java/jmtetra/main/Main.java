@@ -1,25 +1,22 @@
 package jmtetra.main;
 
+import javax.swing.SwingUtilities;
+import jmtetra.gameloop.Gameloop;
+import jmtetra.gui.GameInterface;
 import jmtetra.tetralogic.Gameboard;
-import jmtetra.tetralogic.Piece;
-import jmtetra.tetralogic.tetronomes.Ishape;
-
+/**
+ * Main-luokka luo Gameloop-luokan, kutsuu käyttöliittymää ja käynnistää pelin.
+ * @author mikko
+ */
 public class Main {
     
     public static void main(String[] args) {
 
-//        Gameloop gc = new Gameloop();
-//        GameInterface g = new GameInterface(gc);
-//        
-//        SwingUtilities.invokeLater(g);
-//        gc.start();
-        Gameboard g = new Gameboard();
-        g.addTetronome(new Ishape(new Piece[4]));
-        g.updateBoard(g.getCurTetro().moveDown());
-        g.updateBoard(g.getCurTetro().moveDown());
-        g.updateBoard(g.getCurTetro().moveDown());
-        g.updateBoard(g.getCurTetro().moveClockOrCounterClockWise(1));
-        g.isRoundOver();
+        Gameloop gc = new Gameloop();
+        GameInterface g = new GameInterface(gc);
+        
+        SwingUtilities.invokeLater(g);
+        gc.start();
         
 //        
         

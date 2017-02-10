@@ -8,6 +8,12 @@ package jmtetra.tetralogic.tetronomes;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
 
+/**
+ *
+ * Tshape on yksi Tetrispelin palamuodoista.
+ *
+ * @author mikko
+ */
 public class Tshape extends Tetronome {
 
     private Piece[] pieces;
@@ -19,6 +25,10 @@ public class Tshape extends Tetronome {
         createTetronome();
     }
 
+    /**
+     * {@inheritDoc Ishape}
+     *
+     */
     @Override
     public final void createTetronome() {
         int yCord = 1;
@@ -35,6 +45,10 @@ public class Tshape extends Tetronome {
 
     }
 
+    /**
+     * {@inheritDoc Ishape}
+     *
+     */
     @Override
     Piece[] createRotations() {
         if (super.getRotation() == 1) {
@@ -87,6 +101,5 @@ public class Tshape extends Tetronome {
         left[3] = this.generatePiece(0, -1);
         return left;
     }
-
 
 }

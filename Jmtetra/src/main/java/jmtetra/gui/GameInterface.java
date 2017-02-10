@@ -12,21 +12,37 @@ import javax.swing.WindowConstants;
 import jmtetra.gameloop.Gameloop;
 
 /**
+ * Luokka on käyttöliittymä, joka alustetaan välittömästi ohjelan aloitettua
+ * toimintansa.
  *
  * @author mikko
  */
 public class GameInterface implements Runnable {
 
-    private DrawedGameboard gameboard;
+    private GameboardDrawer gameboardDrawer;
     private Gameloop gameclass;
     private JFrame frame;
+    
+    /**
+     * Konstruktorissa annetaan parametrina Gameloop-luokan ilmentymä, joka välitetään
+     * myös DrawedGameboard-luokalle.
+     * 
+     * 
+     * @param gameclass 
+     */
 
     public GameInterface(Gameloop gameclass) {
         this.gameclass = gameclass;
-        this.gameboard = new DrawedGameboard(this.gameclass);
-        this.gameclass.setDrawboard(gameboard);
+        this.gameboardDrawer = new GameboardDrawer(this.gameclass);
+        this.gameclass.setDrawboard(gameboardDrawer);
     }
 
+    /**
+     * Metodi luo halutun kokoisen Framen ja lisää siihen pelin toiminnan kannalta
+     * vaaditut komponentit.
+     * 
+     * 
+     */
     @Override
     public void run() {
         frame = new JFrame("Tetris");
@@ -38,14 +54,22 @@ public class GameInterface implements Runnable {
         this.frame.pack();
         this.frame.setVisible(true);
     }
+    
+    /**
+     * Metodi saa parametrina ContentPane-luokan ilmentymän, johon lisätään sekä piirtoluokan ilmentymä
+     * (Gameboard) ja alkuperäinen pelilauta, joka on tyypiltään char[][]. Tämä saadaan Gameloop-luokan
+     * metodin kautta.
+     * 
+     * @param contentPane 
+     */
 
     private void createComponents(Container contentPane) {
-        contentPane.add(this.gameboard);
+        contentPane.add(this.gameboardDrawer);
         frame.addKeyListener(new InputListener(this.gameclass.getGameboard()));
     }
 
-    public DrawedGameboard getDrawedGameboard() {
-        return gameboard;
+    public GameboardDrawer getDrawedGameboard() {
+        return gameboardDrawer;
     }
 
     public Gameloop getGame() {
