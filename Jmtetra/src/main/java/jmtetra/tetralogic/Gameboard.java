@@ -21,8 +21,8 @@ public class Gameboard {
     private Tetronome tetroInPlay;
 
     /**
-     * Konstruktorissa luodaan uusi Gameboard, suomeksi pelilauta.
-     * Pelilauta on char[][], eli kaksiulotteinen taulukko, jossa on char muuttujia.
+     * Konstruktorissa luodaan uusi Gameboard, suomeksi pelilauta. Pelilauta on
+     * char[][], eli kaksiulotteinen taulukko, jossa on char muuttujia.
      */
     public Gameboard() {
         this.width = 10;
@@ -39,9 +39,10 @@ public class Gameboard {
 
     /**
      * Metodi saa parametrinaan Tetronomin, joka lisätään pelilautaan.
-     * 
+     *
      * @see Tetronome.getPieces()
-     * @param t saa parametrina pelilautaan lisättävän Tetronome-luokan ilmentymän
+     * @param t saa parametrina pelilautaan lisättävän Tetronome-luokan
+     * ilmentymän
      */
     public void addTetronome(Tetronome t) {
         this.tetroInPlay = t;
@@ -158,6 +159,15 @@ public class Gameboard {
         }
     }
 
-    private void moveAllPiecesDown(int startingHeight) {
+    public void moveAllPiecesDown(int startingHeight) {
+
+
+        for (int y = startingHeight; y > 0; y--) {
+            for (int x = 0; x < width; x++) {
+                setChar(y, x, getChar(y - 1, x));
+            }
+        }
     }
+
+
 }
