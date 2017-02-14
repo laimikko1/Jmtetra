@@ -29,6 +29,7 @@ public class InputListener implements KeyListener {
      */
     public InputListener(Gameboard gameboard, GameboardDrawer gameboardDrawer) {
         this.gameboard = gameboard;
+        this.gameboardDrawer = gameboardDrawer;
     }
 
     
@@ -72,6 +73,7 @@ public class InputListener implements KeyListener {
                 this.gameboard.updateBoard(this.gameboard.getCurTetro().moveDown());
             }
         }
+        this.gameboardDrawer.update();
     }
 
     @Override

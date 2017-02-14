@@ -52,6 +52,13 @@ public class Gameboard {
         }
     }
 
+    /**
+     * Metodi välittää tiedon (boolean muuttujan) siitä, onko pala osunut
+     * johonkin toiseen palaan. Tämän perusteella pelilooppi osaa tehdä oikean
+     * valinnan seuraavasta toiminnosta.
+     *
+     * @return onko kierros päättynyt
+     */
     public boolean isRoundOver() {
         Piece a = tetroInPlay.getLowestLocation();
         if (a.getY() == 15) {
@@ -71,6 +78,19 @@ public class Gameboard {
 
         return false;
 
+    }
+
+    public boolean isGameOver() {
+        if (isRoundOver()) {
+            for (Piece p : tetroInPlay.getPieces()) {
+                if (p.getY() == 1) {
+                    return true;
+                }
+            }
+
+        }
+
+        return false;
     }
 
     public Tetronome getCurTetro() {
@@ -161,13 +181,11 @@ public class Gameboard {
 
     public void moveAllPiecesDown(int startingHeight) {
 
-
         for (int y = startingHeight; y > 0; y--) {
             for (int x = 0; x < width; x++) {
                 setChar(y, x, getChar(y - 1, x));
             }
         }
     }
-
 
 }
