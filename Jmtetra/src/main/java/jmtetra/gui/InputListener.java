@@ -18,13 +18,16 @@ import jmtetra.tetralogic.Gameboard;
 public class InputListener implements KeyListener {
 
     private Gameboard gameboard;
-
+    private GameboardDrawer gameboardDrawer;
     /**
      * Keylistener-luokka saa parametrinaan char[][] tyyppisen pelilaudan, johon tehdään muutoksia,
      * kun käyttäjän antama komento rekisteröidään.
      * @param gameboard pelilauta jolle keyListener välittää päivitykset.
+     * @param gameboardDrawer pelilaudan piirtäjä välitetään myös. Tämä on tarpeellista, jotta käyttäjän antamat toiminnot, kuten
+     * käännökset ja liikkuminen alaspäin päivittyvät "realiajassa", eivätkä vasta kun seuraavan kerran liikutaan automaattisesti alas
+     * gameloop-luokan antaman komennon toimesta
      */
-    public InputListener(Gameboard gameboard) {
+    public InputListener(Gameboard gameboard, GameboardDrawer gameboardDrawer) {
         this.gameboard = gameboard;
     }
 
