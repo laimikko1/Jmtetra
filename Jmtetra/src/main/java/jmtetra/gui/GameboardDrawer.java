@@ -1,6 +1,7 @@
 package jmtetra.gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import jmtetra.gameloop.Gameloop;
@@ -13,7 +14,7 @@ import jmtetra.gameloop.Gameloop;
  *
  */
 public class GameboardDrawer extends JPanel {
-
+    
     private Gameloop gameclass;
 
     /**
@@ -37,14 +38,26 @@ public class GameboardDrawer extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Font myFont = new Font("Serif", Font.PLAIN, 20);
+        g.setFont(myFont);
+        g.drawString("Points: " + this.gameclass.getPoints(), 4, 615);
+        g.drawString("Level: " + this.gameclass.getLevel(), 4, 650);
+        g.drawString("Rows: " + this.gameclass.getRowsDestroyed(), 4, 580);
         for (int y = 0; y < gameclass.getGameboard().getHeight(); y++) {
             for (int x = 0; x < gameclass.getGameboard().getWidth(); x++) {
                 Color c = setCharacterColors(y, x);
                 g.setColor(setCharacterColors(y, x));
-                g.fill3DRect(x * 35, y * 35, 35, 35, true);
+                int drawx = x + 8;
+                int drawy = y + 3;
+                if (c != Color.GRAY) {
+                    g.fill3DRect(drawx * 33, drawy * 33, 33, 33, true);
+                } else {
+                    g.fillRect(drawx * 33, drawy * 33, 33, 33);
+                }
+                
             }
         }
-
+        
     }
 
     /**
@@ -66,33 +79,33 @@ public class GameboardDrawer extends JPanel {
         if (c == 'I') {
             return Color.CYAN;
         }
-
+        
         if (c == 'K') {
             return Color.BLUE;
         }
-
+        
         if (c == 'L') {
             return Color.ORANGE;
         }
-
+        
         if (c == 'O') {
             return Color.YELLOW;
         }
-
+        
         if (c == 'T') {
             return Color.MAGENTA;
         }
-
+        
         if (c == 'Z') {
             return Color.GREEN;
         }
-
+        
         if (c == 'X') {
             return Color.RED;
         }
-
-        return Color.WHITE;
-
+        
+        return Color.GRAY;
+        
     }
 
     /**

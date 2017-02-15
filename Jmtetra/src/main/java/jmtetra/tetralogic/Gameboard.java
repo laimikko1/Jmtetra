@@ -117,13 +117,17 @@ public class Gameboard {
         this.gameboard[y][x] = c;
     }
 
-    public void checkAllRowsForFullOnes() {
+    public int checkAllRowsForFullOnes() {
+        int rowsDestroyed = 0;
         for (int i = 0; i < height; i++) {
             if (checkIfAFullRow(i)) {
                 moveAllPiecesDown(i);
+                rowsDestroyed++;
             }
         }
+        return rowsDestroyed;
     }
+    
 
     public boolean checkIfAFullRow(int height) {
         for (int i = 0; i < width; i++) {
