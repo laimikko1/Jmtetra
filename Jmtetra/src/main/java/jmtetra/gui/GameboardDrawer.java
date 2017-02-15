@@ -38,7 +38,7 @@ public class GameboardDrawer extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Font myFont = new Font("Serif", Font.PLAIN, 20);
+        Font myFont = new Font("SansSerif", Font.BOLD, 20);
         g.setFont(myFont);
         g.drawString("Points: " + this.gameclass.getPoints(), 4, 615);
         g.drawString("Level: " + this.gameclass.getLevel(), 4, 650);

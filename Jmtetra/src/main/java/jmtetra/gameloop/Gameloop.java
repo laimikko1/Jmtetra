@@ -161,11 +161,11 @@ public class Gameloop extends Timer implements ActionListener {
     }
 
     private void calculatePoints(int rows, int multiplier) {
-        points += points + rows * (multiplier * (level + 1));
+        points += (rows * (multiplier * (level + 1)));
     }
 
     private void updatelevel() {
-        if (rowsDestroyed > 10 && rowsDestroyed % 10 == 0) {
+        if (rowsDestroyed >= 10 && rowsDestroyed % 10 == 0) {
             level++;
         }
     }
