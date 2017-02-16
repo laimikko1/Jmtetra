@@ -16,4 +16,8 @@ Tarkoituksena on luoda peliin pelilogiikka ja graafinen  käyttöliittymä.
 
 ![Alt text](https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/luokkakaavio.png)
 
+![Alt text](https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/Pelaaja%20liikuttaa%20palaa%20sivulle.png)
+
+![Alt text](https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/T%C3%A4ysi%20rivi%20tuhotaan.png)
+
 
