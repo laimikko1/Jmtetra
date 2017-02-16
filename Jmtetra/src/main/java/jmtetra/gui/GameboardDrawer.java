@@ -3,6 +3,10 @@ package jmtetra.gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import jmtetra.gameloop.Gameloop;
 
@@ -14,8 +18,10 @@ import jmtetra.gameloop.Gameloop;
  *
  */
 public class GameboardDrawer extends JPanel {
-    
+
     private Gameloop gameclass;
+    private BufferedImage image;
+    private int drawTileNumber;
 
     /**
      * Saa parametrina Gameloop-luokan, jonka pelilaudan pohjalta piirretään
@@ -25,6 +31,11 @@ public class GameboardDrawer extends JPanel {
      */
     public GameboardDrawer(Gameloop gameclass) {
         this.gameclass = gameclass;
+        image = null;
+        try {
+            image = ImageIO.read(new File(System.getProperty("user.home") + "/Jmtetra/Jmtetra/src/main/resources/blue.jpg"));
+        } catch (IOException e) {
+        }
     }
 
     /**
@@ -38,26 +49,43 @@ public class GameboardDrawer extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Font myFont = new Font("SansSerif", Font.BOLD, 20);
+        g.drawImage(this.image, 0, 0, null);
+        Font myFont = new Font("SansSerif", Font.BOLD, 10);
         g.setFont(myFont);
-        g.drawString("Points: " + this.gameclass.getPoints(), 4, 615);
-        g.drawString("Level: " + this.gameclass.getLevel(), 4, 650);
-        g.drawString("Rows: " + this.gameclass.getRowsDestroyed(), 4, 580);
+        g.setColor(Color.WHITE);
+        drawInstructions(g);
+        drawGameStatistics(g);
         for (int y = 0; y < gameclass.getGameboard().getHeight(); y++) {
             for (int x = 0; x < gameclass.getGameboard().getWidth(); x++) {
                 Color c = setCharacterColors(y, x);
                 g.setColor(setCharacterColors(y, x));
                 int drawx = x + 8;
                 int drawy = y + 3;
-                if (c != Color.GRAY) {
-                    g.fill3DRect(drawx * 33, drawy * 33, 33, 33, true);
+                if (c == Color.WHITE) {
+                    g.draw3DRect(drawx * 30, drawy * 30, 30, 30, true);
                 } else {
-                    g.fillRect(drawx * 33, drawy * 33, 33, 33);
+                    g.fill3DRect(drawx * 30, drawy * 30, 30, 30, true);
                 }
-                
+
             }
         }
-        
+    }
+
+    private void drawGameStatistics(Graphics g) {
+        g.setFont(new Font("SansSerif", Font.BOLD, 15));
+        g.drawString("Points: " + this.gameclass.getPoints(), 6, 470);
+        g.drawString("Level: " + this.gameclass.getLevel(), 6, 500);
+        g.drawString("Rows: " + this.gameclass.getRowsDestroyed(), 6, 530);
+    }
+
+    private void drawInstructions(Graphics g) {
+        g.drawString("CONTROLS", 6, 200);
+        g.drawString("Left arrow - Move left", 8, 230);
+        g.drawString("Right arrow - Move right", 8, 250);
+        g.drawString("Down arrow - Move down", 8, 280);
+        g.drawString("Space - Drop down", 8, 310);
+        g.drawString("Z - Rotate counterclockwise", 8, 330);
+        g.drawString("X - Rotate clockwise", 8, 350);
     }
 
     /**
@@ -77,35 +105,42 @@ public class GameboardDrawer extends JPanel {
     public Color setCharacterColors(int y, int x) {
         char c = gameclass.getGameboard().getChar(y, x);
         if (c == 'I') {
-            return Color.CYAN;
+            return new Color(230,230,250);
+
         }
-        
+
         if (c == 'K') {
-            return Color.BLUE;
+            return new Color(230,230,250);
+
         }
-        
+
         if (c == 'L') {
-            return Color.ORANGE;
+            return new Color(230,230,250);
+
         }
-        
+
         if (c == 'O') {
-            return Color.YELLOW;
+            return new Color(135,206,250);
+
         }
-        
+
         if (c == 'T') {
-            return Color.MAGENTA;
+            return new Color(135,206,250);
+
         }
-        
+
         if (c == 'Z') {
-            return Color.GREEN;
+            return new Color(135,206,250);
+
         }
-        
+
         if (c == 'X') {
-            return Color.RED;
+            return new Color(135,206,250);
+
         }
-        
-        return Color.GRAY;
-        
+
+        return Color.WHITE;
+
     }
 
     /**

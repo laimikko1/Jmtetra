@@ -11,7 +11,7 @@ import jmtetra.tetralogic.Gameboard;
 public class Main {
     
     public static void main(String[] args) {
-
+        System.out.println(System.getProperty("user.home"));
         Gameloop gc = new Gameloop();
         GameInterface g = new GameInterface(gc);
         
