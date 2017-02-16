@@ -166,19 +166,19 @@ public class Gameboard {
         return false;
     }
 
-    public void updateBoard(Piece[] dir) {
-        if (this.checkIfOccupied(dir)) {
+    public void updateBoard(Piece[] newLoc) {
+        if (this.checkIfOccupied(newLoc)) {
             Piece[] oldCoords = tetroInPlay.getPieces();
 
             for (Piece p : oldCoords) {
                 setChar(p.getY(), p.getX(), '-');
             }
 
-            for (Piece p : dir) {
+            for (Piece p : newLoc) {
                 setChar(p.getY(), p.getX(), p.getMark());
             }
 
-            tetroInPlay.setPieces(dir);
+            tetroInPlay.setPieces(newLoc);
 
         }
     }

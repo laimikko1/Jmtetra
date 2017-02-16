@@ -36,7 +36,8 @@ public abstract class Tetronome {
     /**
      * Liikuttaa palaa joko oikealle tai vasemmalle, riippuen parametrista.
      *
-     * @param syote käyttäjän antama suunta
+     
+     * @param direction käyttäjän antama suunta
      *
      * @see Gameboard.updateBoard(Piece[] pieces)
      * @return (Piece[] uusiSijainti, koordinaatit taulukkona

@@ -21,7 +21,6 @@ public class GameboardDrawer extends JPanel {
 
     private Gameloop gameclass;
     private BufferedImage image;
-    private int drawTileNumber;
 
     /**
      * Saa parametrina Gameloop-luokan, jonka pelilaudan pohjalta piirretään
