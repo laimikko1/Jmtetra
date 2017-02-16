@@ -7,16 +7,26 @@ package jmtetra.tetralogic.tetronomes;
 
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.Type;
-
+/**
+ * Yksi Tetris-pelin tetronomejen ilmentymistä.
+ * 
+ * @author mikko
+ */
 public class ZshapeLeft extends Tetronome {
 
     private Piece[] pieces;
 
     /**
      *
-     * ZshapeLeft on yksi Tetrispelin palamuodoista.
+     * Konstruktorissa luodaan uusi pala, sille annetaan parametrina Piece[]
+     * taulukko, johon sen palat laitetaan. Myös yliluokan, eli Tetronomen
+     * konstruktoria hyödynnetään asetettaessa tyyppi ja luotaessa yllämainittu
+     * taulukko.
      *
-     * @author mikko
+     * @param pieces jokainen pala saa Piece[] taulukon, jossa tarvittava tila
+     * koordinaateille
+     *
+    
      */
     public ZshapeLeft(Piece[] pieces) {
         super(pieces);

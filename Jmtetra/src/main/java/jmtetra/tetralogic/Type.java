@@ -6,8 +6,9 @@
 package jmtetra.tetralogic;
 
 /**
- * Enum-luokka vastaa siitä että jokaisella Tetronomella on uniikki ja muuttumaton tyyppi, 
- * jonka mukaan palan omia metodeja toteutetaan.
+ * Enum-luokka vastaa siitä että jokaisella Tetronomella on uniikki ja
+ * muuttumaton tyyppi, jonka mukaan palan omia metodeja toteutetaan.
+ *
  * @author mikko
  */
 public enum Type {

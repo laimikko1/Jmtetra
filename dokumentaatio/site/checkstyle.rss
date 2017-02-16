@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#jmtetra.tetralogic.tetronomes.Tshape.java">jmtetra/tetralogic/tetronomes/Tshape.java</a>
+                  <a href="${project.url}/checkstyle.html#jmtetra.gui.GameboardDrawer.java">jmtetra/gui/GameboardDrawer.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#jmtetra.gui.DrawedGameboard.java">jmtetra/gui/DrawedGameboard.java</a>
+                  <a href="${project.url}/checkstyle.html#jmtetra.tetralogic.tetronomes.Tshape.java">jmtetra/tetralogic/tetronomes/Tshape.java</a>
                 </td>
                 <td>
                   0

@@ -9,7 +9,7 @@
  * jatkuvasti laskien pelattavan olevaa palaa alaspäin.
  *
  *
- * @author Mikko
+ * @author mikko
  *
  */
 package jmtetra.gameloop;
@@ -75,7 +75,7 @@ public class Gameloop extends Timer implements ActionListener {
      * mahdolliset Tetris-pelin palat. Lista luo jokaisesta palasta uuden
      * ilmentymän.
      *
-     * @see Tetronome
+     *
      */
     private void createListOfPieces() {
         this.pieces = new ArrayList();
@@ -96,7 +96,7 @@ public class Gameloop extends Timer implements ActionListener {
      *
      * @see DrawedGameboard(Gameloop gameclass)
      *
-     * @param drawedGameboard
+     * @param drawedGameboard piirtoalusta, jolle peli piirretään
      */
     public void setDrawboard(GameboardDrawer drawedGameboard) {
         this.drawedGameboard = drawedGameboard;
@@ -115,7 +115,7 @@ public class Gameloop extends Timer implements ActionListener {
      * @see Gameboard.updateBoard(Piece[] pieces)
      * @see DrawedGameboard.update()
      *
-     * @param e
+     * @param e tapahtuma, joka toteutetaan
      */
     @Override
     public void actionPerformed(ActionEvent e) {

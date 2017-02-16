@@ -104,37 +104,37 @@ public class GameboardDrawer extends JPanel {
     public Color setCharacterColors(int y, int x) {
         char c = gameclass.getGameboard().getChar(y, x);
         if (c == 'I') {
-            return new Color(230,230,250);
+            return new Color(230, 230, 250);
 
         }
 
         if (c == 'K') {
-            return new Color(230,230,250);
+            return new Color(230, 230, 250);
 
         }
 
         if (c == 'L') {
-            return new Color(230,230,250);
+            return new Color(230, 230, 250);
 
         }
 
         if (c == 'O') {
-            return new Color(135,206,250);
+            return new Color(135, 206, 250);
 
         }
 
         if (c == 'T') {
-            return new Color(135,206,250);
+            return new Color(135, 206, 250);
 
         }
 
         if (c == 'Z') {
-            return new Color(135,206,250);
+            return new Color(135, 206, 250);
 
         }
 
         if (c == 'X') {
-            return new Color(135,206,250);
+            return new Color(135, 206, 250);
 
         }
 

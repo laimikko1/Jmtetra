@@ -8,10 +8,13 @@ public class SquareShape extends Tetronome {
     public Piece[] pieces;
 
     /**
+     * Konstruktorissa luodaan uusi pala, sille annetaan parametrina Piece[]
+     * taulukko, johon sen palat laitetaan. Myös yliluokan, eli Tetronomen
+     * konstruktoria hyödynnetään asetettaessa tyyppi ja luotaessa yllämainittu
+     * taulukko.
      *
-     * SquareShape on yksi Tetrispelin palamuodoista.
-     *
-     * @author mikko
+     * @param pieces jokainen pala saa Piece[] taulukon, jossa tarvittava tila
+     * koordinaateille
      */
     public SquareShape(Piece[] pieces) {
         super(pieces);

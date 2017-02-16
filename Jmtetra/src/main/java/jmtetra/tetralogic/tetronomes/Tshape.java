@@ -18,6 +18,16 @@ public class Tshape extends Tetronome {
 
     private Piece[] pieces;
 
+    /**
+     * Konstruktorissa luodaan uusi pala, sille annetaan parametrina Piece[]
+     * taulukko, johon sen palat laitetaan. Myös yliluokan, eli Tetronomen
+     * konstruktoria hyödynnetään asetettaessa tyyppi ja luotaessa yllämainittu
+     * taulukko.
+     *
+     * @param pieces jokainen pala saa Piece[] taulukon, jossa tarvittava tila
+     * koordinaateille
+     
+     */
     public Tshape(Piece[] pieces) {
         super(pieces);
         this.pieces = pieces;

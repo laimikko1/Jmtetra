@@ -6,19 +6,22 @@
 package jmtetra.tetralogic;
 
 /**
- * Tämä luokka luo Piece, eli pala-luokan ilmentyminä. Jokainen Tetronomi koostuu neljästä palasta,
- * joilla kaikilla on omat y- ja x-koordinaatit, sekä char-muuttuja.
+ * Tämä luokka luo Piece, eli pala-luokan ilmentyminä. Jokainen Tetronomi
+ * koostuu neljästä palasta, joilla kaikilla on omat y- ja x-koordinaatit, sekä
+ * char-muuttuja.
+ *
  * @author mikko
  */
 public class Piece {
+
     private int y;
     private int x;
     private char mark;
 
     /**
-     * Konstruktorissa luodaan uusi halutunlainen pala.
-     * Parametreina annetaan ylläkin mainitut koordinaatit ja char-muuttuja.
-     * 
+     * Konstruktorissa luodaan uusi halutunlainen pala. Parametreina annetaan
+     * ylläkin mainitut koordinaatit ja char-muuttuja.
+     *
      * @param y haluttu y-koordinaatti.
      * @param x haluttu x-koordinaatti.
      * @param mark haluttu merkki koordinaatin sijaintiin.
@@ -44,15 +47,14 @@ public class Piece {
     public void setY(int y) {
         this.y = y;
     }
-    
+
     /**
      * Tällä metodilla voidaan tarvittaessa päivittää palan char-muuttujan arvo.
      * Metodi on olennainen, kun pelilautaa päivitetään.
-     * 
-     * 
+     *
+     *
      * @param mark palan sijantiin asetettava uusi char muuttuja.
      */
-
     public void setMark(char mark) {
         this.mark = mark;
     }
@@ -60,10 +62,5 @@ public class Piece {
     public char getMark() {
         return mark;
     }
-    
-    
-    
-    
-    
-    
+
 }

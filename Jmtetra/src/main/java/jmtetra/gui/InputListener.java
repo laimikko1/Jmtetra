@@ -19,33 +19,37 @@ public class InputListener implements KeyListener {
 
     private Gameboard gameboard;
     private GameboardDrawer gameboardDrawer;
+
     /**
-     * Keylistener-luokka saa parametrinaan char[][] tyyppisen pelilaudan, johon tehdään muutoksia,
-     * kun käyttäjän antama komento rekisteröidään.
+     * Keylistener-luokka saa parametrinaan char[][] tyyppisen pelilaudan, johon
+     * tehdään muutoksia, kun käyttäjän antama komento rekisteröidään.
+     *
      * @param gameboard pelilauta jolle keyListener välittää päivitykset.
-     * @param gameboardDrawer pelilaudan piirtäjä välitetään myös. Tämä on tarpeellista, jotta käyttäjän antamat toiminnot, kuten
-     * käännökset ja liikkuminen alaspäin päivittyvät "realiajassa", eivätkä vasta kun seuraavan kerran liikutaan automaattisesti alas
-     * gameloop-luokan antaman komennon toimesta
+     * @param gameboardDrawer pelilaudan piirtäjä välitetään myös. Tämä on
+     * tarpeellista, jotta käyttäjän antamat toiminnot, kuten käännökset ja
+     * liikkuminen alaspäin päivittyvät "realiajassa", eivätkä vasta kun
+     * seuraavan kerran liikutaan automaattisesti alas gameloop-luokan antaman
+     * komennon toimesta
      */
     public InputListener(Gameboard gameboard, GameboardDrawer gameboardDrawer) {
         this.gameboard = gameboard;
         this.gameboardDrawer = gameboardDrawer;
     }
 
-    
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
     /**
-     * Metodi vastaa siitä, että jokainen käyttäjän komento suoritetaan oikein. 
-     * Se hyödyntää parametrina saamaansa Gameboard-luokkaa, jonka metodeilla muutokset tehdään.
-     * 
+     * Metodi vastaa siitä, että jokainen käyttäjän komento suoritetaan oikein.
+     * Se hyödyntää parametrina saamaansa Gameboard-luokkaa, jonka metodeilla
+     * muutokset tehdään.
+     *
      * @see jmtetra.tetralogic.Gameboard#updateBoard(Piece[])
      * @see jmtetra.tetralogic.tetronomes.Tetronome#moveDown()
-     * @see jmtetra.tetralogic.Tetronome#moveLeftOrRight(int)
-     * @see jmtetra.tetralogic.Tetronome#isRoundOver()
-     * @param e 
+     * @see jmtetra.tetralogic.tetronomes.Tetronome#moveLeftOrRight(int)
+     * @see jmtetra.tetralogic.tetronomes.Tetronome#isRoundOver()
+     * @param e tapahtuma, joka halutaan toteuttaa
      */
     @Override
     public void keyPressed(KeyEvent e) {

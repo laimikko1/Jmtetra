@@ -13,10 +13,10 @@ public class LshapeLeft extends Tetronome {
 
     private Piece[] pieces;
 
-    /**
-     * {@inheritDoc}
-     *
-     */
+  /**
+   * Luo uuden LshapeLeft tetronomen.
+   * @param pieces taulukko, joissa tarvittava tila tetronomelle
+   */
     public LshapeLeft(Piece[] pieces) {
         super(pieces);
         super.setType(Type.LshapeLeft);

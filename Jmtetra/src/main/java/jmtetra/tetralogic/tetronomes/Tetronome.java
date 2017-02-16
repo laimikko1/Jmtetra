@@ -25,7 +25,7 @@ public abstract class Tetronome {
      * pelipalan muodosta, on aloitussuunta. Saa parametrinaan Piece[] tyyppisen
      * taulukon.
      *
-     * @param pieces
+     * @param pieces taulukko, joissa tarvittava tila tetronomelle.
      */
     public Tetronome(Piece[] pieces) {
         this.pieces = pieces;
@@ -36,7 +36,7 @@ public abstract class Tetronome {
     /**
      * Liikuttaa palaa joko oikealle tai vasemmalle, riippuen parametrista.
      *
-     
+     *
      * @param direction käyttäjän antama suunta
      *
      * @see Gameboard.updateBoard(Piece[] pieces)
@@ -76,8 +76,8 @@ public abstract class Tetronome {
     /**
      * Kääntää palaa, joko myötä tai vastasuuntaan.
      *
-     * @param rotationDirection, käyttäjän antama suunta, joko -1 (vastapäivään)
-     * tai 1(myötäpäivään)
+     * @param rotationDirection käyttäjän antama suunta käytännössä int arvo,
+     * eli 1 (myötäpäivä) tai -1 (vastapäivä)
      *
      * @return uudet palan koordinaatit taulukossa, Piece[]-tyyppisenä
      *
@@ -98,9 +98,13 @@ public abstract class Tetronome {
      * Luo uuden palan. Tämä metodi on uniikki kaikille eri paloille. Vastaa
      * myös palan koordinaattien päivittämisestä, kun pala on pelattavana.
      */
-    
     abstract public void createTetronome();
 
+    /**
+     * Palauttaa palan, jonka sijainti on matalimmalla taulukossa.
+     *
+     * @return pala, jonka sijainti matalin taulukossa.
+     */
     public Piece getLowestLocation() {
         int lowestY = 0;
         Piece lowestP = null;
@@ -120,6 +124,11 @@ public abstract class Tetronome {
         return this.pieces;
     }
 
+    /**
+     * Asettaa parametrina annetun taulukon palat nykyisiksi koordinaateiksi.
+     *
+     * @param p arvoiksi haluttavat koordinaatit taulukkona
+     */
     public void setPieces(Piece[] p) {
         System.arraycopy(p, 0, this.pieces, 0, getPieces().length);
     }
@@ -138,6 +147,15 @@ public abstract class Tetronome {
      */
     abstract Piece[] createRotations();
 
+    /**
+     * Luo palat "pivot"-palan ympärille, kun palaa käännetään jompaakumpaan suuntaan.
+     * Käytännössä metodi saa parametrit, joiden avulla se luo palan uudestaan "pivot" palan ympärille.
+     * Tämä metodi toteutetaan aina kaikille tetronomen paloille, paitsi "pivot" palalle.
+     * @param y koordinaati, johon uusi pala halutaan
+     * @param x koordinaati, johon uusi pala halutaan
+
+     * @return uusi pala halutussa koordinaatissa, samalla char-muuttujalla kuin pivot-pala
+     */
     public Piece generatePiece(int y, int x) {
         return new Piece(this.pieces[1].getY() + y, this.pieces[1].getX() + x, this.pieces[1].getMark());
     }

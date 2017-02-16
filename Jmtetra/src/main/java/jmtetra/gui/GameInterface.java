@@ -32,7 +32,7 @@ public class GameInterface implements Runnable {
      * looppi pelille
      */
     public GameInterface(Gameloop gameclass) {
-        
+
         this.gameclass = gameclass;
         this.gameboardDrawer = new GameboardDrawer(this.gameclass);
         this.gameclass.setDrawboard(gameboardDrawer);
@@ -76,7 +76,5 @@ public class GameInterface implements Runnable {
     public Gameloop getGame() {
         return this.gameclass;
     }
-    
-   
 
 }

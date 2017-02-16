@@ -18,6 +18,11 @@ public class LshapeRight extends Tetronome {
 
     public Piece[] pieces;
 
+    /**
+     * Luo uuden LshapeRight tetronomen.
+     *
+     * @param pieces taulukko, joissa tarvittava tila tetronomelle
+     */
     public LshapeRight(Piece[] pieces) {
         super(pieces);
         super.setType(Type.LshapeRight);
