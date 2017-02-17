@@ -47,7 +47,7 @@ public class GameInterface implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Tetris");
-        frame.setPreferredSize(new Dimension(600, 620));
+        frame.setPreferredSize(new Dimension(800, 620));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         createComponents(this.frame.getContentPane());

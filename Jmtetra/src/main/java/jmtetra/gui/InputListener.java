@@ -53,6 +53,7 @@ public class InputListener implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
+
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             this.gameboard.updateBoard(this.gameboard.getCurTetro().moveLeftOrRight(-1));
         }
@@ -62,6 +63,9 @@ public class InputListener implements KeyListener {
 
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             this.gameboard.updateBoard(this.gameboard.getCurTetro().moveDown());
+            if (!this.gameboard.isRoundOver()) {
+                this.gameboardDrawer.getGameclass().addOnePointForMovingDown();
+            }
         }
 
         if (e.getKeyCode() == KeyEvent.VK_Z) {
@@ -73,11 +77,14 @@ public class InputListener implements KeyListener {
         }
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+
             while (!this.gameboard.isRoundOver()) {
                 this.gameboard.updateBoard(this.gameboard.getCurTetro().moveDown());
             }
+
         }
         this.gameboardDrawer.update();
+
     }
 
     @Override

@@ -17,10 +17,13 @@ package jmtetra.gameloop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 import javax.swing.Timer;
 
 import jmtetra.gui.GameboardDrawer;
-import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.tetronomes.Ishape;
@@ -35,15 +38,13 @@ import jmtetra.tetralogic.tetronomes.ZshapeRight;
 public class Gameloop extends Timer implements ActionListener {
 
     private ArrayList<Tetronome> pieces;
-    private boolean roundIsOver;
-    private boolean gameIsOver;
     private GameboardDrawer drawedGameboard;
     private Gameboard gameboard;
-    private Random random;
     private int rowsDestroyed;
     private int points;
     private int level;
-
+    private int velocity;
+    private Tetronome nextPiece;
     /**
      * Konstruktori luo uuden peliloopin. Ensin käytetään perittävän
      * Timer-luokan konstruktoria, asettaen väliksi 1000 millisekuntia. Tämän
@@ -52,18 +53,17 @@ public class Gameloop extends Timer implements ActionListener {
      */
     public Gameloop() {
         super(1000, null);
-        createListOfPieces();
-        this.roundIsOver = false;
-        this.gameIsOver = false;
+        updatePieces();
         this.gameboard = new Gameboard();
+        Collections.shuffle(this.pieces);
         this.gameboard.addTetronome(this.pieces.get(0));
-        this.random = new Random();
+        this.nextPiece = this.pieces.get(1);
         this.points = 0;
         this.level = 0;
         this.rowsDestroyed = 0;
+        this.velocity = 1000;
 
         addActionListener(this);
-        setInitialDelay(1000);
     }
 
     public Gameboard getGameboard() {
@@ -77,7 +77,7 @@ public class Gameloop extends Timer implements ActionListener {
      *
      *
      */
-    private void createListOfPieces() {
+    private void updatePieces() {
         this.pieces = new ArrayList();
         this.pieces.add(new Ishape(new Piece[4]));
         this.pieces.add(new LshapeLeft(new Piece[4]));
@@ -119,26 +119,50 @@ public class Gameloop extends Timer implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        int rowsDestroyedThisRound = 0;
 
         if (this.gameboard.isRoundOver()) {
-            if (this.gameboard.isGameOver()) {
-                System.exit(0);
-            }
-            int rowsDestroyedThisRound = this.gameboard.checkAllRowsForFullOnes();
-            rowsDestroyed += rowsDestroyedThisRound;
-            updatePoints(rowsDestroyedThisRound);
-            updatelevel();
-            createListOfPieces();
-
-            this.gameboard.addTetronome(pieces.get(this.random.nextInt(7)));
-
+            checkIfGameIsOver();
+            rowsDestroyedThisRound = updateTotalRows(rowsDestroyedThisRound);
+            updateStatistics(rowsDestroyedThisRound);
+            this.gameboard.addTetronome(nextPiece);
+            updatePieces();
+            nextPiece = this.pieces.get(new Random().nextInt(7));
         } else {
             this.gameboard.updateBoard(gameboard.getCurTetro().moveDown());
         }
+        if (rowsDestroyedThisRound > 0) {
+            createAdelayForDestroyedRows();
+        }
 
         this.drawedGameboard.update();
-        setDelay(1000);
 
+        setDelay(velocity);
+    }
+
+    private void updateStatistics(int rowsDestroyedThisRound) {
+        updatePoints(rowsDestroyedThisRound);
+        updatelevel();
+    }
+
+    private void createAdelayForDestroyedRows() {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Gameloop.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private int updateTotalRows(int rowsDestroyedThisRound) {
+        rowsDestroyedThisRound = this.gameboard.checkAllRowsForFullOnes();
+        rowsDestroyed += rowsDestroyedThisRound;
+        return rowsDestroyedThisRound;
+    }
+
+    private void checkIfGameIsOver() {
+        if (this.gameboard.isGameOver()) {
+            System.exit(0);
+        }
     }
 
     private void updatePoints(int rows) {
@@ -165,8 +189,10 @@ public class Gameloop extends Timer implements ActionListener {
     }
 
     private void updatelevel() {
-        if (rowsDestroyed >= 10 && rowsDestroyed % 10 == 0) {
+        if (rowsDestroyed >= 10 && rowsDestroyed % ((level + 1) * 10) == 0) {
             level++;
+            updateVelocity();
+
         }
     }
 
@@ -180,6 +206,21 @@ public class Gameloop extends Timer implements ActionListener {
 
     public int getLevel() {
         return level;
+    }
+
+    private int updateVelocity() {
+        return velocity *= 0.8;
+    }
+/**
+ * This method is solemly responsible for increasing the players points when he moves down.
+ *
+ */
+    public void addOnePointForMovingDown() {
+        this.points++;
+    }
+
+    public Tetronome getNextPiece() {
+        return nextPiece;
     }
 
 }

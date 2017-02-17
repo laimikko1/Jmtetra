@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import jmtetra.gameloop.Gameloop;
+import jmtetra.tetralogic.Piece;
 
 /**
  * Tämä luokka vastaa siitä, että pelilauta piirretään ja päivitetään aina
@@ -32,7 +33,7 @@ public class GameboardDrawer extends JPanel {
         this.gameclass = gameclass;
         image = null;
         try {
-            image = ImageIO.read(new File(System.getProperty("user.home") + "/Jmtetra/Jmtetra/src/main/resources/blue.jpg"));
+            image = ImageIO.read(new File(System.getProperty("user.dir") + "/src/main/resources/blue.jpg"));
         } catch (IOException e) {
         }
     }
@@ -49,15 +50,20 @@ public class GameboardDrawer extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(this.image, 0, 0, null);
-        Font myFont = new Font("SansSerif", Font.BOLD, 10);
+        Font myFont = new Font("SansSerif", Font.BOLD, 18);
         g.setFont(myFont);
         g.setColor(Color.WHITE);
         drawInstructions(g);
         drawGameStatistics(g);
+        drawGameboard(g);
+        drawNextPiece(g);
+    }
+
+    private void drawGameboard(Graphics g) {
         for (int y = 0; y < gameclass.getGameboard().getHeight(); y++) {
             for (int x = 0; x < gameclass.getGameboard().getWidth(); x++) {
-                Color c = setCharacterColors(y, x);
-                g.setColor(setCharacterColors(y, x));
+                Color c = setCharacterColors(gameclass.getGameboard().getChar(y, x));
+                g.setColor(c);
                 int drawx = x + 8;
                 int drawy = y + 3;
                 if (c == Color.WHITE) {
@@ -71,20 +77,37 @@ public class GameboardDrawer extends JPanel {
     }
 
     private void drawGameStatistics(Graphics g) {
-        g.setFont(new Font("SansSerif", Font.BOLD, 15));
-        g.drawString("Points: " + this.gameclass.getPoints(), 6, 470);
-        g.drawString("Level: " + this.gameclass.getLevel(), 6, 500);
-        g.drawString("Rows: " + this.gameclass.getRowsDestroyed(), 6, 530);
+        g.setFont(new Font("SansSerif", Font.BOLD, 20));
+        g.drawString("Points: " + this.gameclass.getPoints(), 8, 420);
+        g.drawString("Level: " + this.gameclass.getLevel(), 8, 470);
+        g.drawString("Rows: " + this.gameclass.getRowsDestroyed(), 8, 520);
     }
 
     private void drawInstructions(Graphics g) {
-        g.drawString("CONTROLS", 6, 200);
-        g.drawString("Left arrow - Move left", 8, 230);
-        g.drawString("Right arrow - Move right", 8, 250);
-        g.drawString("Down arrow - Move down", 8, 280);
-        g.drawString("Space - Drop down", 8, 310);
-        g.drawString("Z - Rotate counterclockwise", 8, 330);
+        g.drawString("CONTROLS", 6, 110);
+        Font myFont = new Font("SansSerif", Font.BOLD, 14);
+        g.setFont(myFont);
+        g.drawString("Left arrow - Move left", 8, 150);
+        g.drawString("Right arrow - Move right", 8, 190);
+        g.drawString("Down arrow - Move down", 8, 230);
+        g.drawString("Space - Drop down", 8, 270);
+        g.drawString("Z - Rotate counterclockwise", 8, 310);
         g.drawString("X - Rotate clockwise", 8, 350);
+    }
+
+    private void drawNextPiece(Graphics g) {
+        int drawY = 5;
+        int drawX = 16;
+        g.drawString("NEXT PIECE", 570, 110);
+
+        for (Piece p : this.gameclass.getNextPiece().getPieces()) {
+            int drawY2 = p.getY() + drawY;
+            int drawX2 = p.getX() + drawX;
+            g.setColor(setCharacterColors(p.getMark()));
+
+            
+            g.fill3DRect(drawX2 * 30, drawY2 * 30, 30, 30, true);
+        }
     }
 
     /**
@@ -93,48 +116,46 @@ public class GameboardDrawer extends JPanel {
      * Parametreina tulee x- ja y-koordinaatti, jonka pohjalta haetaan
      * tarkasteltava char-muuttuja pelilaudan metodin kautta.
      *
-     * @param y koordinaatti, Int arvo, jonka käyttäjä antaa
-     * @param x koordinaatti, Int arvo, jonka käyttäjä antaa
+     * @param c char merkki, jonka pohjalta väri määritetään
      *
      * @see jmtetra.tetralogic.Gameboard#getChar(int, int)
      * @see jmtetra.gameloop.Gameloop#getGameboard()
      *
      * @return Color haluttu väri merkille
      */
-    public Color setCharacterColors(int y, int x) {
-        char c = gameclass.getGameboard().getChar(y, x);
+    public Color setCharacterColors(char c) {
         if (c == 'I') {
-            return new Color(230, 230, 250);
+            return new Color(0, 255, 255);
 
         }
 
         if (c == 'K') {
-            return new Color(230, 230, 250);
+            return new Color(255, 0, 0);
 
         }
 
         if (c == 'L') {
-            return new Color(230, 230, 250);
+            return new Color(0, 0, 255);
 
         }
 
         if (c == 'O') {
-            return new Color(135, 206, 250);
+            return new Color(255, 255, 0);
 
         }
 
         if (c == 'T') {
-            return new Color(135, 206, 250);
+            return new Color(153, 0, 153);
 
         }
 
         if (c == 'Z') {
-            return new Color(135, 206, 250);
+            return new Color(255, 0, 0);
 
         }
 
         if (c == 'X') {
-            return new Color(135, 206, 250);
+            return new Color(153, 255, 153);
 
         }
 
@@ -149,4 +170,9 @@ public class GameboardDrawer extends JPanel {
     public void update() {
         repaint();
     }
+
+    public Gameloop getGameclass() {
+        return gameclass;
+    }
+
 }

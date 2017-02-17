@@ -16,7 +16,7 @@ public class Main {
      * @param args jokin mystinen mainin parametri
      */
     public static void main(String[] args) {
-        System.out.println(System.getProperty("user.home"));
+        System.out.println(System.getProperty("user.dir"));
         Gameloop gc = new Gameloop();
         GameInterface g = new GameInterface(gc);
 
