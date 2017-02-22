@@ -65,7 +65,7 @@ public class GameInterface implements Runnable {
      */
     private void createComponents(Container contentPane) {
         contentPane.add(this.gameboardDrawer);
-        frame.addKeyListener(new InputListener(this.gameclass.getGameboard(), this.gameboardDrawer));
+        frame.addKeyListener(new InputListener(this.gameclass));
 
     }
 

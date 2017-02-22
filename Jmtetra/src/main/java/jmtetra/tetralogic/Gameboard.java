@@ -86,7 +86,7 @@ public class Gameboard {
     public boolean isGameOver() {
         if (isRoundOver()) {
             for (Piece p : tetroInPlay.getPieces()) {
-                if (p.getY() == 1) {
+                if (p.getY() == 0) {
                     return true;
                 }
             }

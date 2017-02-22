@@ -24,6 +24,8 @@ import javax.swing.Timer;
 import jmtetra.gui.GameboardDrawer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
 import jmtetra.tetralogic.tetronomes.Ishape;
@@ -45,6 +47,7 @@ public class Gameloop extends Timer implements ActionListener {
     private int level;
     private int velocity;
     private Tetronome nextPiece;
+
     /**
      * Konstruktori luo uuden peliloopin. Ensin käytetään perittävän
      * Timer-luokan konstruktoria, asettaen väliksi 1000 millisekuntia. Tämän
@@ -100,6 +103,10 @@ public class Gameloop extends Timer implements ActionListener {
      */
     public void setDrawboard(GameboardDrawer drawedGameboard) {
         this.drawedGameboard = drawedGameboard;
+    }
+
+    public GameboardDrawer getDrawedGameboard() {
+        return drawedGameboard;
     }
 
     /**
@@ -161,7 +168,36 @@ public class Gameloop extends Timer implements ActionListener {
 
     private void checkIfGameIsOver() {
         if (this.gameboard.isGameOver()) {
+            if (level == 0) {
+
+                JOptionPane.showMessageDialog(drawedGameboard, "> Pelaa tetristä \n"
+                        + "> Häviä ekalla tasolla \n"
+                        + "huutista");
+
+                System.exit(0);
+            }
+            JOptionPane pane = new JOptionPane("Game over!\nPoints: " + this.points);
+            JDialog dialog = pane.createDialog("Game over");
+            dialog.show();
+
             System.exit(0);
+//
+//            JOptionPane pane = new JOptionPane("It seems your game is over.\nPoints: " + this.points + "\nPlay again?", JOptionPane.YES_NO_OPTION);
+//            pane.setOptionType(JOptionPane.YES_NO_OPTION);
+//            JDialog dialog = pane.createDialog("Game over");
+//            dialog.show();
+
+//            if ((Integer) pane.getValue() == 1) {
+//                System.exit(0);
+//            } else if ((Integer) pane.getValue() == 0) {
+//                Gameloop gc = new Gameloop();
+//                GameInterface g = new GameInterface(gc);
+//
+//                SwingUtilities.invokeLater(g);
+//                gc.start();
+//                System.exit(0);
+//
+//            }
         }
     }
 
@@ -211,10 +247,12 @@ public class Gameloop extends Timer implements ActionListener {
     private int updateVelocity() {
         return velocity *= 0.8;
     }
-/**
- * This method is solemly responsible for increasing the players points when he moves down.
- *
- */
+
+    /**
+     * This method is solemly responsible for increasing the players points when
+     * he moves down.
+     *
+     */
     public void addOnePointForMovingDown() {
         this.points++;
     }

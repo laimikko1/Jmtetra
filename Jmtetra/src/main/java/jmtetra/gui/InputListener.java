@@ -7,6 +7,7 @@ package jmtetra.gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import jmtetra.gameloop.Gameloop;
 import jmtetra.tetralogic.Gameboard;
 
 /**
@@ -16,7 +17,8 @@ import jmtetra.tetralogic.Gameboard;
  * @author mikko
  */
 public class InputListener implements KeyListener {
-
+    
+    private Gameloop gameloop;
     private Gameboard gameboard;
     private GameboardDrawer gameboardDrawer;
 
@@ -31,9 +33,10 @@ public class InputListener implements KeyListener {
      * seuraavan kerran liikutaan automaattisesti alas gameloop-luokan antaman
      * komennon toimesta
      */
-    public InputListener(Gameboard gameboard, GameboardDrawer gameboardDrawer) {
-        this.gameboard = gameboard;
-        this.gameboardDrawer = gameboardDrawer;
+    public InputListener(Gameloop gameloop) {
+        this.gameloop = gameloop;
+        this.gameboard = gameloop.getGameboard();
+        this.gameboardDrawer = gameloop.getDrawedGameboard();
     }
 
     @Override
@@ -81,6 +84,8 @@ public class InputListener implements KeyListener {
             while (!this.gameboard.isRoundOver()) {
                 this.gameboard.updateBoard(this.gameboard.getCurTetro().moveDown());
             }
+            this.gameloop.actionPerformed(null);
+            
 
         }
         this.gameboardDrawer.update();
