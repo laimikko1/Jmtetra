@@ -16,7 +16,7 @@ Tarkoituksena on luoda peliin pelilogiikka ja graafinen  käyttöliittymä.
 <h2>Luokkakaavio</h2>
 
 
-![Alt text](https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/luokkakaavio.jpg)
+![Alt text](https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/luokkakaavio(2).jpg)
 
 
 
