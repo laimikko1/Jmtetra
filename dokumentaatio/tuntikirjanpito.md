@@ -42,3 +42,12 @@ Päivä | Tunnit | Kuvaus
 14.2.2017 | 4h | Käyttöliittymän teko jatkuu, tein myös logiikkaa pelin lopettamiselle ja rivien tuhoamiselle
 15.2.2017 | 1h | Samoja juttuja kuin yllä
 16.2.2017 | 5h | Käyttöliittymää ja hieman pelitilastoja ja pistelaskun logiikkaa sekä niiden implementoimista käyttöliittymään. Myös JavaDocin tekoa ja sekvenssikaavioita.
+
+
+**Deadline 6**
+
+Päivä | Tunnit | Kuvaus
+--------------- | ----- | ------
+22.2.2017 | 5h | Loin pelin loppumiselle ponnahduslaudan. Säädin hieman I-palaa kuntoon. Refaktoroin ja loin tetronomen arpomiselle uuden luokan ja sille testit. Sain korjattua myös dropdownin bugin, eli nyt palaa ei voi enää liikutella dropdownin jälkeen.
+
+
