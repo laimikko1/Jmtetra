@@ -83,6 +83,7 @@ public class InputListener implements KeyListener {
 
             while (!this.gameboard.isRoundOver()) {
                 this.gameboard.updateBoard(this.gameboard.getCurTetro().moveDown());
+                this.gameloop.addOnePointForMovingDown();
             }
             this.gameloop.actionPerformed(null);
             
