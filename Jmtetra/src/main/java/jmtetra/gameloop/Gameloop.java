@@ -78,7 +78,7 @@ public class Gameloop extends Timer implements ActionListener {
      * johon pelilooppi tuottaa logiikan, jonka pelilauta piirtää ja näyttää
      * pelaajalle.
      *
-     * @param drawedGameboard
+     * @param drawedGameboard pelilauta, joka joka toimii yhteistyössä peliloopin kanssa
      */
     public void setDrawboard(GameboardDrawer drawedGameboard) {
         this.drawedGameboard = drawedGameboard;

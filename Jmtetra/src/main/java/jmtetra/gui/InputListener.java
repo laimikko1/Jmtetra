@@ -27,7 +27,7 @@ public class InputListener implements KeyListener {
      * Näitä ovat kaksiulotteinen taulukko, jossa char-muuttujia, sekä pelilaudan piirtäjä. Luonnollisesti myös
      * Gameloop-luokkaa itseään hyödynnetään luokan sisällä.
      *
-     * @param gameloop
+     * @param gameloop pelilooppi, joka välittää tarvittavat komponentit luokalle.
      */
     public InputListener(Gameloop gameloop) {
         this.gameloop = gameloop;
