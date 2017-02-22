@@ -16,6 +16,7 @@ package jmtetra.gameloop;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Random;
 import javax.swing.Timer;
 
@@ -78,7 +79,8 @@ public class Gameloop extends Timer implements ActionListener {
      * johon pelilooppi tuottaa logiikan, jonka pelilauta piirtää ja näyttää
      * pelaajalle.
      *
-     * @param drawedGameboard pelilauta, joka joka toimii yhteistyössä peliloopin kanssa
+     * @param drawedGameboard pelilauta, joka joka toimii yhteistyössä
+     * peliloopin kanssa
      */
     public void setDrawboard(GameboardDrawer drawedGameboard) {
         this.drawedGameboard = drawedGameboard;
@@ -108,7 +110,11 @@ public class Gameloop extends Timer implements ActionListener {
         int rowsDestroyedThisRound = 0;
 
         if (this.gameboard.isRoundOver()) {
-            checkIfGameIsOver();
+            try {
+                checkIfGameIsOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Gameloop.class.getName()).log(Level.SEVERE, null, ex);
+            }
             rowsDestroyedThisRound = updateTotalRows(rowsDestroyedThisRound);
             updateStatistics(rowsDestroyedThisRound);
             this.gameboard.addTetronome(nextPiece);
@@ -121,8 +127,6 @@ public class Gameloop extends Timer implements ActionListener {
         }
 
         this.drawedGameboard.update();
-
-        setDelay(velocity);
     }
 
     private void updateStatistics(int rowsDestroyedThisRound) {
@@ -144,38 +148,23 @@ public class Gameloop extends Timer implements ActionListener {
         return rowsDestroyedThisRound;
     }
 
-    private void checkIfGameIsOver() {
+    private void checkIfGameIsOver() throws IOException {
         if (this.gameboard.isGameOver()) {
-            if (level == 0) {
 
-                JOptionPane.showMessageDialog(drawedGameboard, "> Pelaa tetristä \n"
-                        + "> Häviä ekalla tasolla \n"
-                        + "huutista");
-
-                System.exit(0);
-            }
-            JOptionPane pane = new JOptionPane("Game over!\nPoints: " + this.points);
+            JOptionPane pane = new JOptionPane("It seems your game is over.\nPoints: " + this.points + "\nPlay again?", JOptionPane.YES_NO_OPTION);
+            pane.setOptionType(JOptionPane.YES_NO_OPTION);
             JDialog dialog = pane.createDialog("Game over");
+
+           
+
             dialog.show();
 
-            System.exit(0);
-//
-//            JOptionPane pane = new JOptionPane("It seems your game is over.\nPoints: " + this.points + "\nPlay again?", JOptionPane.YES_NO_OPTION);
-//            pane.setOptionType(JOptionPane.YES_NO_OPTION);
-//            JDialog dialog = pane.createDialog("Game over");
-//            dialog.show();
-
-//            if ((Integer) pane.getValue() == 1) {
-//                System.exit(0);
-//            } else if ((Integer) pane.getValue() == 0) {
-//                Gameloop gc = new Gameloop();
-//                GameInterface g = new GameInterface(gc);
-//
-//                SwingUtilities.invokeLater(g);
-//                gc.start();
-//                System.exit(0);
-//
-//            }
+            if ((Integer) pane.getValue() == 1) {
+                System.exit(0);
+            } else if ((Integer) pane.getValue() == 0) {
+                Runtime.getRuntime().exec("java -jar Jmtetra.jar");
+                System.exit(0);
+            }
         }
     }
 
@@ -222,8 +211,9 @@ public class Gameloop extends Timer implements ActionListener {
         return level;
     }
 
-    private int updateVelocity() {
-        return velocity *= 0.8;
+    private void updateVelocity() {
+        velocity *= 0.8;
+        super.setDelay(velocity);
     }
 
     /**

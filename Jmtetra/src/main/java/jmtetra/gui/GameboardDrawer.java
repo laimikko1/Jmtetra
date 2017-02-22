@@ -99,6 +99,7 @@ public class GameboardDrawer extends JPanel {
     private void drawNextPiece(Graphics g) {
         int drawY = 5;
         int drawX = 16;
+        g.setColor(Color.white);
         g.drawString("NEXT PIECE", 570, 110);
 
         for (Piece p : this.gameclass.getNextPiece().getPieces()) {
