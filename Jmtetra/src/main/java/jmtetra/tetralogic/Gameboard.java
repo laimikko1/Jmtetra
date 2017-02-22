@@ -1,4 +1,3 @@
-
 package jmtetra.tetralogic;
 
 import jmtetra.tetralogic.tetronomes.Tetronome;
@@ -111,23 +110,25 @@ public class Gameboard {
     public char[][] getGameboard() {
         return gameboard;
     }
-/**
- * Palauttaa halutun character-muuttujan tietystä koordinaatista taulukossa.
- * @param y y-koordinaatin arvo
- * @param x x-koordinaatin arvo
- * @return  character tietystä koordinaatista
- */
+
+    /**
+     * Palauttaa halutun character-muuttujan tietystä koordinaatista taulukossa.
+     *
+     * @param y y-koordinaatin arvo
+     * @param x x-koordinaatin arvo
+     * @return character tietystä koordinaatista
+     */
     public char getChar(int y, int x) {
         return this.gameboard[y][x];
     }
-    
+
     /**
      * Asettaa tiettyyn taulukon kohtaan halutun character-muuttujan.
+     *
      * @param y y-koordinaatin arvo
      * @param x x-koordinaatin arvo
      * @param c tiettyyn koordinaattiin asetettava character-muuttuja
      */
-
     public void setChar(int y, int x, char c) {
         this.gameboard[y][x] = c;
     }
@@ -135,6 +136,8 @@ public class Gameboard {
     /**
      * Metodi tarkistaa kaikki täydet rivit laudasta.
      *
+     * @see jmtetra.tetralogic.Gameboard#moveAllPiecesDown(int)
+     * @see jmtetra.tetralogic.Gameboard#checkIfAFullRow(int)
      * @return lukumäärän täysistä riveistä
      */
     public int checkAllRowsForFullOnes() {
@@ -210,11 +213,15 @@ public class Gameboard {
 
     /**
      * Ehkäpä luokan tärkein metodi, joka päivittää aina lautaa vastaamaan
-     * nykyistä pelitilannetta.
+     * nykyistä pelitilannetta. Hyödyntää muita luokan metodeja
      *
+     * @see
+     * jmtetra.tetralogic.Gameboard#checkIfOccupied(jmtetra.tetralogic.Piece[])
+     * @see jmtetra.tetralogic.Gameboard#setChar(int, int, char)
+     * @see jmtetra.tetralogic.tetronomes.Tetronome#getPieces()
+     * @see jmtetra.tetralogic.tetronomes.Tetronome#setPieces(jmtetra.tetralogic.Piece[])
      * @param newLoc uuden palan sijainnin omaava Piece[] taulukko
      */
-
     public void updateBoard(Piece[] newLoc) {
         if (this.checkIfOccupied(newLoc)) {
             Piece[] oldCoords = tetroInPlay.getPieces();
@@ -236,7 +243,7 @@ public class Gameboard {
      * Liikuttaa kaikkia laudassa olevia paloja yhden askeleen alaspäin Tämä
      * metodi toteutetaan, jos löytyy täynnä olevia rivejä, joita tuhotaan.
      *
-     * @param startingHeight aloituskorkeus, joka/josta ylöspäin kaikkia rivejä
+     * @param startingHeight aloituskorkeus, josta ylöspäin kaikkia rivejä
      * siirretään alaspäin
      */
     public void moveAllPiecesDown(int startingHeight) {

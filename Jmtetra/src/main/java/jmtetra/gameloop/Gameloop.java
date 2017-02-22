@@ -3,9 +3,9 @@
  * saaden parametreina pelilaudan ja pelilaudan
  * piirtämisestä vastaavan luokan.
  *
- * Luokalla on myös ActionListener, jonka avulla
- * se suorittaa käyttäjän antamia toimintoja,
- * sekä Timer, jonka avulla itse looppi toimii,
+ * Luokalla on myös ActionListener, jonka rajapintaa luokka käyttää. Tämän avulla
+ * saadaan käyttöön käyttäjän syötteiden lukeminen.
+ * Luokalla on myös Timer, jonka avulla itse looppi toimii,
  * jatkuvasti laskien pelattavan olevaa palaa alaspäin.
  *
  *
@@ -16,8 +16,6 @@ package jmtetra.gameloop;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 import javax.swing.Timer;
 
@@ -28,18 +26,11 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import jmtetra.tetralogic.Gameboard;
 import jmtetra.tetralogic.Piece;
-import jmtetra.tetralogic.tetronomes.Ishape;
-import jmtetra.tetralogic.tetronomes.LshapeLeft;
-import jmtetra.tetralogic.tetronomes.LshapeRight;
-import jmtetra.tetralogic.tetronomes.SquareShape;
+import jmtetra.tetralogic.TetronomeRaffler;
 import jmtetra.tetralogic.tetronomes.Tetronome;
-import jmtetra.tetralogic.tetronomes.Tshape;
-import jmtetra.tetralogic.tetronomes.ZshapeLeft;
-import jmtetra.tetralogic.tetronomes.ZshapeRight;
 
 public class Gameloop extends Timer implements ActionListener {
 
-    private ArrayList<Tetronome> pieces;
     private GameboardDrawer drawedGameboard;
     private Gameboard gameboard;
     private int rowsDestroyed;
@@ -47,6 +38,7 @@ public class Gameloop extends Timer implements ActionListener {
     private int level;
     private int velocity;
     private Tetronome nextPiece;
+    private TetronomeRaffler tetronomeRaffler;
 
     /**
      * Konstruktori luo uuden peliloopin. Ensin käytetään perittävän
@@ -56,11 +48,10 @@ public class Gameloop extends Timer implements ActionListener {
      */
     public Gameloop() {
         super(1000, null);
-        updatePieces();
         this.gameboard = new Gameboard();
-        Collections.shuffle(this.pieces);
-        this.gameboard.addTetronome(this.pieces.get(0));
-        this.nextPiece = this.pieces.get(1);
+        this.tetronomeRaffler = new TetronomeRaffler(new Random());
+        this.gameboard.addTetronome(this.tetronomeRaffler.returnNewTetronome());
+        this.nextPiece = this.tetronomeRaffler.returnNewTetronome();
         this.points = 0;
         this.level = 0;
         this.rowsDestroyed = 0;
@@ -74,25 +65,6 @@ public class Gameloop extends Timer implements ActionListener {
     }
 
     /**
-     * Tämä metodi vastaa siitä että luodaan lista, jossa ovat kaikki
-     * mahdolliset Tetris-pelin palat. Lista luo jokaisesta palasta uuden
-     * ilmentymän.
-     *
-     *
-     */
-    private void updatePieces() {
-        this.pieces = new ArrayList();
-        this.pieces.add(new Ishape(new Piece[4]));
-        this.pieces.add(new LshapeLeft(new Piece[4]));
-        this.pieces.add(new LshapeRight(new Piece[4]));
-        this.pieces.add(new SquareShape(new Piece[4]));
-        this.pieces.add(new Tshape(new Piece[4]));
-        this.pieces.add(new ZshapeLeft(new Piece[4]));
-        this.pieces.add(new ZshapeRight(new Piece[4]));
-
-    }
-
-    /**
      * Tämä metodi mahdollistaa sen että peliloopin piirtoluokka vastaa
      * käyttöliittymässä luotua. Toisin kuin DrawedGameboard-luokassa, jossa
      * Gameloop luokka annetaan jo konstruktorissa parametrina
@@ -100,6 +72,13 @@ public class Gameloop extends Timer implements ActionListener {
      * @see DrawedGameboard(Gameloop gameclass)
      *
      * @param drawedGameboard piirtoalusta, jolle peli piirretään
+     */
+    /**
+     * Perus setteri, mutta käytännössä käytetään aina. Asetetaan pelilauta,
+     * johon pelilooppi tuottaa logiikan, jonka pelilauta piirtää ja näyttää
+     * pelaajalle.
+     *
+     * @param drawedGameboard
      */
     public void setDrawboard(GameboardDrawer drawedGameboard) {
         this.drawedGameboard = drawedGameboard;
@@ -133,8 +112,7 @@ public class Gameloop extends Timer implements ActionListener {
             rowsDestroyedThisRound = updateTotalRows(rowsDestroyedThisRound);
             updateStatistics(rowsDestroyedThisRound);
             this.gameboard.addTetronome(nextPiece);
-            updatePieces();
-            nextPiece = this.pieces.get(new Random().nextInt(7));
+            nextPiece = this.tetronomeRaffler.returnNewTetronome();
         } else {
             this.gameboard.updateBoard(gameboard.getCurTetro().moveDown());
         }

@@ -23,15 +23,11 @@ public class InputListener implements KeyListener {
     private GameboardDrawer gameboardDrawer;
 
     /**
-     * Keylistener-luokka saa parametrinaan char[][] tyyppisen pelilaudan, johon
-     * tehdään muutoksia, kun käyttäjän antama komento rekisteröidään.
+     * InputListener-luokka saa Gameloopin, joka välittää tarvittavat komponentit näppäimistönkuuntelijalle. 
+     * Näitä ovat kaksiulotteinen taulukko, jossa char-muuttujia, sekä pelilaudan piirtäjä. Luonnollisesti myös
+     * Gameloop-luokkaa itseään hyödynnetään luokan sisällä.
      *
-     * @param gameboard pelilauta jolle keyListener välittää päivitykset.
-     * @param gameboardDrawer pelilaudan piirtäjä välitetään myös. Tämä on
-     * tarpeellista, jotta käyttäjän antamat toiminnot, kuten käännökset ja
-     * liikkuminen alaspäin päivittyvät "realiajassa", eivätkä vasta kun
-     * seuraavan kerran liikutaan automaattisesti alas gameloop-luokan antaman
-     * komennon toimesta
+     * @param gameloop
      */
     public InputListener(Gameloop gameloop) {
         this.gameloop = gameloop;
@@ -46,7 +42,10 @@ public class InputListener implements KeyListener {
     /**
      * Metodi vastaa siitä, että jokainen käyttäjän komento suoritetaan oikein.
      * Se hyödyntää parametrina saamaansa Gameboard-luokkaa, jonka metodeilla
-     * muutokset tehdään.
+     * muutokset tehdään. Hieman poikkeuksellinen on space-syöte, joka suorittaa dropdown komennon. 
+     * Tässä välitetään nullactionPerformed Gameloop-luokalle, jotta ei synny normaalia sekunnin vivettä.
+     * 
+     * Tämä estää että palaa ei voi enää liikuttaa mitenkään, dropdown-komennon jälkeen.
      *
      * @see jmtetra.tetralogic.Gameboard#updateBoard(Piece[])
      * @see jmtetra.tetralogic.tetronomes.Tetronome#moveDown()

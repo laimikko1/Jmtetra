@@ -49,18 +49,13 @@ public class Ishape extends Tetronome {
     @Override
     final Piece[] createRotations() {
 
-        if (super.getRotation() == 1) {
-            return updateRightCords();
-        }
-        if (super.getRotation() == 2) {
+        if (super.getRotation() % 2 == 0) {
             return updateDownCords();
-        }
-        if (super.getRotation() == 3) {
-            return updateLeftCords();
-        }
 
-        return updateUpCords();
+        } else {
+            return updateRightCords();
 
+        }
     }
 
     private Piece[] updateDownCords() {
@@ -73,14 +68,6 @@ public class Ishape extends Tetronome {
         return down;
     }
 
-    private Piece[] updateLeftCords() {
-        Piece[] left = new Piece[4];
-        left[0] = this.generatePiece(0, 1);
-        left[1] = this.pieces[1];
-        left[2] = this.generatePiece(0, -1);
-        left[3] = this.generatePiece(0, -2);
-        return left;
-    }
 
     private Piece[] updateRightCords() {
         Piece[] right = new Piece[4];
@@ -91,13 +78,6 @@ public class Ishape extends Tetronome {
         return right;
     }
 
-    private Piece[] updateUpCords() {
-        Piece[] up = new Piece[4];
-        up[0] = this.generatePiece(1, 0);
-        up[1] = this.pieces[1];
-        up[2] = this.generatePiece(-1, 0);
-        up[3] = this.generatePiece(-2, 0);
-        return up;
-    }
+
 
 }

@@ -32,7 +32,7 @@ public class ZshapeRight extends Tetronome {
      */
     public ZshapeRight(Piece[] pieces) {
         super(pieces);
-        super.setType(Type.ZshapeRIght);
+        super.setType(Type.ZshapeRight);
         this.pieces = pieces;
         createTetronome();
     }

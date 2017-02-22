@@ -12,5 +12,5 @@ package jmtetra.tetralogic;
  * @author mikko
  */
 public enum Type {
-    Tshape, Squareshape, LshapeRight, LshapeLeft, ZshapeLeft, ZshapeRIght, Ishape
+    Tshape, Squareshape, LshapeRight, LshapeLeft, ZshapeLeft, ZshapeRight, Ishape
 }

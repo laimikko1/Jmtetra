@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import jmtetra.gameloop.Gameloop;
@@ -33,7 +33,8 @@ public class GameboardDrawer extends JPanel {
         this.gameclass = gameclass;
         image = null;
         try {
-            image = ImageIO.read(new File(System.getProperty("user.dir") + "/src/main/resources/blue.jpg"));
+            InputStream is = getClass().getClassLoader().getResourceAsStream("blue.jpg");
+            image = ImageIO.read(is);
         } catch (IOException e) {
         }
     }
@@ -105,7 +106,6 @@ public class GameboardDrawer extends JPanel {
             int drawX2 = p.getX() + drawX;
             g.setColor(setCharacterColors(p.getMark()));
 
-            
             g.fill3DRect(drawX2 * 30, drawY2 * 30, 30, 30, true);
         }
     }

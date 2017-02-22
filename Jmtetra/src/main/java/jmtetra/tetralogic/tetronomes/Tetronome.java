@@ -79,6 +79,7 @@ public abstract class Tetronome {
      * @param rotationDirection käyttäjän antama suunta käytännössä int arvo,
      * eli 1 (myötäpäivä) tai -1 (vastapäivä)
      *
+     * @see jmtetra.tetralogic.tetronomes.Tetronome#createRotations() 
      * @return uudet palan koordinaatit taulukossa, Piece[]-tyyppisenä
      *
      */
