@@ -9,6 +9,8 @@
 
 [Tuntikirjanpito] (https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[JavaDoc] (https://htmlpreview.github.io/?https://github.com/laimikko1/Jmtetra/blob/master/apidocs/index.html)
+
 [Pit] (https://htmlpreview.github.io/?https://github.com/laimikko1/Jmtetra/blob/master/dokumentaatio/pit/201702222138/index.html)
 
 
