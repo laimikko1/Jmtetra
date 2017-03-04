@@ -56,7 +56,7 @@ public class InputListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             this.gameboard.updateBoard(this.gameboard.getCurTetro().moveLeftOrRight(-1));
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {

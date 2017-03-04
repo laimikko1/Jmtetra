@@ -16,7 +16,9 @@ package jmtetra.gameloop;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.Timer;
 
@@ -155,16 +157,23 @@ public class Gameloop extends Timer implements ActionListener {
             pane.setOptionType(JOptionPane.YES_NO_OPTION);
             JDialog dialog = pane.createDialog("Game over");
 
-           
-
             dialog.show();
 
             if ((Integer) pane.getValue() == 1) {
                 System.exit(0);
             } else if ((Integer) pane.getValue() == 0) {
-                Runtime.getRuntime().exec("java -jar Jmtetra.jar");
+                final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+                String loc = System.getProperty("user.dir");
+                String jar = "Jmtetra.jar";
+                ArrayList<String> cmd = new ArrayList();
+                cmd.add(javaBin);
+                cmd.add("-jar");
+                cmd.add(loc + "/Jmtetra.jar");
+                ProcessBuilder pb = new ProcessBuilder(cmd);
+                pb.start();
                 System.exit(0);
             }
+
         }
     }
 
