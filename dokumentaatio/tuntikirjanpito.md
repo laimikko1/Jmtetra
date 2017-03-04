@@ -51,3 +51,10 @@ Päivä | Tunnit | Kuvaus
 22.2.2017 | 5h | Loin pelin loppumiselle ponnahduslaudan. Säädin hieman I-palaa kuntoon. Refaktoroin ja loin tetronomen arpomiselle uuden luokan ja sille testit. Sain korjattua myös dropdownin bugin, eli nyt palaa ei voi enää liikutella dropdownin jälkeen.
 
 
+
+**Thö final deadline**
+
+Päivä | Tunnit | Kuvaus
+--------------- | ----- | ------
+3.3.2017 | 1h | Säätelin vähän JavaDoccia kuntoon.
+4.3.2017 | 1h | Korjasin uudelleenkäynnistämisen logiikkaa ja loin releasen
