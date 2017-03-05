@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.Timer;
@@ -116,6 +117,8 @@ public class Gameloop extends Timer implements ActionListener {
                 checkIfGameIsOver();
             } catch (IOException ex) {
                 Logger.getLogger(Gameloop.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(Gameloop.class.getName()).log(Level.SEVERE, null, ex);
             }
             rowsDestroyedThisRound = updateTotalRows(rowsDestroyedThisRound);
             updateStatistics(rowsDestroyedThisRound);
@@ -150,7 +153,7 @@ public class Gameloop extends Timer implements ActionListener {
         return rowsDestroyedThisRound;
     }
 
-    private void checkIfGameIsOver() throws IOException {
+    private void checkIfGameIsOver() throws IOException, URISyntaxException {
         if (this.gameboard.isGameOver()) {
 
             JOptionPane pane = new JOptionPane("It seems your game is over.\nPoints: " + this.points + "\nPlay again?", JOptionPane.YES_NO_OPTION);
@@ -162,13 +165,14 @@ public class Gameloop extends Timer implements ActionListener {
             if ((Integer) pane.getValue() == 1) {
                 System.exit(0);
             } else if ((Integer) pane.getValue() == 0) {
-                final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+                //Tää oli aika vaikea toteuttaa. StackOverFlowsta löysin ton komennon millä saa javan home directoryn "executablen" käyttöön. Loppu olikin aika simppeli.
+                String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java"; 
                 String loc = System.getProperty("user.dir");
-                String jar = "Jmtetra.jar";
+                File t = new File(Gameloop.class.getProtectionDomain().getCodeSource().getLocation().toURI());
                 ArrayList<String> cmd = new ArrayList();
                 cmd.add(javaBin);
                 cmd.add("-jar");
-                cmd.add(loc + "/Jmtetra.jar");
+                cmd.add(t.getPath());
                 ProcessBuilder pb = new ProcessBuilder(cmd);
                 pb.start();
                 System.exit(0);
